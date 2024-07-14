@@ -16,7 +16,6 @@ import {
   Text,
   useColorScheme,
   View,
-  Platform,
 } from 'react-native';
 
 import {
@@ -65,9 +64,7 @@ function App(): React.JSX.Element {
   };
 
   useEffect(() => {
-    if (Platform.OS === 'android') {
-      SplashScreen.hide();
-    }
+    SplashScreen.hide();
   }, []);
 
   return (
