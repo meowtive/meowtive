@@ -1,3 +1,5 @@
+![Github preview](https://github.com/user-attachments/assets/c1c6fec6-0f8d-418e-8961-54d95f41efb0)
+
 # Meowtive
 
 Meowtive is your go-to app for daily meowtivation! 🐱✨
