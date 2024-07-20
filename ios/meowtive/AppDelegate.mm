@@ -2,8 +2,6 @@
 
 #import <React/RCTBundleURLProvider.h>
 
-#import "RNSplashScreen.h"
-
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -15,7 +13,7 @@
 
   BOOL ret = [super application:application didFinishLaunchingWithOptions:launchOptions]; 
 
-  if (ret == YES) { [RNSplashScreen show];  } return ret;
+  if (ret == YES) {} return ret;
 }
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
