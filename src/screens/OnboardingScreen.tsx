@@ -13,7 +13,7 @@ export const OnboardingScreen = () => {
         source={require('../assets/onboarding-cat.png')}
         style={styles.image}
       />
-      <Text style={styles.title}>Start inspired, and keep inspired.</Text>
+      <Text style={styles.title}>Feel inspired, and keep meowtivated.</Text>
       <Text style={styles.description}>🐈 We're glad you're here</Text>
       <TouchableOpacity activeOpacity={0.7} style={styles.button}>
         <Text style={styles.buttonText}>Get Started</Text>
