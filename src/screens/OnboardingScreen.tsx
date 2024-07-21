@@ -16,10 +16,10 @@ const stylesheet = createStyleSheet({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'purple',
+    backgroundColor: 'white',
   },
   title: {
-    color: '#fff',
+    color: '#000',
     fontSize: 22,
     fontWeight: 'bold',
   },
