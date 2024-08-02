@@ -27,11 +27,6 @@ class MainActivity : ReactActivity() {
   // @react-native-bootsplash
   override fun onCreate(savedInstanceState: Bundle?) {
     RNBootSplash.init(this, R.style.BootTheme) // initialize the splash screen
-    super.onCreate(savedInstanceState) // super.onCreate(null) with react-native-screens
-  }
-
-  // @react-native-navigation
-  override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(null)
+    super.onCreate(savedInstanceState)
   }
 }
