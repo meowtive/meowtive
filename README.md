@@ -40,7 +40,7 @@ To contribute:
 
 ## Feedback
 
-Have any feedback, suggestions, or issues with Meowtive? Feel free to [open an issue](https://github.com/filipirafael/meowtive/issues) or contact us at [filipirafael.123@gmail.com](mailto:filipirafael.123@gmail.com).
+Have any feedback, suggestions, or issues with Meowtive? Feel free to [open an issue](https://github.com/filipirafael/meowtive/issues) or contact us at [filipirafael.123@gmail.com](mailto:filipirafael.123@gmail.com) or [contato.gustavoabel@gmail.com](mailto:contato.gustavoabel@gmail.com).
 
 ## License
 
