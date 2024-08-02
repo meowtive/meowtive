@@ -1,11 +1,14 @@
 import {View, Text, TouchableOpacity, Image, Dimensions} from 'react-native';
 import {createStyleSheet, useStyles} from 'react-native-unistyles';
+import {storage} from '@/utils/storage';
 
-const {height} = Dimensions.get('screen');
+const {width, height} = Dimensions.get('screen');
 const smallScreen = height < 700;
 
 export const OnboardingScreen = () => {
   const {styles} = useStyles(stylesheet);
+
+  const handleSetOnboarding = () => storage.set('isOnboardingComplete', true);
 
   return (
     <View style={styles.container}>
@@ -15,7 +18,9 @@ export const OnboardingScreen = () => {
       />
       <Text style={styles.title}>Feel inspired, and keep meowtivated.</Text>
       <Text style={styles.description}>🐈 We're glad you're here</Text>
-      <TouchableOpacity activeOpacity={0.7} style={styles.button}>
+      <TouchableOpacity
+        onPress={handleSetOnboarding}
+        style={styles.button}>
         <Text style={styles.buttonText}>Get Started</Text>
       </TouchableOpacity>
     </View>
@@ -34,6 +39,7 @@ const stylesheet = createStyleSheet({
   title: {
     color: 'black',
     fontSize: smallScreen ? 38 : 48,
+    lineHeight: smallScreen ? 38 : 48,
     fontWeight: 'bold',
     alignSelf: 'flex-start',
   },
@@ -58,6 +64,7 @@ const stylesheet = createStyleSheet({
   },
   image: {
     height: height / 2,
+    width: width - (smallScreen ? 20 : 40),
     objectFit: 'contain',
   },
 });
