@@ -1,27 +1,27 @@
 import {View, Text, TouchableOpacity, Image, Dimensions} from 'react-native';
 import {createStyleSheet, useStyles} from 'react-native-unistyles';
-import {storage} from '@/utils/storage';
+import {storage} from '@/config/storage';
+import {useTranslation} from 'react-i18next';
 
 const {width, height} = Dimensions.get('screen');
 const smallScreen = height < 700;
 
 export const OnboardingScreen = () => {
   const {styles} = useStyles(stylesheet);
+  const {t} = useTranslation();
 
   const handleSetOnboarding = () => storage.set('isOnboardingComplete', true);
 
   return (
     <View style={styles.container}>
       <Image
-        source={require('../assets/onboarding-cat.png')}
+        source={require('../resources/assets/images/onboarding-cat.png')}
         style={styles.image}
       />
-      <Text style={styles.title}>Feel inspired, and keep meowtivated.</Text>
-      <Text style={styles.description}>🐈 We're glad you're here</Text>
-      <TouchableOpacity
-        onPress={handleSetOnboarding}
-        style={styles.button}>
-        <Text style={styles.buttonText}>Get Started</Text>
+      <Text style={styles.title}>{t('onboardingTitle')}</Text>
+      <Text style={styles.description}>{t('onboardingDescription')}</Text>
+      <TouchableOpacity onPress={handleSetOnboarding} style={styles.button}>
+        <Text style={styles.buttonText}>{t('onboardingButton')}</Text>
       </TouchableOpacity>
     </View>
   );
@@ -46,7 +46,7 @@ const stylesheet = createStyleSheet({
   description: {
     color: 'black',
     fontSize: 20,
-    fontWeight: 'semibold',
+    fontWeight: 'normal',
     alignSelf: 'flex-start',
   },
   button: {
