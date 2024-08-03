@@ -1,5 +1,5 @@
 import {useEffect} from 'react';
-import {SafeAreaView, StatusBar} from 'react-native';
+import {SafeAreaView, StatusBar, Platform} from 'react-native';
 import {OnboardingScreen} from '@/screens/OnboardingScreen';
 import {createStyleSheet, useStyles} from 'react-native-unistyles';
 import RNBootSplash from 'react-native-bootsplash';
@@ -24,6 +24,7 @@ const App = () => {
 const stylesheet = createStyleSheet({
   container: {
     flex: 1,
+    paddingVertical: Platform.OS === 'android' ? 40 : 0,
   },
 });
 

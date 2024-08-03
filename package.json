@@ -10,9 +10,11 @@
     "test": "jest"
   },
   "dependencies": {
+    "@react-native-community/cli": "^14.0.0",
     "react": "18.2.0",
     "react-native": "0.74.3",
     "react-native-bootsplash": "^6.0.0",
+    "react-native-mmkv": "3.0.0-beta.6",
     "react-native-unistyles": "^2.8.4"
   },
   "devDependencies": {
