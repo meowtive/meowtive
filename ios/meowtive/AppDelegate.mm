@@ -1,4 +1,5 @@
 #import "AppDelegate.h"
+#import "RNBootSplash.h"
 
 #import <React/RCTBundleURLProvider.h>
 
@@ -14,6 +15,10 @@
   BOOL ret = [super application:application didFinishLaunchingWithOptions:launchOptions]; 
 
   if (ret == YES) {} return ret;
+}
+  // @react-native-bootsplash
+- (void)customizeRootView:(RCTRootView *)rootView {
+  [RNBootSplash initWithStoryboard:@"LaunchScreen" rootView:rootView];
 }
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge

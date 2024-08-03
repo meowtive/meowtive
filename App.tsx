@@ -1,11 +1,19 @@
+import {useEffect} from 'react';
 import {SafeAreaView, StatusBar, Platform} from 'react-native';
 import {OnboardingScreen} from '@/screens/OnboardingScreen';
 import {createStyleSheet, useStyles} from 'react-native-unistyles';
 import {I18nextProvider} from 'react-i18next';
 import i18next from '@/config/i18n';
+import RNBootSplash from 'react-native-bootsplash';
 
-function App(): React.JSX.Element {
+const App = () => {
   const {styles} = useStyles(stylesheet);
+
+  useEffect(() => {
+    setTimeout(() => {
+      RNBootSplash.hide({fade: true});
+    }, 500);
+  }, []);
 
   return (
     <I18nextProvider i18n={i18next}>
@@ -15,7 +23,7 @@ function App(): React.JSX.Element {
       </SafeAreaView>
     </I18nextProvider>
   );
-}
+};
 
 const stylesheet = createStyleSheet({
   container: {
