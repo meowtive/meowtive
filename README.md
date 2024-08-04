@@ -22,7 +22,8 @@ cd meowtive
 Install dependencies and run the app:
 ```
 pnpm install
-pnpm start
+pnpm start --reset-cache
+pnpm run ios or pnpm run android 
 ```
 
 ## Contributing
