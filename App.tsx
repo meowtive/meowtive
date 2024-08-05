@@ -1,6 +1,6 @@
 import {useEffect} from 'react';
 import {SafeAreaView, StatusBar, Platform} from 'react-native';
-import {OnboardingScreen} from '@/screens/OnboardingScreen';
+import {HomeScreen} from '@/screens/HomeScreen';
 import {createStyleSheet, useStyles} from 'react-native-unistyles';
 import {I18nextProvider} from 'react-i18next';
 import i18next from '@/config/i18n';
@@ -19,7 +19,7 @@ const App = () => {
     <I18nextProvider i18n={i18next}>
       <SafeAreaView style={styles.container}>
         <StatusBar barStyle="default" />
-        <OnboardingScreen />
+        <HomeScreen />
       </SafeAreaView>
     </I18nextProvider>
   );
