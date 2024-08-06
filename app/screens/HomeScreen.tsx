@@ -1,4 +1,12 @@
-import {View, Text, TouchableOpacity, Image, Dimensions} from 'react-native';
+import {useRef, useEffect} from 'react';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  Dimensions,
+  Animated,
+} from 'react-native';
 import {createStyleSheet, useStyles} from 'react-native-unistyles';
 
 const {width, height} = Dimensions.get('screen');
@@ -6,6 +14,15 @@ const smallScreen = height < 700;
 
 export const HomeScreen = () => {
   const {styles} = useStyles(stylesheet);
+  const fadeAnim = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    Animated.timing(fadeAnim, {
+      toValue: 1,
+      duration: 1000,
+      useNativeDriver: true,
+    }).start();
+  }, [fadeAnim]);
 
   return (
     <View style={styles.container}>
@@ -16,7 +33,10 @@ export const HomeScreen = () => {
 
       <View style={styles.textWrapper}>
         <Text style={styles.title}>Meowtivation:</Text>
-        <Text style={styles.description}>Start strong, finish inspired.</Text>
+
+        <Animated.View style={{opacity: fadeAnim}}>
+          <Text style={styles.description}>Start strong, finish inspired.</Text>
+        </Animated.View>
       </View>
 
       <View style={styles.buttonsWrapper}>
