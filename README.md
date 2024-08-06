@@ -15,7 +15,7 @@ Meowtive is your go-to app for daily meowtivation! 🐱✨
 To get started with Meowtive, simply clone this repository:
 
 ```bash
-git clone https://github.com/meowtive=/meowtive
+git clone https://github.com/meowtive/meowtive
 cd meowtive
 ```
 
