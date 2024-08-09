@@ -1,18 +1,9 @@
 import {useRef, useEffect} from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  Image,
-  Dimensions,
-  Animated,
-} from 'react-native';
-import {createStyleSheet, useStyles} from 'react-native-unistyles';
+import {View, Text, TouchableOpacity, Image, Animated} from 'react-native';
+import {useStyles} from 'react-native-unistyles';
 import {useTranslation} from 'react-i18next';
-import {storage} from '@/config/storage';
-
-const {width, height} = Dimensions.get('screen');
-const smallScreen = height < 700;
+import {storage} from '@config/storage';
+import {stylesheet} from './styles';
 
 export const HomeScreen = () => {
   const {styles} = useStyles(stylesheet);
@@ -55,7 +46,7 @@ export const HomeScreen = () => {
   return (
     <View style={styles.container}>
       <Image
-        source={require('../resources/assets/images/home-screen-cat.png')}
+        source={require('../../resources/assets/images/home-screen-cat.png')}
         style={styles.image}
       />
 
@@ -76,59 +67,3 @@ export const HomeScreen = () => {
     </View>
   );
 };
-
-const stylesheet = createStyleSheet({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    backgroundColor: 'white',
-    paddingHorizontal: smallScreen ? 20 : 40,
-    paddingVertical: 20,
-  },
-  textWrapper: {
-    rowGap: 6,
-  },
-  quote: {
-    color: 'black',
-    fontSize: 22,
-    fontWeight: 'normal',
-    textAlign: 'center',
-  },
-  buttonsWrapper: {
-    width: '100%',
-    rowGap: 12,
-    marginTop: 12,
-  },
-  primaryButton: {
-    backgroundColor: 'black',
-    borderRadius: 100,
-    width: '100%',
-    height: 64,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  secondButton: {
-    backgroundColor: '#64FCD9',
-    borderRadius: 100,
-    width: '100%',
-    height: 64,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  primaryButtonText: {
-    color: 'white',
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  secondButtonText: {
-    color: 'white',
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  image: {
-    height: height / 2.5,
-    width: width - (smallScreen ? 20 : 40),
-    objectFit: 'contain',
-  },
-});
