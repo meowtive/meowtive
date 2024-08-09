@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import {createStyleSheet, useStyles} from 'react-native-unistyles';
 import {useTranslation} from 'react-i18next';
+import {storage} from '@/config/storage';
 
 const {width, height} = Dimensions.get('screen');
 const smallScreen = height < 700;
@@ -18,7 +19,26 @@ export const HomeScreen = () => {
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const {t} = useTranslation();
   const quotes: String[] = t('quotes', {returnObjects: true});
-  const index = Math.floor(Math.random() * 300);
+  const index = setInitalQuoteIndex();
+
+  function setInitalQuoteIndex() {
+    const dailyQuoteLastIndex = storage.getNumber('dailyQuoteLastIndex');
+    if (dailyQuoteLastIndex) return dailyQuoteLastIndex;
+    else return Math.floor(Math.random() * 300);
+  }
+
+  const getDailyQuote = () => {
+    const dailyQuoteLastUpdate = storage.getNumber('dailyQuoteLastUpdate');
+    const today = new Date().getDate();
+
+    if (dailyQuoteLastUpdate === today) return false;
+    else updateDailyQuote();
+  };
+
+  const updateDailyQuote = () => {
+    storage.set('dailyQuoteLastUpdate', new Date().getDate());
+    storage.set('dailyQuoteLastIndex', Math.floor(Math.random() * 300));
+  };
 
   useEffect(() => {
     Animated.timing(fadeAnim, {
@@ -27,6 +47,10 @@ export const HomeScreen = () => {
       useNativeDriver: true,
     }).start();
   }, [fadeAnim]);
+
+  useEffect(() => {
+    getDailyQuote();
+  }, []);
 
   return (
     <View style={styles.container}>
