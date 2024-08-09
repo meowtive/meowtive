@@ -1,10 +1,11 @@
 import {useEffect} from 'react';
-import {SafeAreaView, StatusBar, Platform} from 'react-native';
-import {OnboardingScreen} from '@/screens/OnboardingScreen';
+import {SafeAreaView, StatusBar} from 'react-native';
+import {HomeScreen} from '@screens/HomeScreen/HomeScreen';
 import {createStyleSheet, useStyles} from 'react-native-unistyles';
 import {I18nextProvider} from 'react-i18next';
-import i18next from '@/config/i18n';
+import i18next from '@config/i18n';
 import RNBootSplash from 'react-native-bootsplash';
+import {isAndroid} from '@config/platform';
 
 const App = () => {
   const {styles} = useStyles(stylesheet);
@@ -19,7 +20,7 @@ const App = () => {
     <I18nextProvider i18n={i18next}>
       <SafeAreaView style={styles.container}>
         <StatusBar barStyle="default" />
-        <OnboardingScreen />
+        <HomeScreen />
       </SafeAreaView>
     </I18nextProvider>
   );
@@ -28,7 +29,7 @@ const App = () => {
 const stylesheet = createStyleSheet({
   container: {
     flex: 1,
-    paddingVertical: Platform.OS === 'android' ? 40 : 0,
+    paddingVertical: isAndroid ? 40 : 0,
   },
 });
 

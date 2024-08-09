@@ -3,7 +3,16 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./app/*"]
+      "@config": ["app/config"],
+      "@config/*": ["app/config/*"],
+      "@resources": ["app/resources"],
+      "@resources/*": ["app/resources/*"],
+      "@screens": ["app/screens"],
+      "@screens/*": ["app/screens/*"],
+      "@components": ["app/components"],
+      "@components/*": ["app/components/*"],
+      "@types": ["app/types"],
+      "@types/*": ["app/types/*"],
     }
   }
 }
