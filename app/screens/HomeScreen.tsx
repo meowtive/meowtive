@@ -8,6 +8,7 @@ import {
   Animated,
 } from 'react-native';
 import {createStyleSheet, useStyles} from 'react-native-unistyles';
+import {useTranslation} from 'react-i18next';
 
 const {width, height} = Dimensions.get('screen');
 const smallScreen = height < 700;
@@ -15,6 +16,9 @@ const smallScreen = height < 700;
 export const HomeScreen = () => {
   const {styles} = useStyles(stylesheet);
   const fadeAnim = useRef(new Animated.Value(0)).current;
+  const {t} = useTranslation();
+  const quotes: String[] = t('quotes', {returnObjects: true});
+  const index = Math.floor(Math.random() * 300);
 
   useEffect(() => {
     Animated.timing(fadeAnim, {
@@ -32,19 +36,17 @@ export const HomeScreen = () => {
       />
 
       <View style={styles.textWrapper}>
-        <Text style={styles.title}>Meowtivation:</Text>
-
         <Animated.View style={{opacity: fadeAnim}}>
-          <Text style={styles.description}>Start strong, finish inspired.</Text>
+          <Text style={styles.quote}>{quotes[index]}</Text>
         </Animated.View>
       </View>
 
       <View style={styles.buttonsWrapper}>
         <TouchableOpacity style={styles.primaryButton}>
-          <Text style={styles.primaryButtonText}>Save</Text>
+          <Text style={styles.primaryButtonText}>{t('save')}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.secondButton}>
-          <Text style={styles.secondButtonText}>Share</Text>
+          <Text style={styles.secondButtonText}>{t('share')}</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -63,18 +65,11 @@ const stylesheet = createStyleSheet({
   textWrapper: {
     rowGap: 6,
   },
-  title: {
+  quote: {
     color: 'black',
-    fontSize: smallScreen ? 38 : 48,
-    lineHeight: smallScreen ? 38 : 48,
-    fontWeight: 'bold',
-    alignSelf: 'center',
-  },
-  description: {
-    color: 'black',
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: 'normal',
-    alignSelf: 'center',
+    textAlign: 'center',
   },
   buttonsWrapper: {
     width: '100%',
