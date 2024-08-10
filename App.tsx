@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { SafeAreaView, StatusBar } from 'react-native';
-import { HomeScreen } from '@screens/HomeScreen/HomeScreen';
+import { HomeScreen } from '@screens';
 import { createStyleSheet, useStyles } from 'react-native-unistyles';
 import { I18nextProvider } from 'react-i18next';
 import i18next from '@config/i18n';
