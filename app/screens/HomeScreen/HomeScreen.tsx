@@ -1,29 +1,35 @@
-import {useRef, useEffect} from 'react';
-import {View, Text, TouchableOpacity, Image, Animated} from 'react-native';
-import {useStyles} from 'react-native-unistyles';
-import {useTranslation} from 'react-i18next';
-import {storage} from '@config/storage';
-import {stylesheet} from './styles';
+import { useRef, useEffect } from 'react';
+import { View, Text, TouchableOpacity, Image, Animated } from 'react-native';
+import { useStyles } from 'react-native-unistyles';
+import { useTranslation } from 'react-i18next';
+import { storage } from '@config/storage';
+import { stylesheet } from './styles';
 
 export const HomeScreen = () => {
-  const {styles} = useStyles(stylesheet);
+  const { styles } = useStyles(stylesheet);
   const fadeAnim = useRef(new Animated.Value(0)).current;
-  const {t} = useTranslation();
-  const quotes: String[] = t('quotes', {returnObjects: true});
+  const { t } = useTranslation();
+  const quotes: String[] = t('quotes', { returnObjects: true });
   const index = setInitalQuoteIndex();
 
   function setInitalQuoteIndex() {
     const dailyQuoteLastIndex = storage.getNumber('dailyQuoteLastIndex');
-    if (dailyQuoteLastIndex) return dailyQuoteLastIndex;
-    else return Math.floor(Math.random() * 300);
+    if (dailyQuoteLastIndex) {
+      return dailyQuoteLastIndex;
+    } else {
+      return Math.floor(Math.random() * 300);
+    }
   }
 
   const getDailyQuote = () => {
     const dailyQuoteLastUpdate = storage.getNumber('dailyQuoteLastUpdate');
     const today = new Date().getDate();
 
-    if (dailyQuoteLastUpdate === today) return false;
-    else updateDailyQuote();
+    if (dailyQuoteLastUpdate === today) {
+      return false;
+    } else {
+      updateDailyQuote();
+    }
   };
 
   const updateDailyQuote = () => {
@@ -41,6 +47,7 @@ export const HomeScreen = () => {
 
   useEffect(() => {
     getDailyQuote();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -51,7 +58,7 @@ export const HomeScreen = () => {
       />
 
       <View style={styles.textWrapper}>
-        <Animated.View style={{opacity: fadeAnim}}>
+        <Animated.View style={{ opacity: fadeAnim }}>
           <Text style={styles.quote}>{quotes[index]}</Text>
         </Animated.View>
       </View>
