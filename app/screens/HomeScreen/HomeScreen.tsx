@@ -45,9 +45,9 @@ export const HomeScreen = () => {
     }).start();
   }, [fadeAnim]);
 
+  /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     getDailyQuote();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
