@@ -1,18 +1,18 @@
-import {useEffect} from 'react';
-import {SafeAreaView, StatusBar} from 'react-native';
-import {HomeScreen} from '@screens/HomeScreen/HomeScreen';
-import {createStyleSheet, useStyles} from 'react-native-unistyles';
-import {I18nextProvider} from 'react-i18next';
+import { useEffect } from 'react';
+import { SafeAreaView, StatusBar } from 'react-native';
+import { HomeScreen } from '@screens/HomeScreen/HomeScreen';
+import { createStyleSheet, useStyles } from 'react-native-unistyles';
+import { I18nextProvider } from 'react-i18next';
 import i18next from '@config/i18n';
 import RNBootSplash from 'react-native-bootsplash';
-import {isAndroid} from '@config/platform';
+import { isAndroid } from '@config/platform';
 
 const App = () => {
-  const {styles} = useStyles(stylesheet);
+  const { styles } = useStyles(stylesheet);
 
   useEffect(() => {
     setTimeout(() => {
-      RNBootSplash.hide({fade: true});
+      RNBootSplash.hide({ fade: true });
     }, 500);
   }, []);
 

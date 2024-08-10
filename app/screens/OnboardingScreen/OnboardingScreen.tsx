@@ -1,12 +1,12 @@
-import {View, Text, TouchableOpacity, Image} from 'react-native';
-import {useStyles} from 'react-native-unistyles';
-import {storage} from '@config/storage';
-import {useTranslation} from 'react-i18next';
-import {stylesheet} from './styles';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
+import { useStyles } from 'react-native-unistyles';
+import { storage } from '@config/storage';
+import { useTranslation } from 'react-i18next';
+import { stylesheet } from './styles';
 
 export const OnboardingScreen = () => {
-  const {styles} = useStyles(stylesheet);
-  const {t} = useTranslation();
+  const { styles } = useStyles(stylesheet);
+  const { t } = useTranslation();
 
   const handleSetOnboarding = () => storage.set('isOnboardingComplete', true);
 
