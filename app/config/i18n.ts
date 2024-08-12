@@ -2,9 +2,13 @@ import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import * as RNLocalize from 'react-native-localize';
 
-import { en, es, pt } from '@resources';
+import * as i18n from '@resources';
 
-const resources = { en, es, pt };
+const resources = {
+  en: i18n.en,
+  es: i18n.es,
+  pt: i18n.pt,
+};
 
 i18next.use(initReactI18next).init(
   {
