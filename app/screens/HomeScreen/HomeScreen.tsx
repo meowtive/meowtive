@@ -1,5 +1,6 @@
 import { useRef, useEffect } from 'react';
 import { View, Text, TouchableOpacity, Image, Animated } from 'react-native';
+import SoundPlayer from 'react-native-sound-player';
 import { useStyles } from 'react-native-unistyles';
 import { useTranslation } from 'react-i18next';
 import { storage } from '@config/storage';
@@ -37,6 +38,10 @@ export const HomeScreen = () => {
     storage.set('dailyQuoteLastIndex', Math.floor(Math.random() * 300));
   };
 
+  const handlePlayPurrSound = () => {
+    SoundPlayer.playAsset(require('../../resources/assets/audios/purr.mp3'));
+  };
+
   useEffect(() => {
     Animated.timing(fadeAnim, {
       toValue: 1,
@@ -48,6 +53,7 @@ export const HomeScreen = () => {
   /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     getDailyQuote();
+    handlePlayPurrSound();
   }, []);
 
   return (
