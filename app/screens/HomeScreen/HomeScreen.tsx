@@ -33,9 +33,12 @@ export const HomeScreen = () => {
     }
   };
 
-  const handleSaveQuote = () => {
-    // const favorites = storage.getString('favorites');
-    // const favoritesArray = JSON.parse(favorites) || [];
+  const handleSaveQuote = (quote: string) => {
+    const favorites = storage.getString('favorites');
+    const favoritesArray = favorites ? JSON.parse(favorites) : [];
+    favoritesArray.push(quote);
+
+    storage.set('favorites', JSON.stringify(favoritesArray));
   };
 
   const updateDailyQuote = () => {
@@ -77,7 +80,7 @@ export const HomeScreen = () => {
       <View style={styles.buttonsWrapper}>
         <TouchableOpacity
           style={styles.primaryButton}
-          onPress={handleSaveQuote}>
+          onPress={() => handleSaveQuote(String(quotes[index]))}>
           <Text style={styles.primaryButtonText}>{t('save')}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.secondButton}>
