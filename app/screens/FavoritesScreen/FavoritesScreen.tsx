@@ -1,13 +1,17 @@
 import { useRef, useEffect } from 'react';
-import { View, Text, Image, Animated } from 'react-native';
+import { View, Text, Animated, FlatList, TouchableOpacity } from 'react-native';
 import { useStyles } from 'react-native-unistyles';
 import { useTranslation } from 'react-i18next';
 import { stylesheet } from './styles';
+import { storage } from '@config/storage';
+import { FavoritesHeader } from '@components/FavoritesHeader/FavoritesHeader';
 
 export const FavoritesScreen = () => {
   const { styles } = useStyles(stylesheet);
   const { t } = useTranslation();
   const fadeAnim = useRef(new Animated.Value(0)).current;
+  const quotesData = storage.getString('favorites');
+  const quotes = quotesData ? JSON.parse(quotesData) : [];
 
   useEffect(() => {
     Animated.timing(fadeAnim, {
@@ -19,19 +23,19 @@ export const FavoritesScreen = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.title}>{t('Favorites')}</Text>
-      </View>
-
-      <Animated.View style={[styles.quote, { opacity: fadeAnim }]}>
-        <Image
-          source={require('../../resources/assets/images/favorites-cat.png')}
-          style={styles.image}
+      <Animated.View style={{ opacity: fadeAnim }}>
+        <FlatList
+          data={quotes}
+          keyExtractor={quote => quote}
+          style={styles.quotes}
+          ListHeaderComponent={FavoritesHeader}
+          ListHeaderComponentStyle={styles.header}
+          renderItem={({ item }) => (
+            <TouchableOpacity style={styles.quote}>
+              <Text style={styles.quoteText}>{t(item)}</Text>
+            </TouchableOpacity>
+          )}
         />
-        <Text style={styles.quoteText}>
-          "Even the longest and laziest naps end with a stretch and a renewed
-          sense of adventure; make sure to rejuvenate and keep exploring."
-        </Text>
       </Animated.View>
     </View>
   );

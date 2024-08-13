@@ -12,27 +12,14 @@ export const stylesheet = createStyleSheet({
   },
   header: {
     flexDirection: 'row',
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    marginBottom: 20,
-  },
-  title: {
-    color: 'black',
-    fontSize: 48,
-    fontWeight: 'bold',
-    textAlign: 'right',
-    width: '100%',
-  },
-  image: {
-    width: 50,
-    height: 50,
-    objectFit: 'cover',
-    marginRight: 10,
-  },
-  quote: {
-    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+  },
+  quotes: {
+    overflow: 'visible',
+  },
+  quote: {
+    alignItems: 'center',
     backgroundColor: 'white',
     padding: 12,
     borderRadius: 12,
