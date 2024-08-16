@@ -65,13 +65,13 @@ export const FavoritesScreen = () => {
       <BottomSheet isOpen={isOpen} toggleSheet={toggleSheet}>
         <View style={styles.bottomSheetWrapper}>
           <TouchableOpacity style={styles.primaryButton}>
-            <Text style={styles.buttonText}>Share</Text>
+            <Text style={styles.buttonText}>{t('share')}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
             style={styles.secondButton}
             onPress={handleRemoveQuote}>
-            <Text style={styles.buttonText}>Remove</Text>
+            <Text style={styles.buttonText}>{t('remove')}</Text>
           </TouchableOpacity>
         </View>
       </BottomSheet>
