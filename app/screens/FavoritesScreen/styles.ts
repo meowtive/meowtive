@@ -14,6 +14,7 @@ export const stylesheet = createStyleSheet({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    width: '100%',
   },
   quotes: {
     overflow: 'visible',
@@ -34,5 +35,30 @@ export const stylesheet = createStyleSheet({
     fontWeight: 'light',
     textAlign: 'center',
     opacity: 0.8,
+  },
+  bottomSheetWrapper: {
+    width: '100%',
+    gap: 10,
+  },
+  primaryButton: {
+    backgroundColor: 'black',
+    borderRadius: 100,
+    width: '100%',
+    height: 64,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  secondButton: {
+    backgroundColor: '#f87171',
+    borderRadius: 100,
+    width: '100%',
+    height: 64,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: 'bold',
   },
 });

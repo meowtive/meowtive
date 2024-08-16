@@ -1,24 +1,43 @@
-import { useRef, useEffect } from 'react';
-import { View, Text, Animated, FlatList, TouchableOpacity } from 'react-native';
+import { useEffect, useState } from 'react';
+import { View, Text, FlatList, TouchableOpacity } from 'react-native';
 import { useStyles } from 'react-native-unistyles';
+import Animated, { useSharedValue, withTiming } from 'react-native-reanimated';
 import { useTranslation } from 'react-i18next';
-import { stylesheet } from './styles';
+import { FavoritesHeader, BottomSheet } from '@components';
 import { storage } from '@config/storage';
-import { FavoritesHeader } from '@components/FavoritesHeader/FavoritesHeader';
+import { stylesheet } from './styles';
 
 export const FavoritesScreen = () => {
   const { styles } = useStyles(stylesheet);
   const { t } = useTranslation();
-  const fadeAnim = useRef(new Animated.Value(0)).current;
-  const quotesData = storage.getString('favorites');
-  const quotes = quotesData ? JSON.parse(quotesData) : [];
+  const fadeAnim = useSharedValue(0);
+  const [quotes, setQuotes] = useState<string[]>([]);
+  const isOpen = useSharedValue(false);
+  let selectedQuote: string | null = null;
+
+  const toggleSheet = () => {
+    isOpen.value = !isOpen.value;
+  };
+
+  const handleRemoveQuote = () => {
+    const favorites = storage.getString('favorites');
+    const favoritesArray = favorites ? JSON.parse(favorites) : [];
+
+    const updatedFavoritesArray = favoritesArray.filter(
+      (item: string) => item !== selectedQuote,
+    );
+
+    storage.set('favorites', JSON.stringify(updatedFavoritesArray));
+    setQuotes(updatedFavoritesArray);
+
+    toggleSheet();
+  };
 
   useEffect(() => {
-    Animated.timing(fadeAnim, {
-      toValue: 1,
-      duration: 1000,
-      useNativeDriver: true,
-    }).start();
+    const quotesData = storage.getString('favorites');
+    setQuotes(quotesData ? JSON.parse(quotesData) : []);
+
+    fadeAnim.value = withTiming(1, { duration: 1000 });
   }, [fadeAnim]);
 
   return (
@@ -31,12 +50,31 @@ export const FavoritesScreen = () => {
           ListHeaderComponent={FavoritesHeader}
           ListHeaderComponentStyle={styles.header}
           renderItem={({ item }) => (
-            <TouchableOpacity style={styles.quote}>
+            <TouchableOpacity
+              style={styles.quote}
+              onPress={() => {
+                selectedQuote = item;
+                toggleSheet();
+              }}>
               <Text style={styles.quoteText}>{t(item)}</Text>
             </TouchableOpacity>
           )}
         />
       </Animated.View>
+
+      <BottomSheet isOpen={isOpen} toggleSheet={toggleSheet}>
+        <View style={styles.bottomSheetWrapper}>
+          <TouchableOpacity style={styles.primaryButton}>
+            <Text style={styles.buttonText}>Share</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.secondButton}
+            onPress={handleRemoveQuote}>
+            <Text style={styles.buttonText}>Remove</Text>
+          </TouchableOpacity>
+        </View>
+      </BottomSheet>
     </View>
   );
 };
