@@ -40,12 +40,7 @@ export const stylesheet = createStyleSheet({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  primaryButtonText: {
-    color: 'white',
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  secondButtonText: {
+  buttonText: {
     color: 'white',
     fontSize: 20,
     fontWeight: 'bold',

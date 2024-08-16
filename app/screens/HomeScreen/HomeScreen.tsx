@@ -81,10 +81,10 @@ export const HomeScreen = () => {
         <TouchableOpacity
           style={styles.primaryButton}
           onPress={() => handleSaveQuote(String(quotes[index]))}>
-          <Text style={styles.primaryButtonText}>{t('save')}</Text>
+          <Text style={styles.buttonText}>{t('save')}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.secondButton}>
-          <Text style={styles.secondButtonText}>{t('share')}</Text>
+          <Text style={styles.buttonText}>{t('share')}</Text>
         </TouchableOpacity>
       </View>
     </View>
