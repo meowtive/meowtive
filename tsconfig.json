@@ -13,6 +13,8 @@
       "@components/*": ["app/components/*"],
       "@types": ["app/types"],
       "@types/*": ["app/types/*"],
+      "@routes": ["app/routes"],
+      "@routes/*": ["app/routes/*"],
     }
   }
 }
