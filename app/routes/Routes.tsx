@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unstable-nested-components */
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { HomeScreen, OnboardingScreen } from '@screens';
+import { HomeScreen, FavoritesScreen } from '@screens';
 import { NavigationContainer } from '@react-navigation/native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -22,7 +22,7 @@ export default function Routes() {
         />
         <Tab.Screen
           name="Favorite"
-          component={OnboardingScreen}
+          component={FavoritesScreen}
           options={{
             tabBarIcon: () => (
               <MaterialIcons name="favorite" size={24} color="black" />
