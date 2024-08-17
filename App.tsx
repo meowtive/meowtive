@@ -29,7 +29,7 @@ const App = () => {
 const stylesheet = createStyleSheet({
   container: {
     flex: 1,
-    paddingVertical: isAndroid ? 40 : 0,
+    paddingVertical: isAndroid ? 20 : 0,
   },
 });
 

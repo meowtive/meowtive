@@ -1,5 +1,6 @@
 import { useRef, useEffect } from 'react';
 import { View, Text, TouchableOpacity, Image, Animated } from 'react-native';
+import SoundPlayer from 'react-native-sound-player';
 import { useStyles } from 'react-native-unistyles';
 import { useTranslation } from 'react-i18next';
 import { storage } from '@config/storage';
@@ -32,9 +33,21 @@ export const HomeScreen = () => {
     }
   };
 
+  const handleSaveQuote = (quote: string) => {
+    const favorites = storage.getString('favorites');
+    const favoritesArray = favorites ? JSON.parse(favorites) : [];
+    favoritesArray.push(quote);
+
+    storage.set('favorites', JSON.stringify(favoritesArray));
+  };
+
   const updateDailyQuote = () => {
     storage.set('dailyQuoteLastUpdate', new Date().getDate());
     storage.set('dailyQuoteLastIndex', Math.floor(Math.random() * 300));
+  };
+
+  const handlePlayPurrSound = () => {
+    SoundPlayer.playAsset(require('../../resources/assets/audios/purr.mp3'));
   };
 
   useEffect(() => {
@@ -48,6 +61,7 @@ export const HomeScreen = () => {
   /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     getDailyQuote();
+    handlePlayPurrSound();
   }, []);
 
   return (
@@ -64,11 +78,13 @@ export const HomeScreen = () => {
       </View>
 
       <View style={styles.buttonsWrapper}>
-        <TouchableOpacity style={styles.primaryButton}>
-          <Text style={styles.primaryButtonText}>{t('save')}</Text>
+        <TouchableOpacity
+          style={styles.primaryButton}
+          onPress={() => handleSaveQuote(String(quotes[index]))}>
+          <Text style={styles.buttonText}>{t('save')}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.secondButton}>
-          <Text style={styles.secondButtonText}>{t('share')}</Text>
+          <Text style={styles.buttonText}>{t('share')}</Text>
         </TouchableOpacity>
       </View>
     </View>

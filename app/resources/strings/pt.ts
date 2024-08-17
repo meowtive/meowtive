@@ -5,6 +5,7 @@ export const pt = {
     onboardingButton: 'Começar',
     save: 'Salvar',
     share: 'Compartilhar',
+    remove: 'Remover',
     quotes: [
       '"Comece cada dia com um propósito e termine com um ronronar de satisfação."',
       '"A jornada para seus sonhos é como a soneca de um gato—tranquila, pacífica e cheia de saltos inesperados."',

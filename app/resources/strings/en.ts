@@ -5,6 +5,7 @@ export const en = {
     onboardingButton: 'Get Started',
     save: 'Save',
     share: 'Share',
+    remove: 'Remove',
     quotes: [
       '"Start each day with a purrpose, and end it with a purr of satisfaction."',
       '"The journey to your dreams is like a cat\'s nap—quiet, peaceful, and filled with unexpected leaps."',

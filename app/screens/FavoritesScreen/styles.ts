@@ -1,28 +1,44 @@
 import { createStyleSheet } from 'react-native-unistyles';
-import { SMALL_SCREEN, SCREEN_DIMENSIONS } from '@config/constants';
+import { SMALL_SCREEN } from '@config/constants';
 
 export const stylesheet = createStyleSheet({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
     backgroundColor: 'white',
     paddingHorizontal: SMALL_SCREEN ? 20 : 40,
     paddingVertical: 20,
   },
-  textWrapper: {
-    rowGap: 6,
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '100%',
+  },
+  quotes: {
+    overflow: 'visible',
   },
   quote: {
-    color: 'black',
-    fontSize: 22,
-    fontWeight: 'normal',
-    textAlign: 'center',
+    alignItems: 'center',
+    backgroundColor: 'white',
+    padding: 12,
+    borderRadius: 12,
+    shadowColor: 'black',
+    shadowOpacity: 0.1,
+    shadowRadius: 12,
+    marginTop: 10,
   },
-  buttonsWrapper: {
+  quoteText: {
+    color: 'black',
+    fontSize: 16,
+    fontWeight: 'light',
+    textAlign: 'center',
+    opacity: 0.8,
+  },
+  bottomSheetWrapper: {
     width: '100%',
-    rowGap: 12,
-    marginTop: 12,
+    gap: 10,
   },
   primaryButton: {
     backgroundColor: 'black',
@@ -33,7 +49,7 @@ export const stylesheet = createStyleSheet({
     justifyContent: 'center',
   },
   secondButton: {
-    backgroundColor: '#64FCD9',
+    backgroundColor: '#f87171',
     borderRadius: 100,
     width: '100%',
     height: 64,
@@ -44,10 +60,5 @@ export const stylesheet = createStyleSheet({
     color: 'white',
     fontSize: 20,
     fontWeight: 'bold',
-  },
-  image: {
-    height: SCREEN_DIMENSIONS.height / 2.5,
-    width: SCREEN_DIMENSIONS.width - (SMALL_SCREEN ? 20 : 40),
-    objectFit: 'contain',
   },
 });
