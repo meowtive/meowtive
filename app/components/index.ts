@@ -1,2 +1,2 @@
-export * from '@components/FavoritesHeader/FavoritesHeader';
-export * from '@components/BottomSheet/BottomSheet';
+export * from './FavoritesHeader/FavoritesHeader';
+export * from './BottomSheet/BottomSheet';

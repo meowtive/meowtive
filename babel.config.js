@@ -12,6 +12,7 @@ module.exports = {
           '@config': './app/config',
           '@resources': './app/resources',
           '@types': './app/types',
+          '@routes': './app/routes',
         },
       },
     ],
