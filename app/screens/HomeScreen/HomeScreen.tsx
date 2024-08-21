@@ -34,6 +34,7 @@ export const HomeScreen = () => {
   };
 
   const handleSaveQuote = (quote: string) => {
+    handlePlayMeowSound();
     const favorites = storage.getString('favorites');
     const favoritesArray = favorites ? JSON.parse(favorites) : [];
     favoritesArray.push(quote);
@@ -46,8 +47,8 @@ export const HomeScreen = () => {
     storage.set('dailyQuoteLastIndex', Math.floor(Math.random() * 300));
   };
 
-  const handlePlayPurrSound = () => {
-    SoundPlayer.playAsset(require('../../resources/assets/audios/purr.mp3'));
+  const handlePlayMeowSound = () => {
+    SoundPlayer.playAsset(require('../../resources/assets/audios/meow.mp3'));
   };
 
   useEffect(() => {
@@ -61,7 +62,6 @@ export const HomeScreen = () => {
   /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     getDailyQuote();
-    handlePlayPurrSound();
   }, []);
 
   return (
