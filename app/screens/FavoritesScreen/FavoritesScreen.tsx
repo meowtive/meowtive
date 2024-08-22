@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { View, Text, FlatList, TouchableOpacity } from 'react-native';
 import { useStyles } from 'react-native-unistyles';
 import Animated, { useSharedValue, withTiming } from 'react-native-reanimated';
+import { useFocusEffect } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 import { FavoritesHeader, BottomSheet } from '@components';
 import { storage } from '@config/storage';
@@ -33,12 +34,18 @@ export const FavoritesScreen = () => {
     toggleSheet();
   };
 
-  useEffect(() => {
+  const getFavoritesQuotes = () => {
     const quotesData = storage.getString('favorites');
     setQuotes(quotesData ? JSON.parse(quotesData) : []);
+  };
+
+  useEffect(() => {
+    getFavoritesQuotes();
 
     fadeAnim.value = withTiming(1, { duration: 1000 });
   }, [fadeAnim]);
+
+  useFocusEffect(useCallback(() => getFavoritesQuotes(), []));
 
   return (
     <View style={styles.container}>
@@ -49,6 +56,7 @@ export const FavoritesScreen = () => {
           style={styles.quotes}
           ListHeaderComponent={FavoritesHeader}
           ListHeaderComponentStyle={styles.header}
+          showsVerticalScrollIndicator={false}
           renderItem={({ item }) => (
             <TouchableOpacity
               style={styles.quote}

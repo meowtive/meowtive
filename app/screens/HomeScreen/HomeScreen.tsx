@@ -1,6 +1,5 @@
 import { useRef, useEffect } from 'react';
 import { View, Text, TouchableOpacity, Image, Animated } from 'react-native';
-import SoundPlayer from 'react-native-sound-player';
 import { useStyles } from 'react-native-unistyles';
 import { useTranslation } from 'react-i18next';
 import { storage } from '@config/storage';
@@ -34,21 +33,22 @@ export const HomeScreen = () => {
   };
 
   const handleSaveQuote = (quote: string) => {
-    handlePlayMeowSound();
     const favorites = storage.getString('favorites');
     const favoritesArray = favorites ? JSON.parse(favorites) : [];
-    favoritesArray.push(quote);
 
-    storage.set('favorites', JSON.stringify(favoritesArray));
+    const quoteExists = favoritesArray.some(
+      (favorite: string) => favorite === quote,
+    );
+
+    if (!quoteExists) {
+      favoritesArray.push(quote);
+      storage.set('favorites', JSON.stringify(favoritesArray));
+    }
   };
 
   const updateDailyQuote = () => {
     storage.set('dailyQuoteLastUpdate', new Date().getDate());
     storage.set('dailyQuoteLastIndex', Math.floor(Math.random() * 300));
-  };
-
-  const handlePlayMeowSound = () => {
-    SoundPlayer.playAsset(require('../../resources/assets/audios/meow.mp3'));
   };
 
   useEffect(() => {

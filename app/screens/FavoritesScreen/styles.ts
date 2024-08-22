@@ -41,7 +41,7 @@ export const stylesheet = createStyleSheet({
     gap: 10,
   },
   primaryButton: {
-    backgroundColor: 'black',
+    backgroundColor: '#64FCD9',
     borderRadius: 100,
     width: '100%',
     height: 64,
@@ -49,7 +49,7 @@ export const stylesheet = createStyleSheet({
     justifyContent: 'center',
   },
   secondButton: {
-    backgroundColor: '#f87171',
+    backgroundColor: 'black',
     borderRadius: 100,
     width: '100%',
     height: 64,
