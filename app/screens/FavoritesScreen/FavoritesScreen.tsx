@@ -49,6 +49,7 @@ export const FavoritesScreen = () => {
           style={styles.quotes}
           ListHeaderComponent={FavoritesHeader}
           ListHeaderComponentStyle={styles.header}
+          showsVerticalScrollIndicator={false}
           renderItem={({ item }) => (
             <TouchableOpacity
               style={styles.quote}
