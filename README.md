@@ -21,9 +21,9 @@ cd meowtive
 
 Install dependencies and run the app:
 ```
-pnpm install
-pnpm start --reset-cache
-pnpm run ios or pnpm run android 
+yarn install
+yarn start --reset-cache
+yarn run ios or yarn run android 
 ```
 
 ## Contributing
