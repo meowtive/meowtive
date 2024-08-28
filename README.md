@@ -23,7 +23,7 @@ Install dependencies and run the app:
 
 yarn install
 yarn start --reset-cache
-yarn run ios or yarn run android 
+yarn run ios or yarn run android
 
 ## Contributing
 
