@@ -1,4 +1,4 @@
-![Github preview](https://github.com/user-attachments/assets/c1c6fec6-0f8d-418e-8961-54d95f41efb0)
+![Github preview](https://github.com/user-attachments/assets/123237a1-187a-41fe-a954-00c66d00846f)
 
 # Meowtive
 
@@ -21,11 +21,9 @@ cd meowtive
 
 Install dependencies and run the app:
 
-```
-pnpm install
-pnpm start --reset-cache
-pnpm run ios or pnpm run android
-```
+yarn install
+yarn start --reset-cache
+yarn run ios or yarn run android 
 
 ## Contributing
 
