@@ -8,7 +8,10 @@
     "lint": "eslint --ext .ts,.tsx",
     "start": "react-native start",
     "prepare": "husky",
-    "commitlint": "commitlint --edit"
+    "commitlint": "commitlint --edit",
+    "ts:check": "tsc -p . --noEmit",
+    "prettier:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,css,scss,md}\"",
+    "prettier:write": "prettier --write \"**/*.{ts,tsx,js,jsx,json,css,scss,md}\""
   },
   "husky": {
     "hooks": {
@@ -50,6 +53,8 @@
     "babel-jest": "^29.6.3",
     "babel-plugin-module-resolver": "^5.0.2",
     "eslint": "^8.19.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
     "husky": "^9.1.4",
     "jest": "^29.6.3",
     "lint-staged": "^15.2.5",
