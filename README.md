@@ -21,9 +21,11 @@ cd meowtive
 
 Install dependencies and run the app:
 
+```bash
 yarn install
 yarn start --reset-cache
 yarn run ios or yarn run android
+```
 
 ## Contributing
 
