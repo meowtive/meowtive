@@ -1,4 +1,4 @@
-![Github preview](https://github.com/user-attachments/assets/123237a1-187a-41fe-a954-00c66d00846f)
+![Github preview](https://github.com/user-attachments/assets/bb93fe0a-5f47-4e62-9e52-ccbad153ed07)
 
 # Meowtive
 
