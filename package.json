@@ -7,6 +7,7 @@
     "ios": "react-native run-ios",
     "lint": "eslint --ext .ts,.tsx",
     "start": "react-native start",
+    "check:updates": "yarn upgrade-interactive",
     "prepare": "husky",
     "commitlint": "commitlint --edit",
     "ts:check": "tsc -p . --noEmit",
