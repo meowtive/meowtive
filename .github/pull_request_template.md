@@ -1,5 +1,3 @@
-# [GOAL](issue)
-
 ### ✨ Description:
 
 ### 🛠 Changes
