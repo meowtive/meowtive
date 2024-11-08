@@ -16,7 +16,9 @@ export const OnboardingScreen = () => {
         source={require('../../resources/assets/images/onboarding-cat.png')}
         style={styles.image}
       />
-      <Text style={styles.title}>{t('onboardingTitle')}</Text>
+      <Text style={styles.title}>
+        {t('onboardingTitle')}
+      </Text>
       <Text style={styles.description}>{t('onboardingDescription')}</Text>
       <TouchableOpacity onPress={handleSetOnboarding} style={styles.button}>
         <Text style={styles.buttonText}>{t('onboardingButton')}</Text>
