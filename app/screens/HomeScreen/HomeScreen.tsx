@@ -66,11 +66,6 @@ export const HomeScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Image
-        source={require('../../resources/assets/images/home-screen-cat.png')}
-        style={styles.image}
-      />
-
       <View style={styles.textWrapper}>
         <Animated.View style={{ opacity: fadeAnim }}>
           <Text style={styles.quote}>{quotes[index]}</Text>
