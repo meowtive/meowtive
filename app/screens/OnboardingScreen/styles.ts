@@ -2,29 +2,30 @@ import { createStyleSheet } from 'react-native-unistyles';
 import { SMALL_SCREEN, SCREEN_DIMENSIONS } from '@config/constants';
 
 export const stylesheet = createStyleSheet({
+  logo: {
+    width: 200,
+    height: 45,
+    resizeMode: 'contain',
+    alignSelf: 'center',
+  },
   container: {
     flex: 1,
+    backgroundColor: '#FFF8EB',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: 'white',
     paddingHorizontal: SMALL_SCREEN ? 20 : 40,
     paddingVertical: 20,
   },
   title: {
-    color: 'black',
-    fontSize: SMALL_SCREEN ? 38 : 48,
-    lineHeight: SMALL_SCREEN ? 38 : 48,
-    fontWeight: 'bold',
-    alignSelf: 'flex-start',
-  },
-  description: {
-    color: 'black',
-    fontSize: 20,
-    fontWeight: 'normal',
-    alignSelf: 'flex-start',
+    fontSize: 26,
+    fontWeight: '600',
+    textAlign: 'center',
+    marginTop: 36,
+    color: '#000',
+    lineHeight: 34,
   },
   button: {
-    backgroundColor: 'black',
+    backgroundColor: '#EF7E06',
     borderRadius: 100,
     width: '100%',
     height: 64,
@@ -36,9 +37,23 @@ export const stylesheet = createStyleSheet({
     fontSize: 20,
     fontWeight: 'bold',
   },
-  image: {
-    height: SCREEN_DIMENSIONS.height / 2,
-    width: SCREEN_DIMENSIONS.width - (SMALL_SCREEN ? 20 : 40),
-    objectFit: 'contain',
+  wrapper: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 16,
+    overflow: 'hidden',
+  },
+  paginationView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 5,
+    marginTop: 26,
+    height: 24,
+  },
+  pagination: {
+    height: 6,
+    backgroundColor: '#EF7E06',
+    borderRadius: 3,
   },
 });

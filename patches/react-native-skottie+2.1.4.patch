@@ -1,0 +1,12 @@
+diff --git a/node_modules/react-native-skottie/cpp/RNSkSkottieView.h b/node_modules/react-native-skottie/cpp/RNSkSkottieView.h
+index a469639..272b875 100644
+--- a/node_modules/react-native-skottie/cpp/RNSkSkottieView.h
++++ b/node_modules/react-native-skottie/cpp/RNSkSkottieView.h
+@@ -12,7 +12,6 @@
+ 
+ #include "JsiSkPicture.h"
+ #include "JsiValueWrapper.h"
+-#include "RNSkInfoParameter.h"
+ #include "RNSkLog.h"
+ #include "RNSkPlatformContext.h"
+ #include "RNSkView.h"
