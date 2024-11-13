@@ -1,6 +1,8 @@
 export const pt = {
   translation: {
-    onboardingTitle: 'Sinta-se inspirado e mantenha-se meowtivado.',
+    onboardingTitle1: 'Dream big',
+    onboardingTitle2: 'Paws forward',
+    onboardingTitle3: 'Stay meowtived',
     onboardingButton: 'Começar',
     save: 'Salvar',
     share: 'Compartilhar',

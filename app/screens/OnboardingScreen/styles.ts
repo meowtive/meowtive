@@ -1,5 +1,5 @@
 import { createStyleSheet } from 'react-native-unistyles';
-import { SMALL_SCREEN, SCREEN_DIMENSIONS } from '@config/constants';
+import { SMALL_SCREEN } from '@config/constants';
 
 export const stylesheet = createStyleSheet({
   logo: {
@@ -17,16 +17,15 @@ export const stylesheet = createStyleSheet({
     paddingVertical: 20,
   },
   animation: {
-    width: 300,
-    height: 180,
+    width: 350,
+    height: 200,
   },
   title: {
     color: '#000',
-    fontSize: 38,
-    lineHeight: 38,
+    fontSize: SMALL_SCREEN ? 32 : 38,
+    lineHeight: SMALL_SCREEN ? 32 : 38,
     fontWeight: 'bold',
     textAlign: 'center',
-    letterSpacing: 2,
     marginTop: 42,
   },
   button: {

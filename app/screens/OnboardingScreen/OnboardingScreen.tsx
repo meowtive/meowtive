@@ -10,7 +10,10 @@ import Animated, {
 import { Skottie } from 'react-native-skottie';
 import { storage } from '@config/storage';
 import { stylesheet } from './styles';
+
 import OnboardingCat1 from '@resources/assets/jsons/onboarding-cat-1.json';
+import OnboardingCat2 from '@resources/assets/jsons/onboarding-cat-2.json';
+import OnboardingCat3 from '@resources/assets/jsons/onboarding-cat-3.json';
 
 const TOTAL_STEPS = 3;
 
@@ -23,6 +26,17 @@ export const OnboardingScreen = () => {
     if (step < TOTAL_STEPS) setStep(prevState => prevState + 1);
     else storage.set('isOnboardingComplete', true);
   };
+
+  const onboardingTitle = [
+    'onboardingTitle1',
+    'onboardingTitle2',
+    'onboardingTitle3',
+  ];
+
+  const getOnboardingTitle = () => onboardingTitle[step - 1];
+
+  const onboardingAnimations = [OnboardingCat1, OnboardingCat2, OnboardingCat3];
+  const getOnboardingAnimations = () => onboardingAnimations[step - 1];
 
   const buttonAnimationStyle = useAnimatedStyle(() => {
     return {
@@ -49,12 +63,12 @@ export const OnboardingScreen = () => {
       <View style={styles.wrapper}>
         <Skottie
           style={styles.animation}
-          source={OnboardingCat1}
+          source={getOnboardingAnimations()}
           resizeMode="cover"
           autoPlay={true}
         />
 
-        <Text style={styles.title}>{t('onboardingTitle')}</Text>
+        <Text style={styles.title}>{t(getOnboardingTitle())}</Text>
       </View>
 
       <View style={styles.wrapper}>

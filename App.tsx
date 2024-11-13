@@ -33,7 +33,7 @@ const stylesheet = createStyleSheet({
   container: {
     flex: 1,
     paddingVertical: isAndroid ? 20 : 0,
-    backgroundColor: '#FFF8EB',
+    backgroundColor: '#FFF2D9',
   },
 });
 
