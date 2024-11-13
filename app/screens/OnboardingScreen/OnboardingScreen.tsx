@@ -9,6 +9,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import { Skottie } from 'react-native-skottie';
 import { trigger } from 'react-native-haptic-feedback';
+import SoundPlayer from 'react-native-sound-player';
 import { storage } from '@config/storage';
 import { stylesheet } from './styles';
 
@@ -32,7 +33,14 @@ export const OnboardingScreen = () => {
     trigger('impactLight', hapticFeedbackOptions);
 
     if (step < TOTAL_STEPS) setStep(prevState => prevState + 1);
-    else storage.set('isOnboardingComplete', true);
+    else {
+      storage.set('isOnboardingComplete', true);
+      handlePlaySoundEffect();
+    }
+  };
+
+  const handlePlaySoundEffect = () => {
+    SoundPlayer.playAsset(require('../../resources/assets/audios/meow.mp3'));
   };
 
   const onboardingTitle = [
