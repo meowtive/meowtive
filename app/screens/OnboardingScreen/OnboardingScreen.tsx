@@ -49,7 +49,7 @@ export const OnboardingScreen = () => {
       setStep(prevState => prevState + 1);
 
       if (step === 2) mask.value = 0;
-      mask.value = withTiming(SCREEN_DIMENSIONS.height, { duration: 500 });
+      mask.value = withTiming(SCREEN_DIMENSIONS.height, { duration: 1000 });
     } else {
       storage.set('isOnboardingComplete', true);
     }
