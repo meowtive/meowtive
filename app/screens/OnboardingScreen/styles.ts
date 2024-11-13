@@ -30,8 +30,8 @@ export const stylesheet = createStyleSheet({
     right: 0,
   },
   image: {
-    height: SCREEN_DIMENSIONS.height / 2,
-    width: SCREEN_DIMENSIONS.width - (SMALL_SCREEN ? 20 : 40),
+    height: SCREEN_DIMENSIONS.height / 3,
+    width: SCREEN_DIMENSIONS.width - 40,
     objectFit: 'contain',
   },
   title: {
@@ -39,8 +39,7 @@ export const stylesheet = createStyleSheet({
     fontSize: SMALL_SCREEN ? 32 : 38,
     lineHeight: SMALL_SCREEN ? 32 : 38,
     fontWeight: 'bold',
-    textAlign: 'center',
-    marginTop: 42,
+    textAlign: 'left',
   },
   button: {
     marginTop: 16,
@@ -67,14 +66,14 @@ export const stylesheet = createStyleSheet({
   wrapper: {
     alignItems: 'center',
     justifyContent: 'space-between',
+    paddingHorizontal: 16,
   },
   paginationView: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     gap: 5,
-    marginTop: 26,
-    height: 24,
+    marginTop: 16,
   },
   pagination: {
     height: 6,

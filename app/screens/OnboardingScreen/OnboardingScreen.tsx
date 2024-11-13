@@ -111,8 +111,9 @@ export const OnboardingScreen = () => {
         style={styles.logo}
       />
 
+      <Image source={getImages().image} style={styles.image} />
+
       <View style={styles.wrapper}>
-        <Image source={getImages().image} style={styles.image} />
         <Text style={styles.title}>{t(getTitle())}</Text>
       </View>
 
