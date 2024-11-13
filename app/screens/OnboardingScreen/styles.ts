@@ -10,19 +10,24 @@ export const stylesheet = createStyleSheet({
   },
   container: {
     flex: 1,
-    backgroundColor: '#FFF8EB',
+    backgroundColor: '#FFF2D9',
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: SMALL_SCREEN ? 20 : 40,
     paddingVertical: 20,
   },
+  animation: {
+    width: 300,
+    height: 180,
+  },
   title: {
-    fontSize: 26,
-    fontWeight: '600',
-    textAlign: 'center',
-    marginTop: 36,
     color: '#000',
-    lineHeight: 34,
+    fontSize: 38,
+    lineHeight: 38,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    letterSpacing: 2,
+    marginTop: 42,
   },
   button: {
     backgroundColor: '#EF7E06',
@@ -31,6 +36,14 @@ export const stylesheet = createStyleSheet({
     height: 64,
     alignItems: 'center',
     justifyContent: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 3,
   },
   buttonText: {
     color: 'white',
@@ -39,9 +52,7 @@ export const stylesheet = createStyleSheet({
   },
   wrapper: {
     alignItems: 'center',
-    justifyContent: 'center',
-    paddingHorizontal: 16,
-    overflow: 'hidden',
+    justifyContent: 'space-between',
   },
   paginationView: {
     flexDirection: 'row',

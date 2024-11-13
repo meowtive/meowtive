@@ -10,15 +10,9 @@ import Animated, {
 import { Skottie } from 'react-native-skottie';
 import { storage } from '@config/storage';
 import { stylesheet } from './styles';
-import OnboardingCat1 from '@resources/assets/jsons/onboarding-cat-1.json'
+import OnboardingCat1 from '@resources/assets/jsons/onboarding-cat-1.json';
 
 const TOTAL_STEPS = 3;
-
-const ONBOARDING_STEPS = [
-  { image: require('../../resources/assets/images/onboarding-cat-1.png') },
-  { image: require('../../resources/assets/images/onboarding-cat-2.png') },
-  { image: require('../../resources/assets/images/onboarding-cat-3.png') },
-];
 
 export const OnboardingScreen = () => {
   const [step, setStep] = useState<number>(1);
@@ -53,11 +47,10 @@ export const OnboardingScreen = () => {
       />
 
       <View style={styles.wrapper}>
-        {/* <Image source={ONBOARDING_STEPS[step - 1].image} style={styles.image} /> */}
-
         <Skottie
-          // style={styles.animation}
+          style={styles.animation}
           source={OnboardingCat1}
+          resizeMode="cover"
           autoPlay={true}
         />
 
