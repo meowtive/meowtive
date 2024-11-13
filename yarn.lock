@@ -8216,6 +8216,7 @@ __metadata:
     react-native: 0.74.3
     react-native-bootsplash: ^6.0.0
     react-native-gesture-handler: ^2.18.1
+    react-native-haptic-feedback: ^2.3.3
     react-native-localize: ^3.2.1
     react-native-mmkv: 2.12.2
     react-native-reanimated: ^3.15.0
@@ -9749,6 +9750,15 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: 49b5b9a232fc60ddc38124a804410150070af5b20efbba1550831221560d71df704b7a7edfa2fb70d84fde32faf8675ad6118aea8b40f50c2a9d80eb7a08eb1c
+  languageName: node
+  linkType: hard
+
+"react-native-haptic-feedback@npm:^2.3.3":
+  version: 2.3.3
+  resolution: "react-native-haptic-feedback@npm:2.3.3"
+  peerDependencies:
+    react-native: ">=0.60.0"
+  checksum: 5ff12aaf44fa1cad8ab3d9c58046a11c631c6622955120294060efc51c625203ee4cd7ccb565663c12b27552ebbb7034a386000d9da738b9eea5ff62d58b14c0
   languageName: node
   linkType: hard
 

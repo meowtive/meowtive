@@ -8,6 +8,7 @@ import Animated, {
   withSpring,
 } from 'react-native-reanimated';
 import { Skottie } from 'react-native-skottie';
+import { trigger } from 'react-native-haptic-feedback';
 import { storage } from '@config/storage';
 import { stylesheet } from './styles';
 
@@ -17,12 +18,19 @@ import OnboardingCat3 from '@resources/assets/jsons/onboarding-cat-3.json';
 
 const TOTAL_STEPS = 3;
 
+const hapticFeedbackOptions = {
+  enableVibrateFallback: true,
+  ignoreAndroidSystemSettings: false,
+};
+
 export const OnboardingScreen = () => {
   const [step, setStep] = useState<number>(1);
   const { styles } = useStyles(stylesheet);
   const { t } = useTranslation();
 
   const handleSetOnboarding = () => {
+    trigger('impactLight', hapticFeedbackOptions);
+
     if (step < TOTAL_STEPS) setStep(prevState => prevState + 1);
     else storage.set('isOnboardingComplete', true);
   };
