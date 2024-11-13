@@ -1,5 +1,6 @@
 import { createStyleSheet } from 'react-native-unistyles';
 import { SMALL_SCREEN, SCREEN_DIMENSIONS } from '@config/constants';
+import { isAndroid } from '@config/platform';
 
 export const stylesheet = createStyleSheet({
   logo: {
@@ -10,11 +11,23 @@ export const stylesheet = createStyleSheet({
   },
   container: {
     flex: 1,
-    backgroundColor: '#FFF2D9',
     alignItems: 'center',
     justifyContent: 'space-between',
+    paddingVertical: isAndroid ? 40 : 20,
     paddingHorizontal: SMALL_SCREEN ? 20 : 40,
-    paddingVertical: 20,
+  },
+  backgroundLight: {
+    backgroundColor: '#FFF2D9',
+  },
+  backgroundStrong: {
+    backgroundColor: '#F7B327',
+  },
+  absoluteFillObject: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
   },
   image: {
     height: SCREEN_DIMENSIONS.height / 2,
