@@ -1,5 +1,5 @@
 import { createStyleSheet } from 'react-native-unistyles';
-import { SMALL_SCREEN } from '@config/constants';
+import { SMALL_SCREEN, SCREEN_DIMENSIONS } from '@config/constants';
 
 export const stylesheet = createStyleSheet({
   logo: {
@@ -16,9 +16,10 @@ export const stylesheet = createStyleSheet({
     paddingHorizontal: SMALL_SCREEN ? 20 : 40,
     paddingVertical: 20,
   },
-  animation: {
-    width: 350,
-    height: 200,
+  image: {
+    height: SCREEN_DIMENSIONS.height / 2,
+    width: SCREEN_DIMENSIONS.width - (SMALL_SCREEN ? 20 : 40),
+    objectFit: 'contain',
   },
   title: {
     color: '#000',

@@ -7,22 +7,23 @@ import Animated, {
   useAnimatedStyle,
   withSpring,
 } from 'react-native-reanimated';
-import { Skottie } from 'react-native-skottie';
 import { trigger } from 'react-native-haptic-feedback';
 import SoundPlayer from 'react-native-sound-player';
 import { storage } from '@config/storage';
 import { stylesheet } from './styles';
-
-import OnboardingCat1 from '@resources/assets/jsons/onboarding-cat-1.json';
-import OnboardingCat2 from '@resources/assets/jsons/onboarding-cat-2.json';
-import OnboardingCat3 from '@resources/assets/jsons/onboarding-cat-3.json';
+import { HAPTIC_FEEDBACK_OPTIONS } from '@config/constants';
 
 const TOTAL_STEPS = 3;
-
-const hapticFeedbackOptions = {
-  enableVibrateFallback: true,
-  ignoreAndroidSystemSettings: false,
-};
+const ONBOARDING_IMAGES = [
+  { image: require('../../resources/assets/images/onboarding-cat-1.png') },
+  { image: require('../../resources/assets/images/onboarding-cat-2.png') },
+  { image: require('../../resources/assets/images/onboarding-cat-3.png') },
+];
+const ONBOARDING_TITLES = [
+  'onboardingTitle1',
+  'onboardingTitle2',
+  'onboardingTitle3',
+];
 
 export const OnboardingScreen = () => {
   const [step, setStep] = useState<number>(1);
@@ -30,7 +31,7 @@ export const OnboardingScreen = () => {
   const { t } = useTranslation();
 
   const handleSetOnboarding = () => {
-    trigger('impactLight', hapticFeedbackOptions);
+    trigger('impactLight', HAPTIC_FEEDBACK_OPTIONS);
 
     if (step < TOTAL_STEPS) setStep(prevState => prevState + 1);
     else {
@@ -43,16 +44,8 @@ export const OnboardingScreen = () => {
     SoundPlayer.playAsset(require('../../resources/assets/audios/meow.mp3'));
   };
 
-  const onboardingTitle = [
-    'onboardingTitle1',
-    'onboardingTitle2',
-    'onboardingTitle3',
-  ];
-
-  const getOnboardingTitle = () => onboardingTitle[step - 1];
-
-  const onboardingAnimations = [OnboardingCat1, OnboardingCat2, OnboardingCat3];
-  const getOnboardingAnimations = () => onboardingAnimations[step - 1];
+  const getOnboardingTitle = () => ONBOARDING_TITLES[step - 1];
+  const getOnboardingImages = () => ONBOARDING_IMAGES[step - 1];
 
   const buttonAnimationStyle = useAnimatedStyle(() => {
     return {
@@ -77,12 +70,7 @@ export const OnboardingScreen = () => {
       />
 
       <View style={styles.wrapper}>
-        <Skottie
-          style={styles.animation}
-          source={getOnboardingAnimations()}
-          resizeMode="cover"
-          autoPlay={true}
-        />
+        <Image source={getOnboardingImages().image} style={styles.image} />
 
         <Text style={styles.title}>{t(getOnboardingTitle())}</Text>
       </View>
