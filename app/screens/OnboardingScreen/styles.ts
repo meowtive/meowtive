@@ -30,6 +30,7 @@ export const stylesheet = createStyleSheet({
     marginTop: 42,
   },
   button: {
+    marginTop: 16,
     backgroundColor: '#EF7E06',
     borderRadius: 100,
     width: '100%',
