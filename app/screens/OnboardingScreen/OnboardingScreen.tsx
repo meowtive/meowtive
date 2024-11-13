@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { View, Text, Pressable, Image } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { useStyles } from 'react-native-unistyles';
 import { useTranslation } from 'react-i18next';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -68,7 +68,7 @@ export const OnboardingScreen = () => {
       </View>
 
       <View style={styles.wrapper}>
-        <Pressable onPress={handleSetOnboarding}>
+        <TouchableOpacity activeOpacity={0.7} onPress={handleSetOnboarding}>
           <Animated.View style={[styles.button, buttonAnimationStyle]}>
             {step < TOTAL_STEPS ? (
               <AntDesign name="arrowright" size={42} color="white" />
@@ -76,7 +76,7 @@ export const OnboardingScreen = () => {
               <Text style={styles.buttonText}>{t('onboardingButton')}</Text>
             )}
           </Animated.View>
-        </Pressable>
+        </TouchableOpacity>
 
         <View style={styles.paginationView}>
           {Array.from({ length: TOTAL_STEPS }).map((_, index) => (
