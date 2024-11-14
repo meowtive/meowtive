@@ -16,7 +16,6 @@ import Animated, {
   useSharedValue,
 } from 'react-native-reanimated';
 import { trigger } from 'react-native-haptic-feedback';
-import { Canvas, Mask, Group, Circle, Rect } from '@shopify/react-native-skia';
 import { storage } from '@config/storage';
 import { stylesheet } from './styles';
 import {
@@ -26,8 +25,8 @@ import {
   ONBOARDING_IMAGES,
   ONBOARDING_TITLES,
   ONBOARDING_TOTAL_STEPS,
-  ONBOARDING_TRANSITION_COLORS,
 } from '@config/constants';
+import { OnboardingMask } from '@components';
 
 export const OnboardingScreen = () => {
   const [step, setStep] = useState<number>(1);
@@ -71,35 +70,6 @@ export const OnboardingScreen = () => {
         styles.container,
         { backgroundColor: ONBOARDING_BACKGROUND_COLORS[step - 1] },
       ]}>
-      <Canvas style={styles.absoluteFillObject} pointerEvents="none">
-        <Mask
-          mode="luminance"
-          mask={
-            <Group>
-              <Circle
-                cx={SCREEN_DIMENSIONS.width / 2}
-                cy={SCREEN_DIMENSIONS.height - 200}
-                r={SCREEN_DIMENSIONS.height}
-                color="white"
-              />
-              <Circle
-                cx={SCREEN_DIMENSIONS.width / 2}
-                cy={SCREEN_DIMENSIONS.height - 200}
-                r={mask}
-                color="black"
-              />
-            </Group>
-          }>
-          <Rect
-            x={0}
-            y={0}
-            width={SCREEN_DIMENSIONS.width}
-            height={SCREEN_DIMENSIONS.height}
-            color={ONBOARDING_TRANSITION_COLORS[step - 1]}
-          />
-        </Mask>
-      </Canvas>
-
       <Image
         source={require('../../resources/assets/images/logo.png')}
         style={styles.logo}
@@ -131,6 +101,8 @@ export const OnboardingScreen = () => {
           ))}
         </View>
       </View>
+
+      <OnboardingMask mask={mask} step={step} />
     </SafeAreaView>
   );
 };

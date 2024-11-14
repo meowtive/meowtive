@@ -16,13 +16,6 @@ export const stylesheet = createStyleSheet({
     paddingVertical: isAndroid ? 40 : 20,
     paddingHorizontal: SMALL_SCREEN ? 20 : 40,
   },
-  absoluteFillObject: {
-    position: 'absolute',
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
-  },
   image: {
     height: SCREEN_DIMENSIONS.height / 3,
     width: SCREEN_DIMENSIONS.width - 40,
