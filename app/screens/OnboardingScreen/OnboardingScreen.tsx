@@ -70,6 +70,8 @@ export const OnboardingScreen = () => {
         styles.container,
         { backgroundColor: ONBOARDING_BACKGROUND_COLORS[step - 1] },
       ]}>
+      <OnboardingMask mask={mask} step={step} />
+
       <Image
         source={require('../../resources/assets/images/logo.png')}
         style={styles.logo}
@@ -101,8 +103,6 @@ export const OnboardingScreen = () => {
           ))}
         </View>
       </View>
-
-      <OnboardingMask mask={mask} step={step} />
     </SafeAreaView>
   );
 };
