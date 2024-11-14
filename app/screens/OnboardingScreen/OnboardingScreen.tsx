@@ -5,7 +5,6 @@ import {
   Text,
   TouchableOpacity,
   Image,
-  ViewStyle,
 } from 'react-native';
 import { useStyles } from 'react-native-unistyles';
 import { useTranslation } from 'react-i18next';
@@ -20,21 +19,15 @@ import { trigger } from 'react-native-haptic-feedback';
 import { Canvas, Mask, Group, Circle, Rect } from '@shopify/react-native-skia';
 import { storage } from '@config/storage';
 import { stylesheet } from './styles';
-import { HAPTIC_FEEDBACK_OPTIONS, SCREEN_DIMENSIONS } from '@config/constants';
-
-const TOTAL_STEPS = 3;
-const TITLES = ['onboardingTitle1', 'onboardingTitle2', 'onboardingTitle3'];
-const TRANSITION_COLORS = ['#FFF2D9', '#FFF2D9', '#F7B327'];
-const BACKGROUND_COLORS: ViewStyle[] = [
-  stylesheet.backgroundLight,
-  stylesheet.backgroundStrong,
-  stylesheet.backgroundLight,
-];
-const IMAGES = [
-  { image: require('../../resources/assets/images/onboarding-cat-1.png') },
-  { image: require('../../resources/assets/images/onboarding-cat-2.png') },
-  { image: require('../../resources/assets/images/onboarding-cat-3.png') },
-];
+import {
+  HAPTIC_FEEDBACK_OPTIONS,
+  SCREEN_DIMENSIONS,
+  ONBOARDING_BACKGROUND_COLORS,
+  ONBOARDING_IMAGES,
+  ONBOARDING_TITLES,
+  ONBOARDING_TOTAL_STEPS,
+  ONBOARDING_TRANSITION_COLORS,
+} from '@config/constants';
 
 export const OnboardingScreen = () => {
   const [step, setStep] = useState<number>(1);
@@ -45,7 +38,7 @@ export const OnboardingScreen = () => {
   const handleSetOnboarding = async () => {
     trigger('impactLight', HAPTIC_FEEDBACK_OPTIONS);
 
-    if (step < TOTAL_STEPS) {
+    if (step < ONBOARDING_TOTAL_STEPS) {
       setStep(prevState => prevState + 1);
 
       if (step === 2) mask.value = 0;
@@ -55,15 +48,12 @@ export const OnboardingScreen = () => {
     }
   };
 
-  const getTitle = () => TITLES[step - 1];
-  const getImages = () => IMAGES[step - 1];
-  const getBackgroundColor = () => BACKGROUND_COLORS[step - 1];
-  const getTransitionColor = () => TRANSITION_COLORS[step - 1];
-
   const buttonAnimationStyle = useAnimatedStyle(() => {
     return {
-      width: step === TOTAL_STEPS ? withSpring(278) : withSpring(128),
-      height: step === TOTAL_STEPS ? withSpring(64) : withSpring(128),
+      width:
+        step === ONBOARDING_TOTAL_STEPS ? withSpring(278) : withSpring(128),
+      height:
+        step === ONBOARDING_TOTAL_STEPS ? withSpring(64) : withSpring(128),
     };
   });
 
@@ -76,7 +66,11 @@ export const OnboardingScreen = () => {
   };
 
   return (
-    <SafeAreaView style={[styles.container, getBackgroundColor()]}>
+    <SafeAreaView
+      style={[
+        styles.container,
+        { backgroundColor: ONBOARDING_BACKGROUND_COLORS[step - 1] },
+      ]}>
       <Canvas style={styles.absoluteFillObject} pointerEvents="none">
         <Mask
           mode="luminance"
@@ -101,7 +95,7 @@ export const OnboardingScreen = () => {
             y={0}
             width={SCREEN_DIMENSIONS.width}
             height={SCREEN_DIMENSIONS.height}
-            color={getTransitionColor()}
+            color={ONBOARDING_TRANSITION_COLORS[step - 1]}
           />
         </Mask>
       </Canvas>
@@ -111,16 +105,16 @@ export const OnboardingScreen = () => {
         style={styles.logo}
       />
 
-      <Image source={getImages().image} style={styles.image} />
+      <Image source={ONBOARDING_IMAGES[step - 1].image} style={styles.image} />
 
       <View style={styles.wrapper}>
-        <Text style={styles.title}>{t(getTitle())}</Text>
+        <Text style={styles.title}>{t(ONBOARDING_TITLES[step - 1])}</Text>
       </View>
 
       <View style={styles.wrapper}>
         <TouchableOpacity activeOpacity={0.7} onPress={handleSetOnboarding}>
           <Animated.View style={[styles.button, buttonAnimationStyle]}>
-            {step < TOTAL_STEPS ? (
+            {step < ONBOARDING_TOTAL_STEPS ? (
               <AntDesign name="arrowright" size={42} color="white" />
             ) : (
               <Text style={styles.buttonText}>{t('onboardingButton')}</Text>
@@ -129,7 +123,7 @@ export const OnboardingScreen = () => {
         </TouchableOpacity>
 
         <View style={styles.paginationView}>
-          {Array.from({ length: TOTAL_STEPS }).map((_, index) => (
+          {Array.from({ length: ONBOARDING_TOTAL_STEPS }).map((_, index) => (
             <Animated.View
               key={index}
               style={[styles.pagination, createPaginationStyle(index + 1)]}

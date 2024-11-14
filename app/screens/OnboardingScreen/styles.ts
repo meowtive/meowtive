@@ -16,12 +16,6 @@ export const stylesheet = createStyleSheet({
     paddingVertical: isAndroid ? 40 : 20,
     paddingHorizontal: SMALL_SCREEN ? 20 : 40,
   },
-  backgroundLight: {
-    backgroundColor: '#FFF2D9',
-  },
-  backgroundStrong: {
-    backgroundColor: '#F7B327',
-  },
   absoluteFillObject: {
     position: 'absolute',
     top: 0,
