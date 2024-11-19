@@ -55,16 +55,4 @@ export const stylesheet = createStyleSheet({
     justifyContent: 'space-between',
     paddingHorizontal: 16,
   },
-  paginationView: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 5,
-    marginTop: 16,
-  },
-  pagination: {
-    height: 6,
-    backgroundColor: '#EF7E06',
-    borderRadius: 3,
-  },
 });

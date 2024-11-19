@@ -26,7 +26,7 @@ import {
   ONBOARDING_TITLES,
   ONBOARDING_TOTAL_STEPS,
 } from '@config/constants';
-import { OnboardingMask } from '@components';
+import { OnboardingMask, OnboardingPagination } from '@components';
 
 export const OnboardingScreen = () => {
   const [step, setStep] = useState<number>(1);
@@ -55,14 +55,6 @@ export const OnboardingScreen = () => {
         step === ONBOARDING_TOTAL_STEPS ? withSpring(64) : withSpring(128),
     };
   });
-
-  const createPaginationStyle = (index: number) => {
-    return useAnimatedStyle(() => {
-      return {
-        width: step === index ? withSpring(28) : withSpring(8),
-      };
-    });
-  };
 
   return (
     <SafeAreaView
@@ -93,16 +85,9 @@ export const OnboardingScreen = () => {
             )}
           </Animated.View>
         </TouchableOpacity>
-
-        <View style={styles.paginationView}>
-          {Array.from({ length: ONBOARDING_TOTAL_STEPS }).map((_, index) => (
-            <Animated.View
-              key={index}
-              style={[styles.pagination, createPaginationStyle(index + 1)]}
-            />
-          ))}
-        </View>
       </View>
+
+      <OnboardingPagination step={step} />
     </SafeAreaView>
   );
 };
