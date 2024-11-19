@@ -27,11 +27,11 @@ export const stylesheet = createStyleSheet({
     fontSize: SMALL_SCREEN ? 32 : 38,
     lineHeight: SMALL_SCREEN ? 32 : 38,
     fontWeight: 'bold',
-    textAlign: 'left',
+    textAlign: 'center',
   },
   wrapper: {
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: 16,
+    paddingHorizontal: 24,
   },
 });
