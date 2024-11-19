@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
+
 import { useTranslation } from 'react-i18next';
 import { useStyles } from 'react-native-unistyles';
 import Animated, {
@@ -10,6 +11,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { trigger } from 'react-native-haptic-feedback';
+
 import {
   ONBOARDING_TOTAL_STEPS,
   HAPTIC_FEEDBACK_OPTIONS,

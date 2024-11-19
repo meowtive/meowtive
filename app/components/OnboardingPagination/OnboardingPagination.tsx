@@ -1,9 +1,11 @@
 import { View } from 'react-native';
+
 import { useStyles } from 'react-native-unistyles';
 import Animated, {
   useAnimatedStyle,
   withSpring,
 } from 'react-native-reanimated';
+
 import { ONBOARDING_TOTAL_STEPS } from '@config/constants';
 import { stylesheet } from './styles';
 

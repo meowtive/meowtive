@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { SafeAreaView, View, Text, Image } from 'react-native';
+
 import { useStyles } from 'react-native-unistyles';
 import { useSharedValue } from 'react-native-reanimated';
 import { useTranslation } from 'react-i18next';
+
 import {
   OnboardingMask,
   OnboardingPagination,

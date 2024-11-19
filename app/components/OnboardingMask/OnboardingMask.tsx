@@ -1,11 +1,12 @@
 import { Canvas, Mask, Group, Circle, Rect } from '@shopify/react-native-skia';
 import { useStyles } from 'react-native-unistyles';
 import { SharedValue } from 'react-native-reanimated';
-import { stylesheet } from './styles';
+
 import {
   ONBOARDING_TRANSITION_COLORS,
   SCREEN_DIMENSIONS,
 } from '@config/constants';
+import { stylesheet } from './styles';
 
 type OnboardingMask = {
   mask: SharedValue<number>;
