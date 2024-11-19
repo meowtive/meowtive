@@ -41,7 +41,7 @@ export const OnboardingScreen = () => {
       </View>
 
       <OnboardingButton step={step} setStep={setStep} mask={mask} />
-      
+
       <OnboardingPagination step={step} />
     </SafeAreaView>
   );
