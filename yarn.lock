@@ -8215,6 +8215,7 @@ __metadata:
     react-i18next: ^15.0.0
     react-native: 0.74.3
     react-native-bootsplash: ^6.0.0
+    react-native-fast-image: ^8.6.3
     react-native-gesture-handler: ^2.18.1
     react-native-haptic-feedback: ^2.3.3
     react-native-localize: ^3.2.1
@@ -9735,6 +9736,16 @@ __metadata:
     react: ">=18.1.0"
     react-native: ">=0.70.0"
   checksum: 1a125db42497cf51bcbc2402034c2c163d0a99dc43e2eb9596e8f40f462db992b47fb5ed5124bd761f8310f8aa3c163cedf1f95222e9fd551b1f8281ce178ede
+  languageName: node
+  linkType: hard
+
+"react-native-fast-image@npm:^8.6.3":
+  version: 8.6.3
+  resolution: "react-native-fast-image@npm:8.6.3"
+  peerDependencies:
+    react: ^17 || ^18
+    react-native: ">=0.60.0"
+  checksum: 29289cb6b2eae0983c8922b22e2d9de3be07322bb7991c5def19f95eadefaedb0e308ff0b38cc1d0444e8bd4fe94a7621a99a2d3d9298100bcb60b3144677234
   languageName: node
   linkType: hard
 

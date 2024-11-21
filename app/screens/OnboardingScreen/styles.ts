@@ -1,6 +1,6 @@
 import { createStyleSheet } from 'react-native-unistyles';
 
-import { SMALL_SCREEN, SCREEN_DIMENSIONS } from '@config/constants';
+import { SMALL_SCREEN } from '@config/constants';
 import { isAndroid } from '@config/platform';
 
 export const stylesheet = createStyleSheet({
@@ -16,11 +16,6 @@ export const stylesheet = createStyleSheet({
     justifyContent: 'space-between',
     paddingVertical: isAndroid ? 40 : 20,
     paddingHorizontal: SMALL_SCREEN ? 20 : 40,
-  },
-  image: {
-    height: SCREEN_DIMENSIONS.height / 3,
-    width: SCREEN_DIMENSIONS.width - 40,
-    objectFit: 'contain',
   },
   title: {
     color: '#000',

@@ -1,18 +1,19 @@
 import { useState } from 'react';
-import { SafeAreaView, View, Text, Image } from 'react-native';
+import { SafeAreaView, View, Text } from 'react-native';
 
 import { useStyles } from 'react-native-unistyles';
 import { useSharedValue } from 'react-native-reanimated';
 import { useTranslation } from 'react-i18next';
+import FastImage from 'react-native-fast-image';
 
 import {
   OnboardingMask,
   OnboardingPagination,
   OnboardingButton,
+  OnboardingImages,
 } from '@components';
 import {
   ONBOARDING_BACKGROUND_COLORS,
-  ONBOARDING_IMAGES,
   ONBOARDING_TITLES,
 } from '@config/constants';
 import { stylesheet } from './styles';
@@ -31,12 +32,13 @@ export const OnboardingScreen = () => {
       ]}>
       <OnboardingMask mask={mask} step={step} />
 
-      <Image
+      <FastImage
         source={require('../../resources/assets/images/logo.png')}
         style={styles.logo}
+        resizeMode={FastImage.resizeMode.contain}
       />
 
-      <Image source={ONBOARDING_IMAGES[step - 1].image} style={styles.image} />
+      <OnboardingImages step={step} />
 
       <View style={styles.wrapper}>
         <Text style={styles.title}>{t(ONBOARDING_TITLES[step - 1])}</Text>
