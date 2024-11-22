@@ -1,20 +1,38 @@
 import { useEffect, useState, useCallback } from 'react';
-import { View, Text, FlatList, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  ViewToken,
+  NativeSyntheticEvent,
+  NativeScrollEvent,
+} from 'react-native';
+
 import { useStyles } from 'react-native-unistyles';
-import Animated, { useSharedValue, withTiming } from 'react-native-reanimated';
+import { useSharedValue } from 'react-native-reanimated';
 import { useFocusEffect } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
-import { FavoritesHeader, BottomSheet } from '@components';
+
+import { BottomSheet, FavoritesItem } from '@components';
 import { storage } from '@config/storage';
 import { stylesheet } from './styles';
 
 export const FavoritesScreen = () => {
   const { styles } = useStyles(stylesheet);
   const { t } = useTranslation();
-  const fadeAnim = useSharedValue(0);
   const [quotes, setQuotes] = useState<string[]>([]);
+  const [isScrolledToBottom, setIsScrolledToBottom] = useState<boolean>(false);
   const isOpen = useSharedValue(false);
+  const viewableItems = useSharedValue<ViewToken[]>([]);
   let selectedQuote: string | null = null;
+
+  const getScrollPosition = (
+    event: NativeSyntheticEvent<NativeScrollEvent>,
+  ) => {
+    const { layoutMeasurement, contentOffset, contentSize } = event.nativeEvent;
+    return layoutMeasurement.height + contentOffset.y < contentSize.height;
+  };
 
   const toggleSheet = () => {
     isOpen.value = !isOpen.value;
@@ -41,34 +59,33 @@ export const FavoritesScreen = () => {
 
   useEffect(() => {
     getFavoritesQuotes();
-
-    fadeAnim.value = withTiming(1, { duration: 1000 });
-  }, [fadeAnim]);
+  }, []);
 
   useFocusEffect(useCallback(() => getFavoritesQuotes(), []));
 
   return (
     <View style={styles.container}>
-      <Animated.View style={{ opacity: fadeAnim }}>
-        <FlatList
-          data={quotes}
-          keyExtractor={quote => quote}
-          style={styles.quotes}
-          ListHeaderComponent={FavoritesHeader}
-          ListHeaderComponentStyle={styles.header}
-          showsVerticalScrollIndicator={false}
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              style={styles.quote}
-              onPress={() => {
-                selectedQuote = item;
-                toggleSheet();
-              }}>
-              <Text style={styles.quoteText}>{t(item)}</Text>
-            </TouchableOpacity>
-          )}
-        />
-      </Animated.View>
+      <FlatList
+        data={quotes}
+        keyExtractor={quote => quote}
+        style={styles.quotes}
+        ListHeaderComponentStyle={styles.header}
+        showsVerticalScrollIndicator={false}
+        onViewableItemsChanged={({ viewableItems: items }) => {
+          viewableItems.value = items;
+        }}
+        onScroll={event => setIsScrolledToBottom(getScrollPosition(event))}
+        scrollEventThrottle={16}
+        renderItem={({ item }) => (
+          <FavoritesItem
+            item={item}
+            viewableItems={viewableItems}
+            selectedQuote={selectedQuote}
+            toggleSheet={toggleSheet}
+            isScrolledToBottom={isScrolledToBottom}
+          />
+        )}
+      />
 
       <BottomSheet isOpen={isOpen} toggleSheet={toggleSheet}>
         <View style={styles.bottomSheetWrapper}>
