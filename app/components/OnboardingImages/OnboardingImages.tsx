@@ -8,12 +8,6 @@ type OnboardingImagesProps = {
   step: number;
 };
 
-FastImage.preload([
-  { uri: String(ONBOARDING_IMAGES[0]) },
-  { uri: String(ONBOARDING_IMAGES[1]) },
-  { uri: String(ONBOARDING_IMAGES[2]) },
-]);
-
 export const OnboardingImages = ({ step }: OnboardingImagesProps) => {
   const { styles } = useStyles(stylesheet);
 
