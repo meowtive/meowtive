@@ -997,11 +997,6 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - react-native-skia-skottie (2.1.4):
-    - React
-    - React-Core
-    - react-native-skia
-    - SSZipArchive
   - react-native-unistyles (2.9.1):
     - DoubleConversion
     - glog
@@ -1398,7 +1393,6 @@ PODS:
     - libwebp (~> 1.0)
     - SDWebImage/Core (~> 5.10)
   - SocketRocket (0.7.0)
-  - SSZipArchive (2.4.3)
   - Yoga (0.0.0)
 
 DEPENDENCIES:
@@ -1437,7 +1431,6 @@ DEPENDENCIES:
   - react-native-mmkv (from `../node_modules/react-native-mmkv`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - "react-native-skia (from `../node_modules/@shopify/react-native-skia`)"
-  - react-native-skia-skottie (from `../node_modules/react-native-skottie`)
   - react-native-unistyles (from `../node_modules/react-native-unistyles`)
   - React-nativeconfig (from `../node_modules/react-native/ReactCommon`)
   - React-NativeModulesApple (from `../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios`)
@@ -1480,7 +1473,6 @@ SPEC REPOS:
     - SDWebImage
     - SDWebImageWebPCoder
     - SocketRocket
-    - SSZipArchive
 
 EXTERNAL SOURCES:
   boost:
@@ -1550,8 +1542,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-safe-area-context"
   react-native-skia:
     :path: "../node_modules/@shopify/react-native-skia"
-  react-native-skia-skottie:
-    :path: "../node_modules/react-native-skottie"
   react-native-unistyles:
     :path: "../node_modules/react-native-unistyles"
   React-nativeconfig:
@@ -1656,7 +1646,6 @@ SPEC CHECKSUMS:
   react-native-mmkv: 8c9a677e64a1ac89b0c6cf240feea528318b3074
   react-native-safe-area-context: ab8f4a3d8180913bd78ae75dd599c94cce3d5e9a
   react-native-skia: 655f52187b63c28bd17da6f19da25a7017dc0cab
-  react-native-skia-skottie: 69ada6cc69de504f05999de6c41999b9b5300a61
   react-native-unistyles: b0584a78fc6c839726e851d0c77aa659f80ef14d
   React-nativeconfig: fa5de9d8f4dbd5917358f8ad3ad1e08762f01dcb
   React-NativeModulesApple: 585d1b78e0597de364d259cb56007052d0bda5e5
@@ -1692,7 +1681,6 @@ SPEC CHECKSUMS:
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SDWebImageWebPCoder: 908b83b6adda48effe7667cd2b7f78c897e5111d
   SocketRocket: abac6f5de4d4d62d24e11868d7a2f427e0ef940d
-  SSZipArchive: fe6a26b2a54d5a0890f2567b5cc6de5caa600aef
   Yoga: 04f1db30bb810187397fa4c37dd1868a27af229c
 
 PODFILE CHECKSUM: 2d9cd447a07c76e975fbac3c7f5837c2aa14544b
