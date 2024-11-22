@@ -5,8 +5,6 @@ import {
   FlatList,
   TouchableOpacity,
   ViewToken,
-  NativeSyntheticEvent,
-  NativeScrollEvent,
 } from 'react-native';
 
 import { useStyles } from 'react-native-unistyles';
@@ -16,6 +14,7 @@ import { useTranslation } from 'react-i18next';
 
 import { BottomSheet, FavoritesItem } from '@components';
 import { storage } from '@config/storage';
+import { getScrollPosition } from '@utils/scrollUtils';
 import { stylesheet } from './styles';
 
 export const FavoritesScreen = () => {
@@ -23,19 +22,12 @@ export const FavoritesScreen = () => {
   const { t } = useTranslation();
   const [quotes, setQuotes] = useState<string[]>([]);
   const [isScrolledToBottom, setIsScrolledToBottom] = useState<boolean>(false);
-  const isOpen = useSharedValue(false);
+  const isBottomSheetOpen = useSharedValue(false);
   const viewableItems = useSharedValue<ViewToken[]>([]);
   let selectedQuote: string | null = null;
 
-  const getScrollPosition = (
-    event: NativeSyntheticEvent<NativeScrollEvent>,
-  ) => {
-    const { layoutMeasurement, contentOffset, contentSize } = event.nativeEvent;
-    return layoutMeasurement.height + contentOffset.y < contentSize.height;
-  };
-
   const toggleSheet = () => {
-    isOpen.value = !isOpen.value;
+    isBottomSheetOpen.value = !isBottomSheetOpen.value;
   };
 
   const handleRemoveQuote = () => {
@@ -87,7 +79,7 @@ export const FavoritesScreen = () => {
         )}
       />
 
-      <BottomSheet isOpen={isOpen} toggleSheet={toggleSheet}>
+      <BottomSheet isOpen={isBottomSheetOpen} toggleSheet={toggleSheet}>
         <View style={styles.bottomSheetWrapper}>
           <TouchableOpacity style={styles.primaryButton}>
             <Text style={styles.buttonText}>{t('share')}</Text>

@@ -4,6 +4,7 @@ import { useStyles } from 'react-native-unistyles';
 import Animated, {
   useAnimatedStyle,
   withTiming,
+  SharedValue,
 } from 'react-native-reanimated';
 import { useTranslation } from 'react-i18next';
 
@@ -11,7 +12,7 @@ import { stylesheet } from './styles';
 
 type FavoritesItemProps = {
   item: string;
-  viewableItems: Animated.SharedValue<ViewToken[]>;
+  viewableItems: SharedValue<ViewToken[]>;
   selectedQuote: string | null;
   toggleSheet: () => void;
   isScrolledToBottom: boolean;
