@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 
 import { useTranslation } from 'react-i18next';
@@ -31,17 +31,21 @@ export const OnboardingButton = ({
   setStep,
   mask,
 }: OnboardingButtonProps) => {
+  const [loading, setLoading] = useState<boolean>(false);
   const { styles } = useStyles(stylesheet);
   const { t } = useTranslation();
 
   const handleSetOnboarding = async () => {
+    if (loading) return;
     trigger('impactLight', HAPTIC_FEEDBACK_OPTIONS);
 
     if (step < ONBOARDING_TOTAL_STEPS) {
+      setLoading(true);
       setStep(prevState => prevState + 1);
 
       if (step === 2) mask.value = 0;
       mask.value = withTiming(SCREEN_DIMENSIONS.height, { duration: 1500 });
+      setTimeout(() => setLoading(false), 1000);
     } else {
       storage.set('isOnboardingComplete', true);
     }
