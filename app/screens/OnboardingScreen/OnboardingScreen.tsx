@@ -11,6 +11,7 @@ import {
   OnboardingPagination,
   OnboardingButton,
   OnboardingImages,
+  OnboardingBackground,
 } from '@components';
 import {
   ONBOARDING_BACKGROUND_COLORS,
@@ -31,6 +32,7 @@ export const OnboardingScreen = () => {
         { backgroundColor: ONBOARDING_BACKGROUND_COLORS[step - 1] },
       ]}>
       <OnboardingMask mask={mask} step={step} />
+      <OnboardingBackground step={step} />
 
       <FastImage
         source={require('../../resources/assets/images/logo.png')}
@@ -45,7 +47,6 @@ export const OnboardingScreen = () => {
       </View>
 
       <OnboardingButton step={step} setStep={setStep} mask={mask} />
-
       <OnboardingPagination step={step} />
     </SafeAreaView>
   );
