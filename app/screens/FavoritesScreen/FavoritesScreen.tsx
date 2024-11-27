@@ -9,10 +9,10 @@ import { storage } from '@config/storage';
 import { stylesheet } from './styles';
 
 export const FavoritesScreen = () => {
+  const [quotes, setQuotes] = useState<string[]>([]);
   const { styles } = useStyles(stylesheet);
   const { t } = useTranslation();
   const fadeAnim = useSharedValue(0);
-  const [quotes, setQuotes] = useState<string[]>([]);
   const isOpen = useSharedValue(false);
   let selectedQuote: string | null = null;
 

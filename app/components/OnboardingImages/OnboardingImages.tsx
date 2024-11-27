@@ -17,9 +17,9 @@ type OnboardingImagesProps = {
 };
 
 export const OnboardingImages = ({ step }: OnboardingImagesProps) => {
-  const { styles } = useStyles(stylesheet);
   const [currentStep, setCurrentStep] = useState(step);
   const opacity = useSharedValue(1);
+  const { styles } = useStyles(stylesheet);
 
   useEffect(() => {
     if (step === 1) return;
