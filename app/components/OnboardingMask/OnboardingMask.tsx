@@ -2,10 +2,8 @@ import { Canvas, Mask, Group, Circle, Rect } from '@shopify/react-native-skia';
 import { useStyles } from 'react-native-unistyles';
 import { SharedValue } from 'react-native-reanimated';
 
-import {
-  ONBOARDING_TRANSITION_COLORS,
-  SCREEN_DIMENSIONS,
-} from '@config/constants';
+import { SCREEN_DIMENSIONS } from '@config/constants';
+import { ONBOARDING_TRANSITION_COLORS } from '@screens';
 
 import { stylesheet } from './styles';
 

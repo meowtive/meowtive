@@ -10,7 +10,7 @@ import Animated, {
   runOnJS,
 } from 'react-native-reanimated';
 
-import { ONBOARDING_IMAGES } from '@config/constants';
+import { ONBOARDING_IMAGES } from '@screens';
 import { stylesheet } from './styles';
 
 type OnboardingImagesProps = {

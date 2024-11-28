@@ -13,12 +13,9 @@ import Animated, {
   SharedValue,
 } from 'react-native-reanimated';
 
-import {
-  ONBOARDING_TOTAL_STEPS,
-  HAPTIC_FEEDBACK_OPTIONS,
-  SCREEN_DIMENSIONS,
-} from '@config/constants';
+import { HAPTIC_FEEDBACK_OPTIONS, SCREEN_DIMENSIONS } from '@config/constants';
 
+import { ONBOARDING_TOTAL_STEPS } from '@screens';
 import { storage } from '@config/storage';
 import { stylesheet } from './styles';
 

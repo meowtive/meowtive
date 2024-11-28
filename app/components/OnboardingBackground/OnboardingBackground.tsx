@@ -1,7 +1,7 @@
 import { useStyles } from 'react-native-unistyles';
 import FastImage from 'react-native-fast-image';
 
-import { ONBOARDING_BACKGROUND_IMAGES } from '@config/constants';
+import { ONBOARDING_BACKGROUND_IMAGES } from '@screens';
 import { stylesheet } from './styles';
 
 type OnboardingBackgroundProps = {

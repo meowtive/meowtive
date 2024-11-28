@@ -2,7 +2,7 @@ import { View } from 'react-native';
 
 import { useStyles } from 'react-native-unistyles';
 
-import { ONBOARDING_TOTAL_STEPS } from '@config/constants';
+import { ONBOARDING_TOTAL_STEPS } from '@screens';
 import { stylesheet } from './styles';
 
 import Animated, {
