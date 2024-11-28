@@ -36,7 +36,6 @@ export const OnboardingButton = ({
 
   const handleSetOnboarding = async () => {
     if (loading) return;
-    trigger('impactLight', HAPTIC_FEEDBACK_OPTIONS);
 
     if (step < ONBOARDING_TOTAL_STEPS) {
       setLoading(true);
@@ -47,6 +46,7 @@ export const OnboardingButton = ({
       setTimeout(() => setLoading(false), 1000);
     } else {
       storage.set('isOnboardingComplete', true);
+      trigger('impactLight', HAPTIC_FEEDBACK_OPTIONS);
     }
   };
 
