@@ -3,20 +3,22 @@ import { View, Text, TouchableOpacity } from 'react-native';
 
 import { useTranslation } from 'react-i18next';
 import { useStyles } from 'react-native-unistyles';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import { trigger } from 'react-native-haptic-feedback';
+
 import Animated, {
   useAnimatedStyle,
   withSpring,
   withTiming,
   SharedValue,
 } from 'react-native-reanimated';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import { trigger } from 'react-native-haptic-feedback';
 
 import {
   ONBOARDING_TOTAL_STEPS,
   HAPTIC_FEEDBACK_OPTIONS,
   SCREEN_DIMENSIONS,
 } from '@config/constants';
+
 import { storage } from '@config/storage';
 import { stylesheet } from './styles';
 

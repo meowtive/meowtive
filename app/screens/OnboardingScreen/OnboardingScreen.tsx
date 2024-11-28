@@ -13,10 +13,12 @@ import {
   OnboardingImages,
   OnboardingBackground,
 } from '@components';
+
 import {
   ONBOARDING_BACKGROUND_COLORS,
   ONBOARDING_TITLES,
 } from '@config/constants';
+
 import { stylesheet } from './styles';
 
 export const OnboardingScreen = () => {

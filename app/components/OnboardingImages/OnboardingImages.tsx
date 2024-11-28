@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 
+import FastImage from 'react-native-fast-image';
+import { useStyles } from 'react-native-unistyles';
+
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
   withTiming,
   runOnJS,
 } from 'react-native-reanimated';
-import FastImage from 'react-native-fast-image';
-import { useStyles } from 'react-native-unistyles';
 
 import { ONBOARDING_IMAGES } from '@config/constants';
 import { stylesheet } from './styles';

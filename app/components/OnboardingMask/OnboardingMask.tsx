@@ -6,6 +6,7 @@ import {
   ONBOARDING_TRANSITION_COLORS,
   SCREEN_DIMENSIONS,
 } from '@config/constants';
+
 import { stylesheet } from './styles';
 
 type OnboardingMask = {

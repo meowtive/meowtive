@@ -1,13 +1,14 @@
 import { View } from 'react-native';
 
 import { useStyles } from 'react-native-unistyles';
+
+import { ONBOARDING_TOTAL_STEPS } from '@config/constants';
+import { stylesheet } from './styles';
+
 import Animated, {
   useAnimatedStyle,
   withSpring,
 } from 'react-native-reanimated';
-
-import { ONBOARDING_TOTAL_STEPS } from '@config/constants';
-import { stylesheet } from './styles';
 
 type OnboardingPaginationProps = {
   step: number;
