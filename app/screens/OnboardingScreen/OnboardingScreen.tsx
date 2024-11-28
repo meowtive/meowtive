@@ -53,9 +53,15 @@ export const ONBOARDING_IMAGES = [
  * Array of images used as background on each onboarding screen.
  */
 export const ONBOARDING_BACKGROUND_IMAGES = [
-  { image: require('../../resources/assets/images/onboarding-background-1.png') },
-  { image: require('../../resources/assets/images/onboarding-background-2.png') },
-  { image: require('../../resources/assets/images/onboarding-background-1.png') },
+  {
+    image: require('../../resources/assets/images/onboarding-background-1.png'),
+  },
+  {
+    image: require('../../resources/assets/images/onboarding-background-2.png'),
+  },
+  {
+    image: require('../../resources/assets/images/onboarding-background-1.png'),
+  },
 ];
 
 export const OnboardingScreen = () => {
