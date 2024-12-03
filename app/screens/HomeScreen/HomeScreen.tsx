@@ -1,14 +1,16 @@
 import { useRef, useEffect } from 'react';
 import { View, Text, TouchableOpacity, Image, Animated } from 'react-native';
+
 import { useStyles } from 'react-native-unistyles';
 import { useTranslation } from 'react-i18next';
+
 import { storage } from '@config/storage';
 import { stylesheet } from './styles';
 
 export const HomeScreen = () => {
   const { styles } = useStyles(stylesheet);
-  const fadeAnim = useRef(new Animated.Value(0)).current;
   const { t } = useTranslation();
+  const fadeAnim = useRef(new Animated.Value(0)).current;
   const quotes: String[] = t('quotes', { returnObjects: true });
   const index = setInitalQuoteIndex();
 
