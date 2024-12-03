@@ -7,7 +7,7 @@ export const stylesheet = createStyleSheet({
     padding: 12,
     borderRadius: 12,
     shadowColor: '#000000',
-    shadowOpacity: 0.1,
+    shadowOpacity: 0.05,
     shadowRadius: 12,
     marginTop: 10,
   },

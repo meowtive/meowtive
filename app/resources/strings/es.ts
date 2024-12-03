@@ -3,9 +3,6 @@ export const es = {
     onboardingTitle: 'Siéntete inspirado y sigue meowtivado.',
     onboardingDescription: 'Estamos felices de que estés aquí',
     onboardingButton: 'Comenzar',
-    save: 'Guardar',
-    share: 'Compartir',
-    remove: 'Eliminar',
     quotes: [
       '"Comienza cada día con un propósito y termínalo con un ronroneo de satisfacción."',
       '"El camino hacia tus sueños es como la siesta de un gato—tranquilo, pacífico y lleno de saltos inesperados."',

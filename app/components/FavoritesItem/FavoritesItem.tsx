@@ -1,4 +1,4 @@
-import { TouchableOpacity, Text, ViewToken } from 'react-native';
+import { View, Text, ViewToken } from 'react-native';
 
 import { useStyles } from 'react-native-unistyles';
 import Animated, {
@@ -13,15 +13,11 @@ import { stylesheet } from './styles';
 type FavoritesItemProps = {
   item: string;
   viewableItems: SharedValue<ViewToken[]>;
-  selectedQuote: string | null;
-  toggleSheet: () => void;
   isScrolledToBottom: boolean;
 };
 
 export const FavoritesItem = ({
   item,
-  toggleSheet,
-  selectedQuote,
   viewableItems,
   isScrolledToBottom,
 }: FavoritesItemProps) => {
@@ -49,14 +45,9 @@ export const FavoritesItem = ({
 
   return (
     <Animated.View style={listItemStyle}>
-      <TouchableOpacity
-        style={styles.quote}
-        onPress={() => {
-          selectedQuote = item;
-          toggleSheet();
-        }}>
+      <View style={styles.quote}>
         <Text style={styles.quoteText}>{t(item)}</Text>
-      </TouchableOpacity>
+      </View>
     </Animated.View>
   );
 };
