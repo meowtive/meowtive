@@ -11,7 +11,6 @@ import {
   OnboardingPagination,
   OnboardingButton,
   OnboardingImages,
-  OnboardingBackground,
 } from '@components';
 
 import { stylesheet } from './styles';
@@ -49,21 +48,6 @@ export const ONBOARDING_IMAGES = [
   { image: require('../../resources/assets/images/onboarding-cat-3.png') },
 ];
 
-/**
- * Array of images used as background on each onboarding screen.
- */
-export const ONBOARDING_BACKGROUND_IMAGES = [
-  {
-    image: require('../../resources/assets/images/onboarding-background-1.png'),
-  },
-  {
-    image: require('../../resources/assets/images/onboarding-background-2.png'),
-  },
-  {
-    image: require('../../resources/assets/images/onboarding-background-1.png'),
-  },
-];
-
 export const OnboardingScreen = () => {
   const [step, setStep] = useState<number>(1);
   const { styles } = useStyles(stylesheet);
@@ -77,7 +61,6 @@ export const OnboardingScreen = () => {
         { backgroundColor: ONBOARDING_BACKGROUND_COLORS[step - 1] },
       ]}>
       <OnboardingMask mask={mask} step={step} />
-      <OnboardingBackground step={step} />
 
       <FastImage
         source={require('../../resources/assets/images/logo.png')}
