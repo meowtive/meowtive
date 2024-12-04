@@ -1,13 +1,16 @@
 import { View, Text, ViewToken, TouchableOpacity } from 'react-native';
 
 import { useStyles } from 'react-native-unistyles';
+import { useTranslation } from 'react-i18next';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
 import Animated, {
   useAnimatedStyle,
   withTiming,
   SharedValue,
+  FadeIn,
+  FadeOut,
 } from 'react-native-reanimated';
-import { useTranslation } from 'react-i18next';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import { QuoteData } from '@config/constants';
 import { stylesheet } from './styles';
@@ -48,7 +51,10 @@ export const FavoritesItem = ({
   });
 
   return (
-    <Animated.View style={listItemStyle}>
+    <Animated.View
+      style={listItemStyle}
+      entering={FadeIn.duration(300)}
+      exiting={FadeOut.duration(300)}>
       <View style={styles.quote}>
         <Text style={styles.quoteText}>{t(item.text)}</Text>
 

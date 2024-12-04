@@ -9,9 +9,15 @@ import {
 } from 'react-native';
 
 import { useStyles } from 'react-native-unistyles';
-import { useSharedValue } from 'react-native-reanimated';
 import { useFocusEffect } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
+import FastImage from 'react-native-fast-image';
+
+import Animated, {
+  useSharedValue,
+  FadeIn,
+  FadeOut,
+} from 'react-native-reanimated';
 
 import { FavoritesItem } from '@components';
 import { storage } from '@config/storage';
@@ -73,7 +79,22 @@ export const FavoritesScreen = () => {
           data={filteredQuotes}
           keyExtractor={quote => quote.text}
           style={styles.quotes}
-          ListEmptyComponent={() => <></>}
+          ListEmptyComponent={
+            <Animated.View
+              entering={FadeIn.duration(300)}
+              exiting={FadeOut.duration(300)}>
+              <FastImage
+                source={require('../../resources/assets/images/favorites-empty-list.png')}
+                style={styles.image}
+                resizeMode={FastImage.resizeMode.contain}
+              />
+
+              <Text style={styles.emptyListDescription}>
+                No favorite quotes yet. Paw-se to save some purr-fect
+                inspiration!
+              </Text>
+            </Animated.View>
+          }
           ListHeaderComponent={
             <>
               <Text style={styles.title}>{t('favorites')}</Text>

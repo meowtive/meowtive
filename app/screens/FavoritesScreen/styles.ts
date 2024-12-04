@@ -1,6 +1,6 @@
 import { createStyleSheet } from 'react-native-unistyles';
 
-import { SMALL_SCREEN } from '@config/constants';
+import { SMALL_SCREEN, SCREEN_DIMENSIONS } from '@config/constants';
 import { isAndroid } from '@config/platform';
 
 export const stylesheet = createStyleSheet({
@@ -43,5 +43,17 @@ export const stylesheet = createStyleSheet({
   },
   quotes: {
     overflow: 'visible',
+  },
+  image: {
+    width: '100%',
+    height: SCREEN_DIMENSIONS.height / 2.5,
+    marginTop: 12,
+  },
+  emptyListDescription: {
+    color: '#000000',
+    fontSize: SMALL_SCREEN ? 18 : 24,
+    lineHeight: SMALL_SCREEN ? 18 : 24,
+    fontWeight: 'light',
+    textAlign: 'center',
   },
 });
