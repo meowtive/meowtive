@@ -1,4 +1,5 @@
 import { TouchableOpacity } from 'react-native';
+
 import { useStyles } from 'react-native-unistyles';
 import Animated, {
   useSharedValue,
@@ -7,6 +8,7 @@ import Animated, {
   withDelay,
   withTiming,
 } from 'react-native-reanimated';
+
 import { stylesheet } from './styles';
 
 type BottomSheetProps = {
