@@ -1,44 +1,32 @@
 import { createStyleSheet } from 'react-native-unistyles';
-import { SMALL_SCREEN, SCREEN_DIMENSIONS } from '@config/constants';
+
+import { SMALL_SCREEN } from '@config/constants';
+import { isAndroid } from '@config/platform';
 
 export const stylesheet = createStyleSheet({
+  logo: {
+    width: 200,
+    height: 45,
+    resizeMode: 'contain',
+    alignSelf: 'center',
+  },
   container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: 'white',
+    paddingVertical: isAndroid ? 40 : 20,
     paddingHorizontal: SMALL_SCREEN ? 20 : 40,
-    paddingVertical: 20,
   },
   title: {
-    color: 'black',
-    fontSize: SMALL_SCREEN ? 38 : 48,
-    lineHeight: SMALL_SCREEN ? 38 : 48,
+    color: '#000',
+    fontSize: SMALL_SCREEN ? 32 : 38,
+    lineHeight: SMALL_SCREEN ? 32 : 38,
     fontWeight: 'bold',
-    alignSelf: 'flex-start',
+    textAlign: 'center',
   },
-  description: {
-    color: 'black',
-    fontSize: 20,
-    fontWeight: 'normal',
-    alignSelf: 'flex-start',
-  },
-  button: {
-    backgroundColor: 'black',
-    borderRadius: 100,
-    width: '100%',
-    height: 64,
+  wrapper: {
     alignItems: 'center',
-    justifyContent: 'center',
-  },
-  buttonText: {
-    color: 'white',
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  image: {
-    height: SCREEN_DIMENSIONS.height / 2,
-    width: SCREEN_DIMENSIONS.width - (SMALL_SCREEN ? 20 : 40),
-    objectFit: 'contain',
+    justifyContent: 'space-between',
+    paddingHorizontal: 24,
   },
 });

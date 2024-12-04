@@ -1,7 +1,8 @@
 export const en = {
   translation: {
-    onboardingTitle: 'Feel inspired, and keep meowtivated.',
-    onboardingDescription: "We're glad you're here",
+    onboardingTitle1: 'Feel inspired, and keep meowtivated',
+    onboardingTitle2: 'Purr-sue your dreams with unwavering spirit',
+    onboardingTitle3: 'Seize every meowment, for success is near',
     onboardingButton: 'Get Started',
     quotes: [
       '"Start each day with a purrpose, and end it with a purr of satisfaction."',
