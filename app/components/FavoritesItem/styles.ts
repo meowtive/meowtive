@@ -24,6 +24,18 @@ export const stylesheet = createStyleSheet({
     fontWeight: 'light',
     textAlign: 'left',
     opacity: 0.8,
-    marginTop: 8,
+  },
+  wrapper: {
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 12,
+  },
+  icons: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 12,
   },
 });

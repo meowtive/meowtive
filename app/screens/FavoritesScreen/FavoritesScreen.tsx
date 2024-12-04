@@ -1,5 +1,12 @@
 import { useEffect, useState, useCallback } from 'react';
-import { View, Text, FlatList, TextInput, ViewToken } from 'react-native';
+import {
+  SafeAreaView,
+  View,
+  Text,
+  FlatList,
+  TextInput,
+  ViewToken,
+} from 'react-native';
 
 import { useStyles } from 'react-native-unistyles';
 import { useSharedValue } from 'react-native-reanimated';
@@ -19,18 +26,18 @@ export const FavoritesScreen = () => {
   const { styles } = useStyles(stylesheet);
   const { t } = useTranslation();
   const viewableItems = useSharedValue<ViewToken[]>([]);
-  let selectedQuote: string | null = null;
 
-  const handleRemoveQuote = () => {
+  const handleRemoveQuote = (quote: string) => {
     const favorites = storage.getString('favorites');
     const favoritesArray = favorites ? JSON.parse(favorites) : [];
 
     const updatedFavoritesArray = favoritesArray.filter(
-      (item: string) => item !== selectedQuote,
+      (item: string) => item !== quote,
     );
 
     storage.set('favorites', JSON.stringify(updatedFavoritesArray));
     setQuotes(updatedFavoritesArray);
+    setFilteredQuotes(updatedFavoritesArray);
   };
 
   const getFavoritesQuotes = () => {
@@ -59,39 +66,42 @@ export const FavoritesScreen = () => {
   useFocusEffect(useCallback(() => getFavoritesQuotes(), []));
 
   return (
-    <View style={styles.container}>
-      <FlatList
-        data={filteredQuotes}
-        keyExtractor={quote => quote}
-        style={styles.quotes}
-        ListEmptyComponent={() => <></>}
-        ListHeaderComponent={
-          <>
-            <Text style={styles.title}>{t('favorites')}</Text>
+    <SafeAreaView style={styles.safeAreaView}>
+      <View style={styles.container}>
+        <FlatList
+          data={filteredQuotes}
+          keyExtractor={quote => quote}
+          style={styles.quotes}
+          ListEmptyComponent={() => <></>}
+          ListHeaderComponent={
+            <>
+              <Text style={styles.title}>{t('favorites')}</Text>
 
-            <TextInput
-              onChangeText={setSearchText}
-              placeholder="Search"
-              value={searchText}
-              style={styles.input}
+              <TextInput
+                onChangeText={setSearchText}
+                placeholder="Search"
+                value={searchText}
+                style={styles.input}
+              />
+            </>
+          }
+          ListHeaderComponentStyle={styles.header}
+          showsVerticalScrollIndicator={false}
+          onViewableItemsChanged={({ viewableItems: items }) => {
+            viewableItems.value = items;
+          }}
+          onScroll={event => setIsScrolledToBottom(getScrollPosition(event))}
+          scrollEventThrottle={16}
+          renderItem={({ item }) => (
+            <FavoritesItem
+              item={item}
+              viewableItems={viewableItems}
+              isScrolledToBottom={isScrolledToBottom}
+              handleRemoveQuote={() => handleRemoveQuote(item)}
             />
-          </>
-        }
-        ListHeaderComponentStyle={styles.header}
-        showsVerticalScrollIndicator={false}
-        onViewableItemsChanged={({ viewableItems: items }) => {
-          viewableItems.value = items;
-        }}
-        onScroll={event => setIsScrolledToBottom(getScrollPosition(event))}
-        scrollEventThrottle={16}
-        renderItem={({ item }) => (
-          <FavoritesItem
-            item={item}
-            viewableItems={viewableItems}
-            isScrolledToBottom={isScrolledToBottom}
-          />
-        )}
-      />
-    </View>
+          )}
+        />
+      </View>
+    </SafeAreaView>
   );
 };
