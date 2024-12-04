@@ -15,24 +15,25 @@ import { useTranslation } from 'react-i18next';
 
 import { FavoritesItem } from '@components';
 import { storage } from '@config/storage';
+import { QuoteData } from '@config/constants';
 import { getScrollPosition } from '@utils/scrollUtils';
 import { stylesheet } from './styles';
 
 export const FavoritesScreen = () => {
-  const [quotes, setQuotes] = useState<string[]>([]);
-  const [filteredQuotes, setFilteredQuotes] = useState<string[]>([]);
+  const [quotes, setQuotes] = useState<QuoteData[]>([]);
+  const [filteredQuotes, setFilteredQuotes] = useState<QuoteData[]>([]);
   const [searchText, setSearchText] = useState<string>('');
   const [isScrolledToBottom, setIsScrolledToBottom] = useState<boolean>(false);
   const { styles } = useStyles(stylesheet);
   const { t } = useTranslation();
   const viewableItems = useSharedValue<ViewToken[]>([]);
 
-  const handleRemoveQuote = (quote: string) => {
+  const handleRemoveQuote = (quote: QuoteData) => {
     const favorites = storage.getString('favorites');
-    const favoritesArray = favorites ? JSON.parse(favorites) : [];
+    const favoritesArray: QuoteData[] = favorites ? JSON.parse(favorites) : [];
 
     const updatedFavoritesArray = favoritesArray.filter(
-      (item: string) => item !== quote,
+      item => item.text !== quote.text,
     );
 
     storage.set('favorites', JSON.stringify(updatedFavoritesArray));
@@ -53,7 +54,7 @@ export const FavoritesScreen = () => {
     }
 
     const newQuotesData = quotes.filter(quote =>
-      quote.toLowerCase().includes(searchText.toLowerCase()),
+      quote.text.toLowerCase().includes(searchText.toLowerCase()),
     );
 
     setFilteredQuotes(newQuotesData);
@@ -70,7 +71,7 @@ export const FavoritesScreen = () => {
       <View style={styles.container}>
         <FlatList
           data={filteredQuotes}
-          keyExtractor={quote => quote}
+          keyExtractor={quote => quote.text}
           style={styles.quotes}
           ListEmptyComponent={() => <></>}
           ListHeaderComponent={

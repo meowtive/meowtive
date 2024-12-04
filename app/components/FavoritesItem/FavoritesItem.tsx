@@ -9,10 +9,11 @@ import Animated, {
 import { useTranslation } from 'react-i18next';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
+import { QuoteData } from '@config/constants';
 import { stylesheet } from './styles';
 
 type FavoritesItemProps = {
-  item: string;
+  item: QuoteData;
   viewableItems: SharedValue<ViewToken[]>;
   isScrolledToBottom: boolean;
   handleRemoveQuote: () => void;
@@ -49,10 +50,16 @@ export const FavoritesItem = ({
   return (
     <Animated.View style={listItemStyle}>
       <View style={styles.quote}>
-        <Text style={styles.quoteText}>{t(item)}</Text>
+        <Text style={styles.quoteText}>{t(item.text)}</Text>
 
         <View style={styles.wrapper}>
-          <Text style={styles.quoteDate}>{'12/12/2024'}</Text>
+          <Text style={styles.quoteDate}>
+            {new Date(item.savedAt).toLocaleDateString('en-US', {
+              month: '2-digit',
+              day: '2-digit',
+              year: 'numeric',
+            })}
+          </Text>
 
           <View style={styles.icons}>
             <TouchableOpacity>

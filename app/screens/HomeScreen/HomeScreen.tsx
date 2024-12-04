@@ -1,10 +1,11 @@
 import { useRef, useEffect } from 'react';
-import { View, Text, TouchableOpacity, Image, Animated } from 'react-native';
+import { View, Text, TouchableOpacity, Animated } from 'react-native';
 
 import { useStyles } from 'react-native-unistyles';
 import { useTranslation } from 'react-i18next';
 
 import { storage } from '@config/storage';
+import { QuoteData } from '@config/constants';
 import { stylesheet } from './styles';
 
 export const HomeScreen = () => {
@@ -36,14 +37,19 @@ export const HomeScreen = () => {
 
   const handleSaveQuote = (quote: string) => {
     const favorites = storage.getString('favorites');
-    const favoritesArray = favorites ? JSON.parse(favorites) : [];
+    const favoritesArray: QuoteData[] = favorites ? JSON.parse(favorites) : [];
 
     const quoteExists = favoritesArray.some(
-      (favorite: string) => favorite === quote,
+      favorite => favorite.text === quote,
     );
 
     if (!quoteExists) {
-      favoritesArray.push(quote);
+      const newQuote: QuoteData = {
+        text: quote,
+        savedAt: new Date().toISOString(),
+      };
+
+      favoritesArray.push(newQuote);
       storage.set('favorites', JSON.stringify(favoritesArray));
     }
   };
