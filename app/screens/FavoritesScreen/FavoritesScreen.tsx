@@ -90,8 +90,7 @@ export const FavoritesScreen = () => {
               />
 
               <Text style={styles.emptyListDescription}>
-                No favorite quotes yet. Paw-se to save some purr-fect
-                inspiration!
+                {t('favoritesEmptyListDescription')}
               </Text>
             </Animated.View>
           }
@@ -101,7 +100,7 @@ export const FavoritesScreen = () => {
 
               <TextInput
                 onChangeText={setSearchText}
-                placeholder="Search"
+                placeholder={t('search')}
                 value={searchText}
                 style={styles.input}
               />

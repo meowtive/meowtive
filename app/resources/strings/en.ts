@@ -4,6 +4,10 @@ export const en = {
     onboardingTitle2: 'Purr-sue your dreams with unwavering spirit',
     onboardingTitle3: 'Seize every meowment, for success is near',
     onboardingButton: 'Get Started',
+    search: 'Search',
+    favoritesEmptyListDescription:
+      'No favorite quotes yet. Paw-lease save some purr-fect inspiration!',
+    favorites: 'Favorites',
     quotes: [
       '"Start each day with a purrpose, and end it with a purr of satisfaction."',
       '"The journey to your dreams is like a cat\'s nap—quiet, peaceful, and filled with unexpected leaps."',

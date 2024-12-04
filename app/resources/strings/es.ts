@@ -4,6 +4,10 @@ export const es = {
     onboardingTitle2: 'Persigue tus sueños siempre',
     onboardingTitle3: 'Aprovecha cada meowmento',
     onboardingButton: 'Comenzar',
+    search: 'Buscar',
+    favoritesEmptyListDescription:
+      'Sin citas favoritas aún. ¡Guarda alguna inspiración purr-fecta!',
+    favorites: 'Favoritos',
     quotes: [
       '"Comienza cada día con un propósito y termínalo con un ronroneo de satisfacción."',
       '"El camino hacia tus sueños es como la siesta de un gato—tranquilo, pacífico y lleno de saltos inesperados."',
