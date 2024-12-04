@@ -2,7 +2,7 @@ import { createStyleSheet } from 'react-native-unistyles';
 
 export const stylesheet = createStyleSheet({
   quote: {
-    alignItems: 'center',
+    alignItems: 'flex-start',
     backgroundColor: '#FFFFFF',
     padding: 12,
     borderRadius: 12,
@@ -15,7 +15,15 @@ export const stylesheet = createStyleSheet({
     color: '#000',
     fontSize: 16,
     fontWeight: 'light',
-    textAlign: 'center',
+    textAlign: 'left',
     opacity: 0.8,
+  },
+  quoteDate: {
+    color: '#000',
+    fontSize: 12,
+    fontWeight: 'light',
+    textAlign: 'left',
+    opacity: 0.8,
+    marginTop: 8,
   },
 });

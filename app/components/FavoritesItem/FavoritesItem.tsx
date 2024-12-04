@@ -47,6 +47,7 @@ export const FavoritesItem = ({
     <Animated.View style={listItemStyle}>
       <View style={styles.quote}>
         <Text style={styles.quoteText}>{t(item)}</Text>
+        <Text style={styles.quoteDate}>{'12/12/2024'}</Text>
       </View>
     </Animated.View>
   );

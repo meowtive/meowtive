@@ -1,12 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
-import {
-  View,
-  Text,
-  FlatList,
-  TouchableOpacity,
-  TextInput,
-  ViewToken,
-} from 'react-native';
+import { View, Text, FlatList, TextInput, ViewToken } from 'react-native';
 
 import { useStyles } from 'react-native-unistyles';
 import { useSharedValue } from 'react-native-reanimated';
