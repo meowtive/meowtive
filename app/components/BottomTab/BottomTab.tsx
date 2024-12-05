@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { View, LayoutChangeEvent } from 'react-native';
 
+import { useStyles } from 'react-native-unistyles';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 
 import Animated, {
@@ -11,6 +12,7 @@ import Animated, {
 
 import { BottomTabButton } from '@components';
 import { isAndroid } from '@config/platform';
+import { stylesheet } from './styles';
 
 type DimensionsProps = {
   height: number;
@@ -26,6 +28,8 @@ export const BottomTab = ({
     height: 20,
     width: 100,
   });
+
+  const { styles } = useStyles(stylesheet);
 
   const buttonWidth = dimensions.width / state.routes.length;
   const tabPositionX = useSharedValue(0);
@@ -48,38 +52,14 @@ export const BottomTab = ({
   };
 
   return (
-    <View
-      onLayout={onBottomTabLayout}
-      style={{
-        flexDirection: 'row',
-        position: 'absolute',
-        bottom: 50,
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        backgroundColor: '#FFFFFF',
-        marginHorizontal: 40,
-        paddingVertical: 15,
-        borderRadius: 35,
-        shadowColor: '#000000',
-        shadowOffset: { width: 0, height: 10 },
-        shadowRadius: 10,
-        shadowOpacity: 0.1,
-        elevation: 5,
-      }}>
+    <View onLayout={onBottomTabLayout} style={styles.container}>
       <Animated.View
         style={[
           animatedStyle,
+          styles.bottomTabBackground,
           {
-            position: 'absolute',
-            backgroundColor: '#EF7E06',
-            borderRadius: 30,
-            marginHorizontal: 12,
             height: dimensions.height - (isAndroid ? 20 : 10),
             width: buttonWidth - 25,
-            shadowColor: '#000000',
-            shadowOffset: { width: 0, height: 0 },
-            shadowRadius: 10,
-            shadowOpacity: 0.15,
           },
         ]}
       />

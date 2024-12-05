@@ -1,6 +1,7 @@
 import { ReactElement, useEffect } from 'react';
 import { Pressable } from 'react-native';
 
+import { useStyles } from 'react-native-unistyles';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
 
@@ -10,6 +11,8 @@ import Animated, {
   useAnimatedStyle,
   interpolate,
 } from 'react-native-reanimated';
+
+import { stylesheet } from './styles';
 
 type BottomTabButtonProps = {
   onPress: () => void;
@@ -38,15 +41,17 @@ export const BottomTabButton = ({
   color,
   label,
 }: BottomTabButtonProps) => {
+  const { styles } = useStyles(stylesheet);
+
   const icon: IconMapping = {
-    Home: (props: any) => <Entypo name="quote" size={24} {...props} />,
-    Theme: (props: any) => (
+    Home: (props: IconProps) => <Entypo name="quote" size={24} {...props} />,
+    Theme: (props: IconProps) => (
       <Ionicons name="color-palette-outline" size={24} {...props} />
     ),
-    Favorite: (props: any) => (
+    Favorite: (props: IconProps) => (
       <Ionicons name="heart-outline" size={24} {...props} />
     ),
-    Profile: (props: any) => <Ionicons name="paw" size={24} {...props} />,
+    Profile: (props: IconProps) => <Ionicons name="paw" size={24} {...props} />,
   };
 
   const scale = useSharedValue(0);
@@ -84,17 +89,12 @@ export const BottomTabButton = ({
     <Pressable
       onPress={onPress}
       onLongPress={onLongPress}
-      style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        gap: 3,
-      }}>
+      style={styles.button}>
       <Animated.View style={animatedIconStyle}>
         {icon[routeName as RouteNames]({ color })}
       </Animated.View>
 
-      <Animated.Text style={[animatedTextStyle, { fontSize: 12 }]}>
+      <Animated.Text style={[animatedTextStyle, styles.text]}>
         {label}
       </Animated.Text>
     </Pressable>
