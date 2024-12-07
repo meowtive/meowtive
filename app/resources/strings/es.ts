@@ -8,6 +8,8 @@ export const es = {
     favoritesEmptyListDescription:
       'Sin citas favoritas aún. ¡Guarda alguna inspiración purr-fecta!',
     favorites: 'Favoritos',
+    delete: 'Eliminar',
+    cancel: 'Cancelar',
     quotes: [
       '"Comienza cada día con un propósito y termínalo con un ronroneo de satisfacción."',
       '"El camino hacia tus sueños es como la siesta de un gato—tranquilo, pacífico y lleno de saltos inesperados."',
