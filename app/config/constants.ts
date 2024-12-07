@@ -17,3 +17,13 @@ export const HAPTIC_FEEDBACK_OPTIONS = {
   enableVibrateFallback: true,
   ignoreAndroidSystemSettings: false,
 };
+
+/**
+ * Represents a saved motivational quote
+ * @property text - The quote content
+ * @property savedAt - ISO timestamp when the quote was saved
+ */
+export type QuoteData = {
+  text: string;
+  savedAt: string;
+};

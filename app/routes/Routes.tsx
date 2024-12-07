@@ -1,9 +1,10 @@
 /* eslint-disable react/no-unstable-nested-components */
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { HomeScreen, FavoritesScreen } from '@screens';
 import { NavigationContainer } from '@react-navigation/native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+
+import { HomeScreen, FavoritesScreen } from '@screens';
 
 const Tab = createBottomTabNavigator();
 
