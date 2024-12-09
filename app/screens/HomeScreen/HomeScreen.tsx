@@ -1,5 +1,5 @@
 import { useRef, useEffect } from 'react';
-import { View, Text, TouchableOpacity, Animated } from 'react-native';
+import { View, SafeAreaView, Text, Animated } from 'react-native';
 
 import { useStyles } from 'react-native-unistyles';
 import { useTranslation } from 'react-i18next';
@@ -67,23 +67,12 @@ export const HomeScreen = () => {
   }, []);
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.textWrapper}>
         <Animated.View style={{ opacity: fadeAnim }}>
           <Text style={styles.quote}>{quotes[index]}</Text>
         </Animated.View>
       </View>
-
-      <View style={styles.buttonsWrapper}>
-        <TouchableOpacity
-          style={styles.primaryButton}
-          onPress={() => handleSaveQuote(String(quotes[index]))}>
-          <Text style={styles.buttonText}>{t('save')}</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.secondButton}>
-          <Text style={styles.buttonText}>{t('share')}</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
+    </SafeAreaView>
   );
 };
