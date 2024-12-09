@@ -1,4 +1,5 @@
 import { createStyleSheet } from 'react-native-unistyles';
+
 import { SMALL_SCREEN, SCREEN_DIMENSIONS } from '@config/constants';
 
 export const stylesheet = createStyleSheet({
