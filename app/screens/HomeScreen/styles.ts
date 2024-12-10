@@ -1,53 +1,51 @@
 import { createStyleSheet } from 'react-native-unistyles';
-import { SMALL_SCREEN, SCREEN_DIMENSIONS } from '@config/constants';
+
+import { SMALL_SCREEN } from '@config/constants';
+import { isAndroid } from '@config/platform';
 
 export const stylesheet = createStyleSheet({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'space-between',
-    backgroundColor: 'white',
-    paddingHorizontal: SMALL_SCREEN ? 20 : 40,
-    paddingVertical: 20,
+    justifyContent: 'flex-start',
+    backgroundColor: '#FFF2D9',
+    paddingVertical: isAndroid ? 40 : 20,
   },
-  textWrapper: {
-    rowGap: 6,
+  header: {
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    paddingHorizontal: 30,
+    marginTop: isAndroid ? 32 : 12,
+  },
+  badge: {
+    width: 35,
+    height: 35,
+    borderRadius: 10,
+    backgroundColor: '#FEB26180',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  card: {
+    backgroundColor: '#FEB26180',
+    borderRadius: 30,
+    paddingVertical: 20,
+    paddingHorizontal: 15,
+    marginHorizontal: 30,
+    marginTop: 32,
   },
   quote: {
-    color: 'black',
-    fontSize: 22,
-    fontWeight: 'normal',
-    textAlign: 'center',
-  },
-  buttonsWrapper: {
-    width: '100%',
-    rowGap: 12,
-    marginTop: 12,
-  },
-  primaryButton: {
-    backgroundColor: 'black',
-    borderRadius: 100,
-    width: '100%',
-    height: 64,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  secondButton: {
-    backgroundColor: '#64FCD9',
-    borderRadius: 100,
-    width: '100%',
-    height: 64,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  buttonText: {
-    color: 'white',
-    fontSize: 20,
+    color: '#000000',
+    fontSize: SMALL_SCREEN ? 32 : 38,
     fontWeight: 'bold',
+    textAlign: 'left',
   },
-  image: {
-    height: SCREEN_DIMENSIONS.height / 2.5,
-    width: SCREEN_DIMENSIONS.width - (SMALL_SCREEN ? 20 : 40),
-    objectFit: 'contain',
+  buttons: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 32,
+    gap: 12,
   },
 });
