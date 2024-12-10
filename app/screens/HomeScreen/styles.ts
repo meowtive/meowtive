@@ -16,8 +16,8 @@ export const stylesheet = createStyleSheet({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-end',
-    paddingHorizontal: isAndroid ? 60 : 30,
-    marginTop: 12,
+    paddingHorizontal: 30,
+    marginTop: isAndroid ? 32 : 12,
   },
   badge: {
     width: 35,
@@ -32,7 +32,7 @@ export const stylesheet = createStyleSheet({
     borderRadius: 30,
     paddingVertical: 20,
     paddingHorizontal: 15,
-    marginHorizontal: isAndroid ? 60 : 30,
+    marginHorizontal: 30,
     marginTop: 32,
   },
   quote: {
