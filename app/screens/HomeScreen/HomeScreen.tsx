@@ -68,7 +68,7 @@ export const HomeScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.textWrapper}>
+      <View style={styles.card}>
         <Animated.View style={{ opacity: fadeAnim }}>
           <Text style={styles.quote}>{quotes[index]}</Text>
         </Animated.View>

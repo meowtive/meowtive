@@ -12,13 +12,17 @@ export const stylesheet = createStyleSheet({
     paddingHorizontal: SMALL_SCREEN ? 20 : 40,
     paddingVertical: isAndroid ? 40 : 20,
   },
-  textWrapper: {
-    rowGap: 6,
+  card: {
+    backgroundColor: '#FEB26180',
+    borderRadius: 30,
+    paddingVertical: 40,
+    paddingHorizontal: 15,
+    marginHorizontal: isAndroid ? 60 : 30,
   },
   quote: {
-    color: 'black',
-    fontSize: 22,
-    fontWeight: 'normal',
-    textAlign: 'center',
+    color: '#000000',
+    fontSize: SMALL_SCREEN ? 32 : 38,
+    fontWeight: 'bold',
+    textAlign: 'left',
   },
 });
