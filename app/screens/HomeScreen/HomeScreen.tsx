@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 
 import {
   View,
@@ -11,6 +11,7 @@ import {
 import { useStyles } from 'react-native-unistyles';
 import { useTranslation } from 'react-i18next';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { useFocusEffect } from '@react-navigation/native';
 
 import { storage } from '@config/storage';
 import { stylesheet } from './styles';
@@ -53,6 +54,7 @@ export const HomeScreen = () => {
     const favoritesArray = favorites ? JSON.parse(favorites) : [];
 
     if (favoritesArray.includes(quotes[index])) setIsQuoteFavorited(true);
+    else setIsQuoteFavorited(false);
   };
 
   const handleFavoriteQuote = () => {
@@ -92,8 +94,13 @@ export const HomeScreen = () => {
   /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     getDailyQuote();
-    setFavoriteState();
   }, []);
+
+  useFocusEffect(
+    useCallback(() => {
+      setFavoriteState();
+    }, []),
+  );
 
   return (
     <SafeAreaView style={styles.container}>
