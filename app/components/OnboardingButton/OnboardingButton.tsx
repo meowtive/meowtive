@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction, useState, useContext } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 
 import { useTranslation } from 'react-i18next';
@@ -17,6 +17,7 @@ import { HAPTIC_FEEDBACK_OPTIONS, SCREEN_DIMENSIONS } from '@config/constants';
 
 import { ONBOARDING_TOTAL_STEPS } from '@screens';
 import { storage } from '@config/storage';
+import { OnboardingContext } from '@config/contexts';
 import { stylesheet } from './styles';
 
 type OnboardingButtonProps = {
@@ -31,6 +32,7 @@ export const OnboardingButton = ({
   mask,
 }: OnboardingButtonProps) => {
   const [loading, setLoading] = useState<boolean>(false);
+  const { setIsOnboardingComplete } = useContext(OnboardingContext);
   const { styles } = useStyles(stylesheet);
   const { t } = useTranslation();
 
@@ -46,6 +48,7 @@ export const OnboardingButton = ({
       setTimeout(() => setLoading(false), 1000);
     } else {
       storage.set('isOnboardingComplete', true);
+      setIsOnboardingComplete(true);
       trigger('impactLight', HAPTIC_FEEDBACK_OPTIONS);
     }
   };

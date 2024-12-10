@@ -1,16 +1,26 @@
-import { useRef, useEffect } from 'react';
-import { View, Text, TouchableOpacity, Animated } from 'react-native';
+import { useState, useEffect, useRef, useCallback } from 'react';
+
+import {
+  View,
+  SafeAreaView,
+  Text,
+  Animated,
+  TouchableOpacity,
+} from 'react-native';
 
 import { useStyles } from 'react-native-unistyles';
 import { useTranslation } from 'react-i18next';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import { useFocusEffect } from '@react-navigation/native';
 
 import { storage } from '@config/storage';
 import { handleShareQuote } from '@utils/social-share';
 import { stylesheet } from './styles';
 
 export const HomeScreen = () => {
-  const { styles } = useStyles(stylesheet);
+  const [isQuoteFavorited, setIsQuoteFavorited] = useState<boolean>(false);
   const fadeAnim = useRef(new Animated.Value(0)).current;
+  const { styles } = useStyles(stylesheet);
   const { t } = useTranslation();
   const quotes: String[] = t('quotes', { returnObjects: true });
   const index = setInitalQuoteIndex();
@@ -35,29 +45,49 @@ export const HomeScreen = () => {
     }
   };
 
-  const handleSaveQuote = (quote: string) => {
-    const favorites = storage.getString('favorites');
-    const favoritesArray = favorites ? JSON.parse(favorites) : [];
-
-    const quoteExists = favoritesArray.some(
-      (favorite: string) => favorite === quote,
-    );
-
-    if (!quoteExists) {
-      favoritesArray.push(quote);
-      storage.set('favorites', JSON.stringify(favoritesArray));
-    }
-  };
-
   const updateDailyQuote = () => {
     storage.set('dailyQuoteLastUpdate', new Date().getDate());
     storage.set('dailyQuoteLastIndex', Math.floor(Math.random() * 300));
   };
 
+  const setFavoriteState = () => {
+    const favorites = storage.getString('favorites');
+    const favoritesArray = favorites ? JSON.parse(favorites) : [];
+
+    if (favoritesArray.includes(quotes[index])) setIsQuoteFavorited(true);
+    else setIsQuoteFavorited(false);
+  };
+
+  const handleFavoriteQuote = () => {
+    const favorites = storage.getString('favorites');
+    let favoritesArray = favorites ? JSON.parse(favorites) : [];
+
+    if (isQuoteFavorited) {
+      setIsQuoteFavorited(false);
+
+      const updatedFavoritesArray = favoritesArray.filter(
+        (item: string) => item !== quotes[index],
+      );
+
+      storage.set('favorites', JSON.stringify(updatedFavoritesArray));
+    } else {
+      setIsQuoteFavorited(true);
+
+      const quoteExists = favoritesArray.some(
+        (favorite: string) => favorite === quotes[index],
+      );
+
+      if (!quoteExists) {
+        favoritesArray.push(quotes[index]);
+        storage.set('favorites', JSON.stringify(favoritesArray));
+      }
+    }
+  };
+
   useEffect(() => {
     Animated.timing(fadeAnim, {
       toValue: 1,
-      duration: 1000,
+      duration: 500,
       useNativeDriver: true,
     }).start();
   }, [fadeAnim]);
@@ -67,26 +97,37 @@ export const HomeScreen = () => {
     getDailyQuote();
   }, []);
 
+  useFocusEffect(
+    useCallback(() => {
+      setFavoriteState();
+    }, []),
+  );
+
   return (
-    <View style={styles.container}>
-      <View style={styles.textWrapper}>
-        <Animated.View style={{ opacity: fadeAnim }}>
-          <Text style={styles.quote}>{quotes[index]}</Text>
-        </Animated.View>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.header}>
+        <TouchableOpacity style={styles.badge}>
+          <Ionicons name="color-palette-outline" color="#000000" size={26} />
+        </TouchableOpacity>
       </View>
 
-      <View style={styles.buttonsWrapper}>
-        <TouchableOpacity
-          style={styles.primaryButton}
-          onPress={() => handleSaveQuote(String(quotes[index]))}>
-          <Text style={styles.buttonText}>{t('save')}</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.secondButton}
-          onPress={() => handleShareQuote(String(quotes[index]))}>
-          <Text style={styles.buttonText}>{t('share')}</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
+      <Animated.View style={[{ opacity: fadeAnim }, styles.card]}>
+        <Text style={styles.quote}>{quotes[index]}</Text>
+
+        <View style={styles.buttons}>
+          <TouchableOpacity>
+            <Ionicons name="share-outline" color="#000000" size={26} />
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={handleFavoriteQuote}>
+            <Ionicons
+              name={isQuoteFavorited ? 'heart' : 'heart-outline'}
+              color="#000000"
+              size={26}
+            />
+          </TouchableOpacity>
+        </View>
+      </Animated.View>
+    </SafeAreaView>
   );
 };
