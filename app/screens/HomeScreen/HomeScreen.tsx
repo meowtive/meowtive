@@ -1,13 +1,22 @@
-import { useRef, useEffect } from 'react';
-import { View, SafeAreaView, Text, Animated } from 'react-native';
+import { useState, useEffect, useRef } from 'react';
+
+import {
+  View,
+  SafeAreaView,
+  Text,
+  Animated,
+  TouchableOpacity,
+} from 'react-native';
 
 import { useStyles } from 'react-native-unistyles';
 import { useTranslation } from 'react-i18next';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import { storage } from '@config/storage';
 import { stylesheet } from './styles';
 
 export const HomeScreen = () => {
+  const [isQuoteFavorited, setIsQuoteFavorited] = useState<boolean>(false);
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const { styles } = useStyles(stylesheet);
   const { t } = useTranslation();
@@ -34,23 +43,42 @@ export const HomeScreen = () => {
     }
   };
 
-  const handleSaveQuote = (quote: string) => {
-    const favorites = storage.getString('favorites');
-    const favoritesArray = favorites ? JSON.parse(favorites) : [];
-
-    const quoteExists = favoritesArray.some(
-      (favorite: string) => favorite === quote,
-    );
-
-    if (!quoteExists) {
-      favoritesArray.push(quote);
-      storage.set('favorites', JSON.stringify(favoritesArray));
-    }
-  };
-
   const updateDailyQuote = () => {
     storage.set('dailyQuoteLastUpdate', new Date().getDate());
     storage.set('dailyQuoteLastIndex', Math.floor(Math.random() * 300));
+  };
+
+  const setFavoriteState = () => {
+    const favorites = storage.getString('favorites');
+    const favoritesArray = favorites ? JSON.parse(favorites) : [];
+
+    if (favoritesArray.includes(quotes[index])) setIsQuoteFavorited(true);
+  };
+
+  const handleFavoriteQuote = () => {
+    const favorites = storage.getString('favorites');
+    let favoritesArray = favorites ? JSON.parse(favorites) : [];
+
+    if (isQuoteFavorited) {
+      setIsQuoteFavorited(false);
+
+      const updatedFavoritesArray = favoritesArray.filter(
+        (item: string) => item !== quotes[index],
+      );
+
+      storage.set('favorites', JSON.stringify(updatedFavoritesArray));
+    } else {
+      setIsQuoteFavorited(true);
+
+      const quoteExists = favoritesArray.some(
+        (favorite: string) => favorite === quotes[index],
+      );
+
+      if (!quoteExists) {
+        favoritesArray.push(quotes[index]);
+        storage.set('favorites', JSON.stringify(favoritesArray));
+      }
+    }
   };
 
   useEffect(() => {
@@ -64,15 +92,30 @@ export const HomeScreen = () => {
   /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     getDailyQuote();
+    setFavoriteState();
   }, []);
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.card}>
-        <Animated.View style={{ opacity: fadeAnim }}>
+      <Animated.View style={[{ opacity: fadeAnim }, styles.card]}>
+        <View>
           <Text style={styles.quote}>{quotes[index]}</Text>
-        </Animated.View>
-      </View>
+        </View>
+
+        <View style={styles.buttons}>
+          <TouchableOpacity>
+            <Ionicons name="share-outline" color="#000000" size={26} />
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={handleFavoriteQuote}>
+            <Ionicons
+              name={isQuoteFavorited ? 'heart' : 'heart-outline'}
+              color="#000000"
+              size={26}
+            />
+          </TouchableOpacity>
+        </View>
+      </Animated.View>
     </SafeAreaView>
   );
 };

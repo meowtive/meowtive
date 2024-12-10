@@ -9,13 +9,12 @@ export const stylesheet = createStyleSheet({
     alignItems: 'center',
     justifyContent: 'flex-start',
     backgroundColor: '#FFF2D9',
-    paddingHorizontal: SMALL_SCREEN ? 20 : 40,
     paddingVertical: isAndroid ? 40 : 20,
   },
   card: {
     backgroundColor: '#FEB26180',
     borderRadius: 30,
-    paddingVertical: 40,
+    paddingVertical: 20,
     paddingHorizontal: 15,
     marginHorizontal: isAndroid ? 60 : 30,
   },
@@ -24,5 +23,12 @@ export const stylesheet = createStyleSheet({
     fontSize: SMALL_SCREEN ? 32 : 38,
     fontWeight: 'bold',
     textAlign: 'left',
+  },
+  buttons: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 32,
+    gap: 12,
   },
 });
