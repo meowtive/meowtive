@@ -4,9 +4,12 @@ export const pt = {
     onboardingTitle2: 'Persiga seus sonhos sempre',
     onboardingTitle3: 'Aproveite cada meowmento',
     onboardingButton: 'Começar',
-    save: 'Salvar',
-    share: 'Compartilhar',
-    remove: 'Remover',
+    search: 'Buscar',
+    favoritesEmptyListDescription:
+      'Nenhuma citação favorita ainda. Salve algumas miau-spirações purr-feitas!',
+    favorites: 'Favoritos',
+    delete: 'Excluir',
+    cancel: 'Cancelar',
     quotes: [
       '"Comece cada dia com um propósito e termine com um ronronar de satisfação."',
       '"A jornada para seus sonhos é como a soneca de um gato—tranquila, pacífica e cheia de saltos inesperados."',

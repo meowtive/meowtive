@@ -1,88 +1,128 @@
 import { useEffect, useState, useCallback } from 'react';
-import { View, Text, FlatList, TouchableOpacity } from 'react-native';
+import {
+  SafeAreaView,
+  View,
+  Text,
+  FlatList,
+  TextInput,
+  ViewToken,
+} from 'react-native';
+
 import { useStyles } from 'react-native-unistyles';
-import Animated, { useSharedValue, withTiming } from 'react-native-reanimated';
 import { useFocusEffect } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
-import { FavoritesHeader, BottomSheet } from '@components';
+import FastImage from 'react-native-fast-image';
+
+import Animated, {
+  useSharedValue,
+  FadeIn,
+  FadeOut,
+} from 'react-native-reanimated';
+
+import { FavoritesItem } from '@components';
 import { storage } from '@config/storage';
+import { QuoteData } from '@config/constants';
+import { getScrollPosition } from '@utils/scrollUtils';
 import { stylesheet } from './styles';
 
 export const FavoritesScreen = () => {
-  const [quotes, setQuotes] = useState<string[]>([]);
+  const [quotes, setQuotes] = useState<QuoteData[]>([]);
+  const [filteredQuotes, setFilteredQuotes] = useState<QuoteData[]>([]);
+  const [searchText, setSearchText] = useState<string>('');
+  const [isScrolledToBottom, setIsScrolledToBottom] = useState<boolean>(false);
   const { styles } = useStyles(stylesheet);
   const { t } = useTranslation();
-  const fadeAnim = useSharedValue(0);
-  const isOpen = useSharedValue(false);
-  let selectedQuote: string | null = null;
+  const viewableItems = useSharedValue<ViewToken[]>([]);
 
-  const toggleSheet = () => {
-    isOpen.value = !isOpen.value;
-  };
-
-  const handleRemoveQuote = () => {
+  const handleRemoveQuote = (quote: QuoteData) => {
     const favorites = storage.getString('favorites');
-    const favoritesArray = favorites ? JSON.parse(favorites) : [];
+    const favoritesArray: QuoteData[] = favorites ? JSON.parse(favorites) : [];
 
     const updatedFavoritesArray = favoritesArray.filter(
-      (item: string) => item !== selectedQuote,
+      item => item.text !== quote.text,
     );
 
     storage.set('favorites', JSON.stringify(updatedFavoritesArray));
     setQuotes(updatedFavoritesArray);
-
-    toggleSheet();
+    setFilteredQuotes(updatedFavoritesArray);
   };
 
   const getFavoritesQuotes = () => {
     const quotesData = storage.getString('favorites');
     setQuotes(quotesData ? JSON.parse(quotesData) : []);
+    setFilteredQuotes(quotesData ? JSON.parse(quotesData) : []);
   };
 
   useEffect(() => {
-    getFavoritesQuotes();
+    if (!searchText) {
+      getFavoritesQuotes();
+      return;
+    }
 
-    fadeAnim.value = withTiming(1, { duration: 1000 });
-  }, [fadeAnim]);
+    const newQuotesData = quotes.filter(quote =>
+      quote.text.toLowerCase().includes(searchText.toLowerCase()),
+    );
+
+    setFilteredQuotes(newQuotesData);
+  }, [searchText]);
+
+  useEffect(() => {
+    getFavoritesQuotes();
+  }, []);
 
   useFocusEffect(useCallback(() => getFavoritesQuotes(), []));
 
   return (
-    <View style={styles.container}>
-      <Animated.View style={{ opacity: fadeAnim }}>
+    <SafeAreaView style={styles.safeAreaView}>
+      <View style={styles.container}>
         <FlatList
-          data={quotes}
-          keyExtractor={quote => quote}
+          data={filteredQuotes}
+          keyExtractor={quote => quote.text}
           style={styles.quotes}
-          ListHeaderComponent={FavoritesHeader}
+          ListEmptyComponent={
+            <Animated.View
+              entering={FadeIn.duration(300)}
+              exiting={FadeOut.duration(300)}>
+              <FastImage
+                source={require('../../resources/assets/images/favorites-empty-list.png')}
+                style={styles.image}
+                resizeMode={FastImage.resizeMode.contain}
+              />
+
+              <Text style={styles.emptyListDescription}>
+                {t('favoritesEmptyListDescription')}
+              </Text>
+            </Animated.View>
+          }
+          ListHeaderComponent={
+            <>
+              <Text style={styles.title}>{t('favorites')}</Text>
+
+              <TextInput
+                onChangeText={setSearchText}
+                placeholder={t('search')}
+                value={searchText}
+                style={styles.input}
+              />
+            </>
+          }
           ListHeaderComponentStyle={styles.header}
           showsVerticalScrollIndicator={false}
+          onViewableItemsChanged={({ viewableItems: items }) => {
+            viewableItems.value = items;
+          }}
+          onScroll={event => setIsScrolledToBottom(getScrollPosition(event))}
+          scrollEventThrottle={16}
           renderItem={({ item }) => (
-            <TouchableOpacity
-              style={styles.quote}
-              onPress={() => {
-                selectedQuote = item;
-                toggleSheet();
-              }}>
-              <Text style={styles.quoteText}>{t(item)}</Text>
-            </TouchableOpacity>
+            <FavoritesItem
+              item={item}
+              viewableItems={viewableItems}
+              isScrolledToBottom={isScrolledToBottom}
+              handleRemoveQuote={() => handleRemoveQuote(item)}
+            />
           )}
         />
-      </Animated.View>
-
-      <BottomSheet isOpen={isOpen} toggleSheet={toggleSheet}>
-        <View style={styles.bottomSheetWrapper}>
-          <TouchableOpacity style={styles.primaryButton}>
-            <Text style={styles.buttonText}>{t('share')}</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={styles.secondButton}
-            onPress={handleRemoveQuote}>
-            <Text style={styles.buttonText}>{t('remove')}</Text>
-          </TouchableOpacity>
-        </View>
-      </BottomSheet>
-    </View>
+      </View>
+    </SafeAreaView>
   );
 };
