@@ -1,7 +1,10 @@
 import { useRef, useEffect } from 'react';
-import { View, Text, TouchableOpacity, Image, Animated } from 'react-native';
+import { View, Text, TouchableOpacity, Animated } from 'react-native';
+
 import { useStyles } from 'react-native-unistyles';
 import { useTranslation } from 'react-i18next';
+import Share, { Social } from 'react-native-share';
+
 import { storage } from '@config/storage';
 import { stylesheet } from './styles';
 
@@ -51,6 +54,21 @@ export const HomeScreen = () => {
     storage.set('dailyQuoteLastIndex', Math.floor(Math.random() * 300));
   };
 
+  const handleShareQuote = async () => {
+    try {
+      await Share.shareSingle({
+        message: String(quotes[index]),
+        title: 'Share Quote',
+        social: Social.InstagramStories,
+        appId: 'meowtive',
+        backgroundTopColor: '#FEB261',
+        backgroundBottomColor: '#FFFFFF',
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
     Animated.timing(fadeAnim, {
       toValue: 1,
@@ -78,7 +96,9 @@ export const HomeScreen = () => {
           onPress={() => handleSaveQuote(String(quotes[index]))}>
           <Text style={styles.buttonText}>{t('save')}</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.secondButton}>
+        <TouchableOpacity
+          style={styles.secondButton}
+          onPress={handleShareQuote}>
           <Text style={styles.buttonText}>{t('share')}</Text>
         </TouchableOpacity>
       </View>
