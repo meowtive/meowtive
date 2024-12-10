@@ -14,7 +14,9 @@
       "@types": ["app/types"],
       "@types/*": ["app/types/*"],
       "@routes": ["app/routes"],
-      "@routes/*": ["app/routes/*"]
+      "@routes/*": ["app/routes/*"],
+      "@utils": ["app/utils"],
+      "@utils/*": ["app/utils/*"]
     }
   }
 }

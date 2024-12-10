@@ -13,8 +13,10 @@ module.exports = {
           '@resources': './app/resources',
           '@types': './app/types',
           '@routes': './app/routes',
+          '@utils': './app/utils',
         },
       },
     ],
+    ['module:react-native-dotenv'],
   ],
 };
