@@ -104,10 +104,14 @@ export const HomeScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <View style={styles.header}>
+        <TouchableOpacity style={styles.badge}>
+          <Ionicons name="color-palette-outline" color="#000000" size={26} />
+        </TouchableOpacity>
+      </View>
+
       <Animated.View style={[{ opacity: fadeAnim }, styles.card]}>
-        <View>
-          <Text style={styles.quote}>{quotes[index]}</Text>
-        </View>
+        <Text style={styles.quote}>{quotes[index]}</Text>
 
         <View style={styles.buttons}>
           <TouchableOpacity>
