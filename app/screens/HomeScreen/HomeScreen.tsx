@@ -14,6 +14,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useFocusEffect } from '@react-navigation/native';
 
 import { storage } from '@config/storage';
+import { QuoteData } from '@config/constants';
 import { handleShareQuote } from '@utils/social-share';
 import { stylesheet } from './styles';
 
@@ -60,13 +61,13 @@ export const HomeScreen = () => {
 
   const handleFavoriteQuote = () => {
     const favorites = storage.getString('favorites');
-    let favoritesArray = favorites ? JSON.parse(favorites) : [];
+    let favoritesArray: QuoteData[] = favorites ? JSON.parse(favorites) : [];
 
     if (isQuoteFavorited) {
       setIsQuoteFavorited(false);
 
       const updatedFavoritesArray = favoritesArray.filter(
-        (item: string) => item !== quotes[index],
+        item => item.text !== quotes[index],
       );
 
       storage.set('favorites', JSON.stringify(updatedFavoritesArray));
@@ -74,11 +75,16 @@ export const HomeScreen = () => {
       setIsQuoteFavorited(true);
 
       const quoteExists = favoritesArray.some(
-        (favorite: string) => favorite === quotes[index],
+        favorite => favorite.text === quotes[index],
       );
 
       if (!quoteExists) {
-        favoritesArray.push(quotes[index]);
+        const newQuote: QuoteData = {
+          text: String(quotes[index]),
+          savedAt: new Date().toISOString(),
+        };
+
+        favoritesArray.push(newQuote);
         storage.set('favorites', JSON.stringify(favoritesArray));
       }
     }
@@ -115,7 +121,8 @@ export const HomeScreen = () => {
         <Text style={styles.quote}>{quotes[index]}</Text>
 
         <View style={styles.buttons}>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => handleShareQuote(String(quotes[index]))}>
             <Ionicons name="share-outline" color="#000000" size={26} />
           </TouchableOpacity>
 
