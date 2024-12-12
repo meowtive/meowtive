@@ -101,6 +101,7 @@ export const FavoritesScreen = () => {
               <TextInput
                 onChangeText={setSearchText}
                 placeholder={t('search')}
+                placeholderTextColor={'rgba(0,0,0,0.5)'}
                 value={searchText}
                 style={styles.input}
               />
