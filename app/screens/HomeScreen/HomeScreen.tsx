@@ -125,8 +125,7 @@ export const HomeScreen = () => {
         <Text style={styles.quote}>{quotes[index]}</Text>
 
         <View style={styles.buttons}>
-          <TouchableOpacity
-            onPress={() => handleShareQuote(quotes[index])}>
+          <TouchableOpacity onPress={() => handleShareQuote(quotes[index])}>
             <Ionicons name="share-outline" color="#000000" size={26} />
           </TouchableOpacity>
 
