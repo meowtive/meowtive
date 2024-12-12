@@ -15,7 +15,7 @@ import { useFocusEffect } from '@react-navigation/native';
 
 import { storage } from '@config/storage';
 import { QuoteData } from '@config/constants';
-import { handleShareQuote } from '@utils/social-share';
+import { handleShareQuote } from '@utils/socialShare';
 import { stylesheet } from './styles';
 
 export const HomeScreen = () => {
