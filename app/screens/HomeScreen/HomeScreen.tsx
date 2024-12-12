@@ -23,7 +23,7 @@ export const HomeScreen = () => {
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const { styles } = useStyles(stylesheet);
   const { t } = useTranslation();
-  const quotes: String[] = t('quotes', { returnObjects: true });
+  const quotes: string[] = t('quotes', { returnObjects: true });
   const index = setInitalQuoteIndex();
 
   function setInitalQuoteIndex() {
@@ -53,9 +53,13 @@ export const HomeScreen = () => {
 
   const setFavoriteState = () => {
     const favorites = storage.getString('favorites');
-    const favoritesArray = favorites ? JSON.parse(favorites) : [];
+    const favoritesArray: QuoteData[] = favorites ? JSON.parse(favorites) : [];
 
-    if (favoritesArray.includes(quotes[index])) setIsQuoteFavorited(true);
+    const isQuoteFavorited = favoritesArray.some(
+      favorite => favorite.text === quotes[index],
+    );
+
+    if (isQuoteFavorited) setIsQuoteFavorited(true);
     else setIsQuoteFavorited(false);
   };
 
@@ -80,7 +84,7 @@ export const HomeScreen = () => {
 
       if (!quoteExists) {
         const newQuote: QuoteData = {
-          text: String(quotes[index]),
+          text: quotes[index],
           savedAt: new Date().toISOString(),
         };
 
@@ -122,7 +126,7 @@ export const HomeScreen = () => {
 
         <View style={styles.buttons}>
           <TouchableOpacity
-            onPress={() => handleShareQuote(String(quotes[index]))}>
+            onPress={() => handleShareQuote(quotes[index])}>
             <Ionicons name="share-outline" color="#000000" size={26} />
           </TouchableOpacity>
 
