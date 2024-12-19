@@ -24,6 +24,7 @@ import Animated, {
   FadeOut,
 } from 'react-native-reanimated';
 
+import { handleShareQuote } from '@utils/socialShare';
 import { QuoteData } from '@config/constants';
 import { stylesheet } from './styles';
 
@@ -110,7 +111,7 @@ export const FavoritesItem = ({
           </Text>
 
           <View style={styles.icons}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => handleShareQuote(item.text)}>
               <Ionicons name="share-outline" color="#000000" size={22} />
             </TouchableOpacity>
             <TouchableOpacity

@@ -53,7 +53,7 @@ export const stylesheet = createStyleSheet({
     color: '#000000',
     fontSize: SMALL_SCREEN ? 18 : 24,
     lineHeight: SMALL_SCREEN ? 18 : 24,
-    fontWeight: 'light',
+    fontWeight: 'normal',
     textAlign: 'center',
   },
 });

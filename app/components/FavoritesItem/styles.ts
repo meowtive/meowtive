@@ -14,14 +14,14 @@ export const stylesheet = createStyleSheet({
   quoteText: {
     color: '#000',
     fontSize: 16,
-    fontWeight: 'light',
+    fontWeight: 'normal',
     textAlign: 'left',
     opacity: 0.8,
   },
   quoteDate: {
     color: '#000',
     fontSize: 12,
-    fontWeight: 'light',
+    fontWeight: 'normal',
     textAlign: 'left',
     opacity: 0.8,
   },
