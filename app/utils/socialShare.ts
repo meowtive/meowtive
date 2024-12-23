@@ -8,12 +8,13 @@ import { isIOS } from '@config/platform';
 const INSTAGRAM_URL = 'instagram-stories://share';
 const INSTAGRAM_PACKAGE = 'com.instagram.android';
 
-const instagramShareConfig = (quote: string) => ({
+const instagramShareConfig = (quote: string, imageUri?: string) => ({
   message: String(quote),
   social: Social.InstagramStories,
   appId: String(Config.INSTAGRAM_APP_ID),
   backgroundTopColor: '#FEB261',
   backgroundBottomColor: '#FFFFFF',
+  stickerImage: imageUri,
   failOnCancel: false,
 });
 
@@ -32,12 +33,12 @@ const canShareToInstagram = async () => {
   return result.isInstalled;
 };
 
-export const handleShareQuote = async (quote: string) => {
+export const handleShareQuote = async (quote: string, imageUri?: string) => {
   try {
     const isInstagramAvailable = await canShareToInstagram();
 
-    if (isInstagramAvailable) {
-      await Share.shareSingle(instagramShareConfig(quote));
+    if (isInstagramAvailable && imageUri) {
+      await Share.shareSingle(instagramShareConfig(quote, imageUri));
     } else {
       fallbackShare(quote);
     }

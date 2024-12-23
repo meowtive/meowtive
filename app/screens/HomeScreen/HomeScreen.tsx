@@ -13,6 +13,7 @@ import { useTranslation } from 'react-i18next';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useFocusEffect } from '@react-navigation/native';
 
+import { QuoteShareImage, QuoteImageRef } from '@components';
 import { storage } from '@config/storage';
 import { QuoteData } from '@config/constants';
 import { handleShareQuote } from '@utils/socialShare';
@@ -21,10 +22,18 @@ import { stylesheet } from './styles';
 export const HomeScreen = () => {
   const [isQuoteFavorited, setIsQuoteFavorited] = useState<boolean>(false);
   const fadeAnim = useRef(new Animated.Value(0)).current;
+  const quoteImageRef = useRef<QuoteImageRef>(null);
+  const index = setInitalQuoteIndex();
   const { styles } = useStyles(stylesheet);
   const { t } = useTranslation();
   const quotes: string[] = t('quotes', { returnObjects: true });
-  const index = setInitalQuoteIndex();
+
+  const handleShare = async () => {
+    const imageUri = await quoteImageRef.current?.getCapture();
+
+    if (imageUri) handleShareQuote(quotes[index], imageUri);
+    else handleShareQuote(quotes[index]);
+  };
 
   function setInitalQuoteIndex() {
     const dailyQuoteLastIndex = storage.getNumber('dailyQuoteLastIndex');
@@ -125,7 +134,7 @@ export const HomeScreen = () => {
         <Text style={styles.quote}>{quotes[index]}</Text>
 
         <View style={styles.buttons}>
-          <TouchableOpacity onPress={() => handleShareQuote(quotes[index])}>
+          <TouchableOpacity onPress={handleShare}>
             <Ionicons name="share-outline" color="#000000" size={26} />
           </TouchableOpacity>
 
@@ -138,6 +147,8 @@ export const HomeScreen = () => {
           </TouchableOpacity>
         </View>
       </Animated.View>
+
+      <QuoteShareImage ref={quoteImageRef} quote={quotes[index]} />
     </SafeAreaView>
   );
 };
