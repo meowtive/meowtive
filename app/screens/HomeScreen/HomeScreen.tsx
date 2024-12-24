@@ -13,16 +13,27 @@ import { useTranslation } from 'react-i18next';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useFocusEffect } from '@react-navigation/native';
 
+import { QuoteShareImage, QuoteImageRef } from '@components';
 import { storage } from '@config/storage';
+import { QuoteData } from '@config/constants';
+import { handleShareQuote } from '@utils/socialShare';
 import { stylesheet } from './styles';
 
 export const HomeScreen = () => {
   const [isQuoteFavorited, setIsQuoteFavorited] = useState<boolean>(false);
   const fadeAnim = useRef(new Animated.Value(0)).current;
+  const quoteImageRef = useRef<QuoteImageRef>(null);
+  const index = setInitalQuoteIndex();
   const { styles } = useStyles(stylesheet);
   const { t } = useTranslation();
-  const quotes: String[] = t('quotes', { returnObjects: true });
-  const index = setInitalQuoteIndex();
+  const quotes: string[] = t('quotes', { returnObjects: true });
+
+  const handleShare = async () => {
+    const imageUri = await quoteImageRef.current?.getCapture();
+
+    if (imageUri) handleShareQuote(quotes[index], imageUri);
+    else handleShareQuote(quotes[index]);
+  };
 
   function setInitalQuoteIndex() {
     const dailyQuoteLastIndex = storage.getNumber('dailyQuoteLastIndex');
@@ -51,21 +62,25 @@ export const HomeScreen = () => {
 
   const setFavoriteState = () => {
     const favorites = storage.getString('favorites');
-    const favoritesArray = favorites ? JSON.parse(favorites) : [];
+    const favoritesArray: QuoteData[] = favorites ? JSON.parse(favorites) : [];
 
-    if (favoritesArray.includes(quotes[index])) setIsQuoteFavorited(true);
+    const isQuoteFavorited = favoritesArray.some(
+      favorite => favorite.text === quotes[index],
+    );
+
+    if (isQuoteFavorited) setIsQuoteFavorited(true);
     else setIsQuoteFavorited(false);
   };
 
   const handleFavoriteQuote = () => {
     const favorites = storage.getString('favorites');
-    let favoritesArray = favorites ? JSON.parse(favorites) : [];
+    let favoritesArray: QuoteData[] = favorites ? JSON.parse(favorites) : [];
 
     if (isQuoteFavorited) {
       setIsQuoteFavorited(false);
 
       const updatedFavoritesArray = favoritesArray.filter(
-        (item: string) => item !== quotes[index],
+        item => item.text !== quotes[index],
       );
 
       storage.set('favorites', JSON.stringify(updatedFavoritesArray));
@@ -73,11 +88,16 @@ export const HomeScreen = () => {
       setIsQuoteFavorited(true);
 
       const quoteExists = favoritesArray.some(
-        (favorite: string) => favorite === quotes[index],
+        favorite => favorite.text === quotes[index],
       );
 
       if (!quoteExists) {
-        favoritesArray.push(quotes[index]);
+        const newQuote: QuoteData = {
+          text: quotes[index],
+          savedAt: new Date().toISOString(),
+        };
+
+        favoritesArray.push(newQuote);
         storage.set('favorites', JSON.stringify(favoritesArray));
       }
     }
@@ -114,7 +134,7 @@ export const HomeScreen = () => {
         <Text style={styles.quote}>{quotes[index]}</Text>
 
         <View style={styles.buttons}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={handleShare}>
             <Ionicons name="share-outline" color="#000000" size={26} />
           </TouchableOpacity>
 
@@ -127,6 +147,8 @@ export const HomeScreen = () => {
           </TouchableOpacity>
         </View>
       </Animated.View>
+
+      <QuoteShareImage ref={quoteImageRef} quote={quotes[index]} />
     </SafeAreaView>
   );
 };

@@ -75,3 +75,6 @@ yarn-error.log
 
 .pnp.cjs
 .pnp.loader.mjs
+
+# .env files
+.env

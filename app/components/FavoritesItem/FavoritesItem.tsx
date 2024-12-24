@@ -24,6 +24,8 @@ import Animated, {
   FadeOut,
 } from 'react-native-reanimated';
 
+import { QuoteShareImage, QuoteImageRef } from '@components';
+import { handleShareQuote } from '@utils/socialShare';
 import { QuoteData } from '@config/constants';
 import { stylesheet } from './styles';
 
@@ -41,8 +43,16 @@ export const FavoritesItem = ({
   handleRemoveQuote,
 }: FavoritesItemProps) => {
   const optionsRef = useRef(null);
+  const quoteImageRef = useRef<QuoteImageRef>(null);
   const { styles } = useStyles(stylesheet);
   const { t } = useTranslation();
+
+  const handleShare = async () => {
+    const imageUri = await quoteImageRef.current?.getCapture();
+
+    if (imageUri) handleShareQuote(item.text, imageUri);
+    else handleShareQuote(item.text);
+  };
 
   const listItemStyle = useAnimatedStyle(() => {
     if (!isScrolledToBottom) return {};
@@ -110,7 +120,7 @@ export const FavoritesItem = ({
           </Text>
 
           <View style={styles.icons}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={handleShare}>
               <Ionicons name="share-outline" color="#000000" size={22} />
             </TouchableOpacity>
             <TouchableOpacity
@@ -125,6 +135,8 @@ export const FavoritesItem = ({
           </View>
         </View>
       </View>
+
+      <QuoteShareImage ref={quoteImageRef} quote={item.text} />
     </Animated.View>
   );
 };
