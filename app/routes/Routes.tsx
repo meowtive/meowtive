@@ -1,10 +1,8 @@
 /* eslint-disable react/no-unstable-nested-components */
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-import { HomeScreen, FavoritesScreen } from '@screens';
+import { HomeScreen, FavoritesScreen, ProfileScreen } from '@screens';
 import { BottomTab } from '@components';
 
 const Tab = createBottomTabNavigator();
@@ -15,42 +13,10 @@ export default function Routes() {
       <Tab.Navigator
         screenOptions={{ headerShown: false }}
         tabBar={props => <BottomTab {...props} />}>
-        <Tab.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{
-            tabBarIcon: () => (
-              <FontAwesome name="home" size={24} color="black" />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="Theme"
-          component={FavoritesScreen}
-          options={{
-            tabBarIcon: () => (
-              <MaterialIcons name="favorite" size={24} color="black" />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="Favorite"
-          component={FavoritesScreen}
-          options={{
-            tabBarIcon: () => (
-              <MaterialIcons name="favorite" size={24} color="black" />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="Profile"
-          component={FavoritesScreen}
-          options={{
-            tabBarIcon: () => (
-              <MaterialIcons name="favorite" size={24} color="black" />
-            ),
-          }}
-        />
+        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Theme" component={FavoritesScreen} />
+        <Tab.Screen name="Favorite" component={FavoritesScreen} />
+        <Tab.Screen name="Profile" component={ProfileScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );
