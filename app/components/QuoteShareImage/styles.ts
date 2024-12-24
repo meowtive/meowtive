@@ -1,11 +1,14 @@
 import { createStyleSheet } from 'react-native-unistyles';
 
+import { SCREEN_DIMENSIONS } from '@config/constants';
+
 export const stylesheet = createStyleSheet({
   offScreenContainer: {
     position: 'absolute',
     left: -9999,
-    width: 720,
-    height: 1280,
+    minWidth: SCREEN_DIMENSIONS.width,
+    minHeight: SCREEN_DIMENSIONS.height,
+    resizeMode: 'cover',
   },
   backgroundImage: {
     width: '100%',
@@ -16,7 +19,8 @@ export const stylesheet = createStyleSheet({
   },
   quoteText: {
     fontSize: 32,
-    color: '#FFFFFF',
+    fontWeight: 'bold',
     textAlign: 'center',
+    color: '#000000',
   },
 });

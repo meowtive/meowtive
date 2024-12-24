@@ -14,7 +14,7 @@ const instagramShareConfig = (quote: string, imageUri?: string) => ({
   appId: String(Config.INSTAGRAM_APP_ID),
   backgroundTopColor: '#FEB261',
   backgroundBottomColor: '#FFFFFF',
-  stickerImage: imageUri,
+  backgroundImage: imageUri,
   failOnCancel: false,
 });
 
