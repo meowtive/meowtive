@@ -20,11 +20,15 @@ export const ProfileScreen = () => {
   const { styles } = useStyles(stylesheet);
   const { t, i18n } = useTranslation();
 
-  const openLanguageSettings = () => {
-    if (Platform.OS === 'ios') {
-      Linking.openURL('app-settings:');
-    } else {
-      Linking.openSettings();
+  const openSystemLanguageSettings = async () => {
+    try {
+      if (Platform.OS === 'android') {
+        await Linking.openURL('android-settings://');
+      } else {
+        await Linking.openURL('App-prefs:root=General&path=INTERNATIONAL');
+      }
+    } catch {
+      await Linking.openSettings();
     }
   };
 
@@ -58,7 +62,7 @@ export const ProfileScreen = () => {
             <View style={styles.card}>
               <TouchableOpacity
                 style={styles.option}
-                onPress={openLanguageSettings}>
+                onPress={openSystemLanguageSettings}>
                 <View style={styles.optionContent}>
                   <Ionicons name="language" size={26} color="#000000" />
                   <Text style={styles.optionText}>{t('language')}</Text>
