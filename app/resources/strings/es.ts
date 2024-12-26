@@ -21,6 +21,8 @@ export const es = {
     version: 'Versión',
     rateApp: 'Calificar App',
     contact: 'Contacto',
+    clearDataConfirm:
+      '¿Estás seguro? Esto eliminará todos tus favoritos y reiniciará las citas diarias.',
     quotes: [
       '"Comienza cada día con un propósito y termínalo con un ronroneo de satisfacción."',
       '"El camino hacia tus sueños es como la siesta de un gato—tranquilo, pacífico y lleno de saltos inesperados."',
