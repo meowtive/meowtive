@@ -8182,6 +8182,7 @@ __metadata:
     react-native-haptic-feedback: ^2.3.3
     react-native-localize: ^3.2.1
     react-native-mmkv: 2.12.2
+    react-native-motion-tabs: ^1.0.6
     react-native-reanimated: ^3.15.0
     react-native-safe-area-context: ^4.10.9
     react-native-screens: ^3.34.0
@@ -9720,6 +9721,23 @@ __metadata:
     react: "*"
     react-native: ">=0.71.0"
   checksum: 8c79504a89fefd7f9c290a4a6bb24f1f9ef9e2a69d20d0f7d882b89f3943556e9c919c9d46583e44ab698f25213489277fccb6d4c856cce310267c5f907388f1
+  languageName: node
+  linkType: hard
+
+"react-native-motion-tabs@npm:^1.0.6":
+  version: 1.0.6
+  resolution: "react-native-motion-tabs@npm:1.0.6"
+  peerDependencies:
+    "@react-navigation/bottom-tabs": ^6.0.0
+    "@react-navigation/native": ^6.0.0
+    react: "*"
+    react-native: "*"
+    react-native-reanimated: ^3.0.0
+    react-native-safe-area-context: 4.12.0
+    react-native-screens: ^3.0.0
+    react-native-unistyles: ^2.0.0
+    react-native-vector-icons: ^10.0.0
+  checksum: 440a30a80fea9d7e5212f600159a1ec4c2f2299f27892187a63aa803399052fa94188a068e0cdb26ee17cc2f252f8a540e71126f4f6dab46395c738c9097e1d8
   languageName: node
   linkType: hard
 
