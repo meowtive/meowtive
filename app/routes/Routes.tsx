@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unstable-nested-components */
 import { NavigationContainer } from '@react-navigation/native';
 import { createMotionTabs } from 'react-native-motion-tabs';
 
