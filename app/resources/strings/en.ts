@@ -25,6 +25,7 @@ export const en = {
       'Are you sure? This will delete all your favorites and reset daily quotes.',
     success: 'Success',
     dataCleared: 'Data has been cleared successfully',
+    confirm: 'Confirm',
     quotes: [
       '"Start each day with a purrpose, and end it with a purr of satisfaction."',
       '"The journey to your dreams is like a cat\'s nap—quiet, peaceful, and filled with unexpected leaps."',
