@@ -23,6 +23,8 @@ export const pt = {
     contact: 'Contato',
     clearDataConfirm:
       'Tem certeza? Isso excluirá todos os seus favoritos e redefinirá as citações diárias.',
+    success: 'Sucesso',
+    dataCleared: 'Dados foram limpos com sucesso',
     quotes: [
       '"Comece cada dia com um propósito e termine com um ronronar de satisfação."',
       '"A jornada para seus sonhos é como a soneca de um gato—tranquila, pacífica e cheia de saltos inesperados."',
