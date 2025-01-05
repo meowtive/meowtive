@@ -1,8 +1,6 @@
 <img width="1920" alt="Cover" src="https://github.com/user-attachments/assets/b6b93ab2-cf6c-4584-95d9-239c07109f5e">
 
-# Meowtive
-
-Meowtive is your go-to app for daily meowtivation! 🐱✨
+### Meowtive is your go-to app for daily meowtivation! 🐱✨
 
 ## Features
 
