@@ -2,7 +2,12 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createMotionTabs } from 'react-native-motion-tabs';
 
-import { HomeScreen, FavoritesScreen, ProfileScreen } from '@screens';
+import {
+  HomeScreen,
+  FavoritesScreen,
+  ProfileScreen,
+  ThemeScreen,
+} from '@screens';
 
 const Tabs = createMotionTabs({
   tabs: [
@@ -14,7 +19,7 @@ const Tabs = createMotionTabs({
     },
     {
       name: 'Theme',
-      component: FavoritesScreen,
+      component: ThemeScreen,
       icon: 'color-palette-outline',
       iconType: 'Ionicons',
     },
