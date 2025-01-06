@@ -9,9 +9,7 @@ export const ThemeScreen = () => {
 
   return (
     <SafeAreaView style={styles.safeAreaView}>
-      <View style={styles.container}>
-        
-      </View>
+      <View style={styles.container}></View>
     </SafeAreaView>
   );
 };
