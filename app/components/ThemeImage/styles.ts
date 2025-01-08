@@ -10,7 +10,7 @@ export const stylesheet = createStyleSheet({
     width: IMAGE_WIDTH,
     height: IMAGE_HEIGHT,
     overflow: 'hidden',
-    borderRadius: 16,
+    borderRadius: 30,
   },
   image: {
     flex: 1,

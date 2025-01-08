@@ -1,4 +1,4 @@
-import { View, ImageSourcePropType } from 'react-native';
+import { TouchableOpacity, ImageSourcePropType } from 'react-native';
 
 import { useStyles } from 'react-native-unistyles';
 
@@ -8,6 +8,7 @@ import Animated, {
   interpolate,
 } from 'react-native-reanimated';
 
+import { storage } from '@config/storage';
 import { stylesheet } from './styles';
 
 type ThemeImageProps = {
@@ -18,6 +19,8 @@ type ThemeImageProps = {
 
 export const ThemeImage = ({ image, index, scrollX }: ThemeImageProps) => {
   const { styles } = useStyles(stylesheet);
+
+  const handleSetTheme = () => storage.set('theme', index + 1);
 
   const animatedStyle = useAnimatedStyle(() => {
     return {
@@ -41,8 +44,8 @@ export const ThemeImage = ({ image, index, scrollX }: ThemeImageProps) => {
   });
 
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={handleSetTheme}>
       <Animated.Image source={image} style={[styles.image, animatedStyle]} />
-    </View>
+    </TouchableOpacity>
   );
 };
