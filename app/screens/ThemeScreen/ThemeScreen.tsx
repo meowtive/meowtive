@@ -1,6 +1,8 @@
+import { useCallback, useRef } from 'react';
 import { View, ImageSourcePropType, StyleSheet } from 'react-native';
 
 import { useStyles } from 'react-native-unistyles';
+import { useFocusEffect } from '@react-navigation/native';
 
 import Animated, {
   useSharedValue,
@@ -29,12 +31,19 @@ const IMAGE_WIDTH = SCREEN_DIMENSIONS.width * 0.7;
 const SPACING = 12;
 
 export const ThemeScreen = () => {
+  const flatListRef = useRef<Animated.FlatList<ThemeProps>>(null);
   const { styles } = useStyles(stylesheet);
   const scrollX = useSharedValue(0);
 
   const onScroll = useAnimatedScrollHandler(e => {
     scrollX.value = e.contentOffset.x / (IMAGE_WIDTH + SPACING);
   });
+
+  useFocusEffect(
+    useCallback(() => {
+      flatListRef.current?.scrollToOffset({ offset: 0, animated: false });
+    }, []),
+  );
 
   return (
     <View style={styles.container}>
@@ -50,6 +59,7 @@ export const ThemeScreen = () => {
       </View>
 
       <Animated.FlatList
+        ref={flatListRef}
         data={THEMES}
         keyExtractor={item => String(item.id)}
         renderItem={({ item, index }) => (
