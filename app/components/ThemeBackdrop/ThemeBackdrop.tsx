@@ -1,10 +1,14 @@
 import { ImageSourcePropType, StyleSheet } from 'react-native';
 
+import { useStyles } from 'react-native-unistyles';
+
 import Animated, {
   SharedValue,
   useAnimatedStyle,
   interpolate,
 } from 'react-native-reanimated';
+
+import { stylesheet } from './styles';
 
 type ThemeBackdropProps = {
   image: ImageSourcePropType;
@@ -17,6 +21,8 @@ export const ThemeBackdrop = ({
   index,
   scrollX,
 }: ThemeBackdropProps) => {
+  const { styles } = useStyles(stylesheet);
+
   const animatedStyle = useAnimatedStyle(() => {
     return {
       opacity: interpolate(
@@ -30,8 +36,12 @@ export const ThemeBackdrop = ({
   return (
     <Animated.Image
       source={image}
-      style={[StyleSheet.absoluteFillObject, animatedStyle]}
       blurRadius={50}
+      style={[
+        StyleSheet.absoluteFillObject,
+        animatedStyle,
+        styles.themeBackdrop,
+      ]}
     />
   );
 };
