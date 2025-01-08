@@ -7,12 +7,15 @@ const IMAGE_HEIGHT = IMAGE_WIDTH * 1.76;
 
 export const stylesheet = createStyleSheet({
   container: {
-    maxWidth: IMAGE_WIDTH,
+    width: IMAGE_WIDTH,
     height: IMAGE_HEIGHT,
     overflow: 'hidden',
+    borderRadius: 16,
   },
   image: {
     flex: 1,
-    borderRadius: 16,
+    width: IMAGE_WIDTH,
+    height: IMAGE_HEIGHT,
+    resizeMode: 'cover',
   },
 });

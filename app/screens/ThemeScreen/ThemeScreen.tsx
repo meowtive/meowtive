@@ -23,6 +23,9 @@ const THEMES: ThemeProps[] = [
   { id: 1, image: require('../../resources/assets/images/theme-1.png') },
   { id: 2, image: require('../../resources/assets/images/theme-2.png') },
   { id: 3, image: require('../../resources/assets/images/theme-3.png') },
+  { id: 4, image: require('../../resources/assets/images/theme-4.png') },
+  { id: 5, image: require('../../resources/assets/images/theme-5.png') },
+  { id: 6, image: require('../../resources/assets/images/theme-6.png') },
 ];
 
 /**
@@ -35,6 +38,7 @@ export const ThemeScreen = () => {
   const { styles } = useStyles(stylesheet);
 
   const scrollX = useSharedValue(0);
+
   const onScroll = useAnimatedScrollHandler(e => {
     scrollX.value = e.contentOffset.x / (IMAGE_WIDTH + SPACING);
   });
