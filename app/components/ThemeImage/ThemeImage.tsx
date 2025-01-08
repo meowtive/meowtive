@@ -1,6 +1,7 @@
-import { TouchableOpacity, ImageSourcePropType } from 'react-native';
+import { Alert, TouchableOpacity, ImageSourcePropType } from 'react-native';
 
 import { useStyles } from 'react-native-unistyles';
+import { useTranslation } from 'react-i18next';
 
 import Animated, {
   SharedValue,
@@ -17,10 +18,54 @@ type ThemeImageProps = {
   scrollX: SharedValue<number>;
 };
 
+/**
+ * Array of free themes
+ */
+const FREE_THEMES = [1];
+
 export const ThemeImage = ({ image, index, scrollX }: ThemeImageProps) => {
   const { styles } = useStyles(stylesheet);
+  const { t } = useTranslation();
 
-  const handleSetTheme = () => storage.set('theme', index + 1);
+  const handleSetTheme = () => {
+    if (FREE_THEMES.includes(index + 1)) {
+      Alert.alert(
+        t('applyThemeTitle'),
+        t('applyThemeMessage'),
+        [
+          {
+            text: t('cancel'),
+            style: 'cancel',
+          },
+          {
+            text: t('confirm'),
+            onPress: () => {
+              storage.set('theme', index + 1);
+            },
+          },
+        ],
+        { cancelable: false },
+      );
+    } else {
+      Alert.alert(
+        t('buyThemeTitle'),
+        t('buyThemeMessage'),
+        [
+          {
+            text: t('cancel'),
+            style: 'cancel',
+          },
+          {
+            text: t('confirm'),
+            onPress: () => {
+              storage.set('theme', index + 1);
+            },
+          },
+        ],
+        { cancelable: false },
+      );
+    }
+  };
 
   const animatedStyle = useAnimatedStyle(() => {
     return {

@@ -26,6 +26,10 @@ export const es = {
     success: 'Éxito',
     dataCleared: 'Los datos se han borrado con éxito',
     confirm: 'Confirmar',
+    buyThemeTitle: '🐾 Nuevo Tema 🐾',
+    buyThemeMessage: '¿Listo para liberar este tema meow-nífico?',
+    applyThemeTitle: '¿Aplicar Tema?',
+    applyThemeMessage: '¿Quieres aplicar este tema ahora?',
     quotes: [
       '"Comienza cada día con un propósito y termínalo con un ronroneo de satisfacción."',
       '"El camino hacia tus sueños es como la siesta de un gato—tranquilo, pacífico y lleno de saltos inesperados."',

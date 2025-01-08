@@ -26,6 +26,10 @@ export const en = {
     success: 'Success',
     dataCleared: 'Data has been cleared successfully',
     confirm: 'Confirm',
+    buyThemeTitle: '🐾 New theme 🐾',
+    buyThemeMessage: 'Ready to unleash this meow-tastic theme?',
+    applyThemeTitle: 'Apply Theme?',
+    applyThemeMessage: 'Do you want to apply this theme now?',
     quotes: [
       '"Start each day with a purrpose, and end it with a purr of satisfaction."',
       '"The journey to your dreams is like a cat\'s nap—quiet, peaceful, and filled with unexpected leaps."',
