@@ -18,15 +18,15 @@ const Tabs = createMotionTabs({
       iconType: 'Entypo',
     },
     {
-      name: 'Theme',
-      component: ThemeScreen,
-      icon: 'color-palette-outline',
-      iconType: 'Ionicons',
-    },
-    {
       name: 'Favorite',
       component: FavoritesScreen,
       icon: 'heart-outline',
+      iconType: 'Ionicons',
+    },
+    {
+      name: 'Theme',
+      component: ThemeScreen,
+      icon: 'color-palette-outline',
       iconType: 'Ionicons',
     },
     {
