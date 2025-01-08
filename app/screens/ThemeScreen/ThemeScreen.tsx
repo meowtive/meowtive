@@ -16,9 +16,6 @@ type ThemeProps = {
   image: ImageSourcePropType;
 };
 
-/**
- * Array of the theme items.
- */
 const THEMES: ThemeProps[] = [
   { id: 1, image: require('../../resources/assets/images/theme-1.png') },
   { id: 2, image: require('../../resources/assets/images/theme-2.png') },
@@ -28,15 +25,11 @@ const THEMES: ThemeProps[] = [
   { id: 6, image: require('../../resources/assets/images/theme-6.png') },
 ];
 
-/**
- * Constants to use on some FlatList params.
- */
 const IMAGE_WIDTH = SCREEN_DIMENSIONS.width * 0.7;
 const SPACING = 12;
 
 export const ThemeScreen = () => {
   const { styles } = useStyles(stylesheet);
-
   const scrollX = useSharedValue(0);
 
   const onScroll = useAnimatedScrollHandler(e => {
@@ -60,7 +53,9 @@ export const ThemeScreen = () => {
         data={THEMES}
         keyExtractor={item => String(item.id)}
         renderItem={({ item, index }) => (
-          <ThemeImage image={item.image} index={index} scrollX={scrollX} />
+          <View style={styles.shadowWrapper}>
+            <ThemeImage image={item.image} index={index} scrollX={scrollX} />
+          </View>
         )}
         horizontal
         showsHorizontalScrollIndicator={false}
