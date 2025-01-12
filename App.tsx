@@ -9,6 +9,7 @@ import { storage } from '@config/storage';
 import { OnboardingContext } from '@config/contexts';
 import Routes from '@routes/Routes';
 import { OnboardingScreen } from '@screens';
+import { configurePurchases } from '@services';
 
 const App = () => {
   const [isOnboardingComplete, setIsOnboardingComplete] = useState(
@@ -19,6 +20,8 @@ const App = () => {
     setTimeout(() => {
       RNBootSplash.hide({ fade: true });
     }, 500);
+
+    configurePurchases();
   }, []);
 
   return (

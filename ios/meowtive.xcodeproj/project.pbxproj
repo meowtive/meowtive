@@ -12,6 +12,7 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		187127012D3416E3005F22D7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 187127002D3416E3005F22D7 /* StoreKit.framework */; };
 		41A449922C701EB9009ABAB7 /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 41A4497E2C701EB9009ABAB7 /* AntDesign.ttf */; };
 		41A449932C701EB9009ABAB7 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 41A4497F2C701EB9009ABAB7 /* Entypo.ttf */; };
 		41A449942C701EB9009ABAB7 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 41A449802C701EB9009ABAB7 /* EvilIcons.ttf */; };
@@ -58,6 +59,7 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = meowtive/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = meowtive/main.m; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = meowtive/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		187127002D3416E3005F22D7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-meowtive-meowtiveTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-meowtive-meowtiveTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B4392A12AC88292D35C810B /* Pods-meowtive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meowtive.debug.xcconfig"; path = "Target Support Files/Pods-meowtive/Pods-meowtive.debug.xcconfig"; sourceTree = "<group>"; };
 		41A4497E2C701EB9009ABAB7 /* AntDesign.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AntDesign.ttf; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C80B921A6F3F58F76C31292 /* libPods-meowtive.a in Frameworks */,
+				187127012D3416E3005F22D7 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +149,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				187127002D3416E3005F22D7 /* StoreKit.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				5DCACB8F33CDC322A6C60F78 /* libPods-meowtive.a */,
 				19F6CBCC0A4E27FBF8BF4A61 /* libPods-meowtive-meowtiveTests.a */,

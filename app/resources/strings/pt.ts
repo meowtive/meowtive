@@ -26,7 +26,7 @@ export const pt = {
     success: 'Sucesso',
     dataCleared: 'Dados foram limpos com sucesso',
     confirm: 'Confirmar',
-    buyThemeTitle: '🐾 Novo Tema 🐾',
+    buyThemeTitle: 'Novo Tema',
     buyThemeMessage: 'Pronto para liberar este tema meow-ravilhoso?',
     applyThemeTitle: 'Aplicar Tema?',
     applyThemeMessage: 'Quer aplicar este tema agora?',
