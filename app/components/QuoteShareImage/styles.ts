@@ -21,6 +21,7 @@ export const stylesheet = createStyleSheet({
     fontSize: 32,
     fontWeight: 'bold',
     textAlign: 'center',
-    color: '#000000',
+    color: '#FFFFFF',
+    lineHeight: 34,
   },
 });

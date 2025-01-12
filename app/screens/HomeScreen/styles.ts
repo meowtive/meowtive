@@ -8,7 +8,6 @@ export const stylesheet = createStyleSheet({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'flex-start',
-    backgroundColor: '#FFF2D9',
     paddingVertical: isAndroid ? 40 : 20,
   },
   header: {
@@ -20,15 +19,15 @@ export const stylesheet = createStyleSheet({
     marginTop: isAndroid ? 32 : 12,
   },
   badge: {
-    width: 35,
-    height: 35,
+    width: 42,
+    height: 42,
     borderRadius: 10,
-    backgroundColor: '#FEB26180',
+    backgroundColor: '#FEB261',
     justifyContent: 'center',
     alignItems: 'center',
   },
   card: {
-    backgroundColor: '#FEB26180',
+    backgroundColor: '#FEB261',
     borderRadius: 30,
     paddingVertical: 20,
     paddingHorizontal: 15,
