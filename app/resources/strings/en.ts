@@ -30,6 +30,10 @@ export const en = {
     buyThemeMessage: 'Ready to unleash this meow-tastic theme?',
     applyThemeTitle: 'Apply Theme?',
     applyThemeMessage: 'Do you want to apply this theme now?',
+    purchaseFailedTitle: 'Purchase Failed',
+    purchaseFailedMessage:
+      'Something went wrong during the purchase. Please try again.',
+    ok: 'OK',
     quotes: [
       '"Start each day with a purrpose, and end it with a purr of satisfaction."',
       '"The journey to your dreams is like a cat\'s nap—quiet, peaceful, and filled with unexpected leaps."',

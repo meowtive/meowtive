@@ -30,6 +30,10 @@ export const pt = {
     buyThemeMessage: 'Pronto para liberar este tema meow-ravilhoso?',
     applyThemeTitle: 'Aplicar Tema?',
     applyThemeMessage: 'Quer aplicar este tema agora?',
+    purchaseFailedTitle: 'Falha na Compra',
+    purchaseFailedMessage:
+      'Ocorreu um erro durante a compra. Por favor, tente novamente.',
+    ok: 'OK',
     quotes: [
       '"Comece cada dia com um propósito e termine com um ronronar de satisfação."',
       '"A jornada para seus sonhos é como a soneca de um gato—tranquila, pacífica e cheia de saltos inesperados."',
