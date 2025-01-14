@@ -34,6 +34,10 @@ export const en = {
     purchaseFailedMessage:
       'Something went wrong during the purchase. Please try again.',
     ok: 'OK',
+    homeBottomTab: 'Home',
+    favoritesBottomTab: 'Favorites',
+    themeBottomTab: 'Theme',
+    profileBottomTab: 'Profile',
     quotes: [
       '"Start each day with a purrpose, and end it with a purr of satisfaction."',
       '"The journey to your dreams is like a cat\'s nap—quiet, peaceful, and filled with unexpected leaps."',

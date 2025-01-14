@@ -34,6 +34,10 @@ export const pt = {
     purchaseFailedMessage:
       'Ocorreu um erro durante a compra. Por favor, tente novamente.',
     ok: 'OK',
+    homeBottomTab: 'Início',
+    favoritesBottomTab: 'Favoritos',
+    themeBottomTab: 'Tema',
+    profileBottomTab: 'Perfil',
     quotes: [
       '"Comece cada dia com um propósito e termine com um ronronar de satisfação."',
       '"A jornada para seus sonhos é como a soneca de um gato—tranquila, pacífica e cheia de saltos inesperados."',

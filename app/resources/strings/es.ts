@@ -34,6 +34,10 @@ export const es = {
     purchaseFailedMessage:
       'Ocurrió un error durante la compra. Por favor, inténtelo de nuevo.',
     ok: 'OK',
+    homeBottomTab: 'Inicio',
+    favoritesBottomTab: 'Favoritos',
+    themeBottomTab: 'Tema',
+    profileBottomTab: 'Perfil',
     quotes: [
       '"Comienza cada día con un propósito y termínalo con un ronroneo de satisfacción."',
       '"El camino hacia tus sueños es como la siesta de un gato—tranquilo, pacífico y lleno de saltos inesperados."',
