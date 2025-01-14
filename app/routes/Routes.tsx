@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unstable-nested-components */
 import { NavigationContainer } from '@react-navigation/native';
 import { createMotionTabs } from 'react-native-motion-tabs';
+import i18next from '@config/i18n';
 
 import {
   HomeScreen,
@@ -12,25 +13,25 @@ import {
 const Tabs = createMotionTabs({
   tabs: [
     {
-      name: 'Home',
+      name: i18next.t('homeBottomTab'),
       component: HomeScreen,
       icon: 'quote',
       iconType: 'Entypo',
     },
     {
-      name: 'Favorite',
+      name: i18next.t('favoritesBottomTab'),
       component: FavoritesScreen,
       icon: 'heart-outline',
       iconType: 'Ionicons',
     },
     {
-      name: 'Theme',
+      name: i18next.t('themeBottomTab'),
       component: ThemeScreen,
       icon: 'color-palette-outline',
       iconType: 'Ionicons',
     },
     {
-      name: 'Profile',
+      name: i18next.t('profileBottomTab'),
       component: ProfileScreen,
       icon: 'paw',
       iconType: 'Ionicons',
