@@ -22,6 +22,8 @@ PODS:
   - MMKV (1.3.9):
     - MMKVCore (~> 1.3.9)
   - MMKVCore (1.3.9)
+  - PurchasesHybridCommon (13.14.0):
+    - RevenueCat (= 5.14.0)
   - RCT-Folly (2024.01.01.00):
     - boost
     - DoubleConversion
@@ -1272,6 +1274,7 @@ PODS:
     - React-logger (= 0.74.3)
     - React-perflogger (= 0.74.3)
     - React-utils (= 0.74.3)
+  - RevenueCat (5.14.0)
   - RNBootSplash (6.1.1):
     - React-Core
   - RNFastImage (8.6.3):
@@ -1300,6 +1303,9 @@ PODS:
     - ReactCommon/turbomodule/core
     - Yoga
   - RNLocalize (3.2.1):
+    - React-Core
+  - RNPurchases (8.5.0):
+    - PurchasesHybridCommon (= 13.14.0)
     - React-Core
   - RNReactNativeHapticFeedback (2.3.3):
     - DoubleConversion
@@ -1507,6 +1513,7 @@ DEPENDENCIES:
   - RNFastImage (from `../node_modules/react-native-fast-image`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNLocalize (from `../node_modules/react-native-localize`)
+  - RNPurchases (from `../node_modules/react-native-purchases`)
   - RNReactNativeHapticFeedback (from `../node_modules/react-native-haptic-feedback`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
@@ -1519,6 +1526,8 @@ SPEC REPOS:
     - libwebp
     - MMKV
     - MMKVCore
+    - PurchasesHybridCommon
+    - RevenueCat
     - SDWebImage
     - SDWebImageWebPCoder
     - SocketRocket
@@ -1651,6 +1660,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-gesture-handler"
   RNLocalize:
     :path: "../node_modules/react-native-localize"
+  RNPurchases:
+    :path: "../node_modules/react-native-purchases"
   RNReactNativeHapticFeedback:
     :path: "../node_modules/react-native-haptic-feedback"
   RNReanimated:
@@ -1674,6 +1685,7 @@ SPEC CHECKSUMS:
   libwebp: 1786c9f4ff8a279e4dac1e8f385004d5fc253009
   MMKV: 817ba1eea17421547e01e087285606eb270a8dcb
   MMKVCore: af055b00e27d88cd92fad301c5fecd1ff9b26dd9
+  PurchasesHybridCommon: ea662e5a551e6fc79c1eb17feb0478c01c59f3e6
   RCT-Folly: 02617c592a293bd6d418e0a88ff4ee1f88329b47
   RCTDeprecation: 4c7eeb42be0b2e95195563c49be08d0b839d22b4
   RCTRequired: d530a0f489699c8500e944fde963102c42dcd0c2
@@ -1727,10 +1739,12 @@ SPEC CHECKSUMS:
   React-runtimescheduler: 0c80752bceb80924cb8a4babc2a8e3ed70d41e87
   React-utils: a06061b3887c702235d2dac92dacbd93e1ea079e
   ReactCommon: f00e436b3925a7ae44dfa294b43ef360fbd8ccc4
+  RevenueCat: 34f4147c8d26d2f3c691be4e3c9f033698e557f2
   RNBootSplash: 5951974a5271183d06d3279bd4b9d7d093f4e2fc
   RNFastImage: 5c9c9fed9c076e521b3f509fe79e790418a544e8
   RNGestureHandler: efed690b8493a00b99654043daeb1335276ac4a2
   RNLocalize: 4f22418187ecd5ca693231093ff1d912d1b3c9bc
+  RNPurchases: a99a9d9139c977811e5db73178ea21d8c12f11ac
   RNReactNativeHapticFeedback: 7c701396d35a0e8863d8d8f97a7273c5f8509b40
   RNReanimated: 45553a3ae29a75a76269595f8554d07d4090e392
   RNScreens: aa943ad421c3ced3ef5a47ede02b0cbfc43a012e

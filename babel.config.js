@@ -14,6 +14,7 @@ module.exports = {
           '@types': './app/types',
           '@routes': './app/routes',
           '@utils': './app/utils',
+          '@services': './app/services',
         },
       },
     ],
