@@ -22,12 +22,10 @@ export const es = {
     rateApp: 'Calificar App',
     contact: 'Contacto',
     clearDataConfirm:
-      '¿Estás seguro? Esto eliminará todos tus favoritos y reiniciará las citas diarias.',
+      '¿Estás seguro? Esto eliminará todos tus favoritos, reiniciará las citas diarias y eliminará los temas comprados.',
     success: 'Éxito',
     dataCleared: 'Los datos se han borrado con éxito',
     confirm: 'Confirmar',
-    buyThemeTitle: 'Nuevo Tema',
-    buyThemeMessage: '¿Listo para liberar este tema meow-nífico?',
     applyThemeTitle: '¿Aplicar Tema?',
     applyThemeMessage: '¿Quieres aplicar este tema ahora?',
     purchaseFailedTitle: 'Compra Fallida',

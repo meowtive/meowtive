@@ -64,7 +64,9 @@ export const ThemeImage = ({ image, index, scrollX }: ThemeImageProps) => {
 
         return true;
       }
-    } catch (error) {
+    } catch (error: any) {
+      if (error?.toString().includes('Purchase was cancelled')) return false;
+
       console.error('Purchase failed: ', error);
 
       Alert.alert(t('purchaseFailedTitle'), t('purchaseFailedMessage'), [
@@ -75,7 +77,7 @@ export const ThemeImage = ({ image, index, scrollX }: ThemeImageProps) => {
     }
   };
 
-  const handleSetTheme = () => {
+  const handleSetTheme = async () => {
     if (FREE_THEMES.includes(index + 1) || isThemePurchased(index + 1)) {
       Alert.alert(
         t('applyThemeTitle'),
@@ -95,23 +97,7 @@ export const ThemeImage = ({ image, index, scrollX }: ThemeImageProps) => {
         { cancelable: false },
       );
     } else {
-      Alert.alert(
-        t('buyThemeTitle'),
-        t('buyThemeMessage'),
-        [
-          {
-            text: t('cancel'),
-            style: 'cancel',
-          },
-          {
-            text: t('confirm'),
-            onPress: async () => {
-              await handlePurchaseTheme(index + 1);
-            },
-          },
-        ],
-        { cancelable: false },
-      );
+      await handlePurchaseTheme(index + 1);
     }
   };
 

@@ -13,6 +13,8 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		187127012D3416E3005F22D7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 187127002D3416E3005F22D7 /* StoreKit.framework */; };
+		188024282D3D7C2C0061CFC4 /* Meowtive.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 188024272D3D7C2C0061CFC4 /* Meowtive.storekit */; };
+		1880242A2D3D7D170061CFC4 /* StoreKitTestCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 188024292D3D7D170061CFC4 /* StoreKitTestCertificate.cer */; };
 		41A449922C701EB9009ABAB7 /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 41A4497E2C701EB9009ABAB7 /* AntDesign.ttf */; };
 		41A449932C701EB9009ABAB7 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 41A4497F2C701EB9009ABAB7 /* Entypo.ttf */; };
 		41A449942C701EB9009ABAB7 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 41A449802C701EB9009ABAB7 /* EvilIcons.ttf */; };
@@ -60,6 +62,8 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = meowtive/main.m; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = meowtive/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		187127002D3416E3005F22D7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		188024272D3D7C2C0061CFC4 /* Meowtive.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; name = Meowtive.storekit; path = meowtive/Meowtive.storekit; sourceTree = "<group>"; };
+		188024292D3D7D170061CFC4 /* StoreKitTestCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = StoreKitTestCertificate.cer; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-meowtive-meowtiveTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-meowtive-meowtiveTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B4392A12AC88292D35C810B /* Pods-meowtive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meowtive.debug.xcconfig"; path = "Target Support Files/Pods-meowtive/Pods-meowtive.debug.xcconfig"; sourceTree = "<group>"; };
 		41A4497E2C701EB9009ABAB7 /* AntDesign.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AntDesign.ttf; sourceTree = "<group>"; };
@@ -142,6 +146,8 @@
 				D57F8244FA5EA944648B467A /* PrivacyInfo.xcprivacy */,
 				D8ABF49A1E474F549EFAE004 /* BootSplash.storyboard */,
 				5CEF7DD4A39341FF8B8413DB /* Colors.xcassets */,
+				188024272D3D7C2C0061CFC4 /* Meowtive.storekit */,
+				188024292D3D7D170061CFC4 /* StoreKitTestCertificate.cer */,
 			);
 			name = meowtive;
 			sourceTree = "<group>";
@@ -325,6 +331,7 @@
 				41A4499F2C701EB9009ABAB7 /* Ionicons.ttf in Resources */,
 				41A449962C701EB9009ABAB7 /* FontAwesome.ttf in Resources */,
 				41A449932C701EB9009ABAB7 /* Entypo.ttf in Resources */,
+				1880242A2D3D7D170061CFC4 /* StoreKitTestCertificate.cer in Resources */,
 				41A4499E2C701EB9009ABAB7 /* Foundation.ttf in Resources */,
 				41A449992C701EB9009ABAB7 /* FontAwesome5_Solid.ttf in Resources */,
 				41A449A02C701EB9009ABAB7 /* MaterialCommunityIcons.ttf in Resources */,
@@ -332,6 +339,7 @@
 				41A449972C701EB9009ABAB7 /* FontAwesome5_Brands.ttf in Resources */,
 				41A449982C701EB9009ABAB7 /* FontAwesome5_Regular.ttf in Resources */,
 				41A4499D2C701EB9009ABAB7 /* Fontisto.ttf in Resources */,
+				188024282D3D7C2C0061CFC4 /* Meowtive.storekit in Resources */,
 				F6001DB677591F2CE947980A /* PrivacyInfo.xcprivacy in Resources */,
 				41A449942C701EB9009ABAB7 /* EvilIcons.ttf in Resources */,
 				41A4499C2C701EB9009ABAB7 /* FontAwesome6_Solid.ttf in Resources */,

@@ -1,0 +1,155 @@
+{
+  "appPolicies" : {
+    "eula" : "",
+    "policies" : [
+      {
+        "locale" : "en_US",
+        "policyText" : "",
+        "policyURL" : ""
+      }
+    ]
+  },
+  "identifier" : "052B3DD5",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "6740461150",
+      "localizations" : [
+        {
+          "description" : "USA",
+          "displayName" : "USA",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "theme_2",
+      "referenceName" : "theme_2",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "6740461430",
+      "localizations" : [
+        {
+          "description" : "USA",
+          "displayName" : "USA",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "theme_3",
+      "referenceName" : "theme_3",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "6740461380",
+      "localizations" : [
+        {
+          "description" : "USA",
+          "displayName" : "USA",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "theme_4",
+      "referenceName" : "theme_4",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "6740461435",
+      "localizations" : [
+        {
+          "description" : "USA",
+          "displayName" : "USA",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "theme_5",
+      "referenceName" : "theme_5",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "6740461333",
+      "localizations" : [
+        {
+          "description" : "USA",
+          "displayName" : "USA",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "theme_6",
+      "referenceName" : "theme_6",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "6740459699",
+    "_developerTeamID" : "5JQ7HGVFR8",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 759004207.54232001,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}

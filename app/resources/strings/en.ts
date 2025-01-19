@@ -22,12 +22,10 @@ export const en = {
     rateApp: 'Rate App',
     contact: 'Contact',
     clearDataConfirm:
-      'Are you sure? This will delete all your favorites and reset daily quotes.',
+      'Are you sure? This will delete all your favorites, reset daily quotes, and remove purchased themes.',
     success: 'Success',
     dataCleared: 'Data has been cleared successfully',
     confirm: 'Confirm',
-    buyThemeTitle: 'New theme',
-    buyThemeMessage: 'Ready to unleash this meow-tastic theme?',
     applyThemeTitle: 'Apply Theme?',
     applyThemeMessage: 'Do you want to apply this theme now?',
     purchaseFailedTitle: 'Purchase Failed',
