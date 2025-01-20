@@ -41,12 +41,13 @@ export const HomeScreen = () => {
   const { styles } = useStyles(stylesheet);
   const { t } = useTranslation();
   const quotes: string[] = t('quotes', { returnObjects: true });
+  const quoteCount = quotes.length;
 
   const index = useMemo(() => {
     const dailyQuoteLastIndex = storage.getNumber('dailyQuoteLastIndex');
     if (dailyQuoteLastIndex) return dailyQuoteLastIndex;
 
-    const newIndex = Math.floor(Math.random() * 300);
+    const newIndex = Math.floor(Math.random() * quoteCount);
     storage.set('dailyQuoteLastIndex', newIndex);
     return newIndex;
   }, []);
@@ -73,7 +74,7 @@ export const HomeScreen = () => {
 
   const updateDailyQuote = () => {
     storage.set('dailyQuoteLastUpdate', new Date().getDate());
-    storage.set('dailyQuoteLastIndex', Math.floor(Math.random() * 300));
+    storage.set('dailyQuoteLastIndex', Math.floor(Math.random() * quoteCount));
   };
 
   const setFavoriteState = () => {
