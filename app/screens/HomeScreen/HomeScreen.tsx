@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 
 import {
   View,
@@ -38,10 +38,18 @@ export const HomeScreen = () => {
   const [theme, setTheme] = useState(storage.getNumber('theme') || 1);
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const quoteImageRef = useRef<QuoteImageRef>(null);
-  const index = setInitalQuoteIndex();
   const { styles } = useStyles(stylesheet);
   const { t } = useTranslation();
   const quotes: string[] = t('quotes', { returnObjects: true });
+
+  const index = useMemo(() => {
+    const dailyQuoteLastIndex = storage.getNumber('dailyQuoteLastIndex');
+    if (dailyQuoteLastIndex) return dailyQuoteLastIndex;
+
+    const newIndex = Math.floor(Math.random() * 300);
+    storage.set('dailyQuoteLastIndex', newIndex);
+    return newIndex;
+  }, []);
 
   const handleGetTheme = () => setTheme(storage.getNumber('theme') || 1);
 
@@ -51,15 +59,6 @@ export const HomeScreen = () => {
     if (imageUri) handleShareQuote(quotes[index], imageUri);
     else handleShareQuote(quotes[index]);
   };
-
-  function setInitalQuoteIndex() {
-    const dailyQuoteLastIndex = storage.getNumber('dailyQuoteLastIndex');
-    if (dailyQuoteLastIndex) {
-      return dailyQuoteLastIndex;
-    } else {
-      return Math.floor(Math.random() * 300);
-    }
-  }
 
   const getDailyQuote = () => {
     const dailyQuoteLastUpdate = storage.getNumber('dailyQuoteLastUpdate');
