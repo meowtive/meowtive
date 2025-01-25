@@ -1,4 +1,4 @@
-package com.meowtive
+package filipirafael.com.meowtive
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
