@@ -28,6 +28,11 @@ export const ThemeImage = ({ image, index, scrollX }: ThemeImageProps) => {
   const { styles } = useStyles(stylesheet);
   const { t } = useTranslation();
 
+  /**
+   * Theme index
+   */
+  const THEME_INDEX = index + 1;
+
   const isThemePurchased = (themeId: number): boolean => {
     const purchasedThemes = storage.getString('purchased_themes');
     const themesArray: string[] = purchasedThemes
@@ -65,6 +70,12 @@ export const ThemeImage = ({ image, index, scrollX }: ThemeImageProps) => {
         return true;
       }
     } catch (error) {
+      if (
+        error instanceof Error &&
+        error.message.includes('Purchase was cancelled')
+      )
+        return false;
+
       console.error('Purchase failed: ', error);
 
       Alert.alert(t('purchaseFailedTitle'), t('purchaseFailedMessage'), [
@@ -75,8 +86,8 @@ export const ThemeImage = ({ image, index, scrollX }: ThemeImageProps) => {
     }
   };
 
-  const handleSetTheme = () => {
-    if (FREE_THEMES.includes(index + 1) || isThemePurchased(index + 1)) {
+  const handleSetTheme = async () => {
+    if (FREE_THEMES.includes(THEME_INDEX) || isThemePurchased(THEME_INDEX)) {
       Alert.alert(
         t('applyThemeTitle'),
         t('applyThemeMessage'),
@@ -88,30 +99,14 @@ export const ThemeImage = ({ image, index, scrollX }: ThemeImageProps) => {
           {
             text: t('confirm'),
             onPress: () => {
-              storage.set('theme', index + 1);
+              storage.set('theme', THEME_INDEX);
             },
           },
         ],
         { cancelable: false },
       );
     } else {
-      Alert.alert(
-        t('buyThemeTitle'),
-        t('buyThemeMessage'),
-        [
-          {
-            text: t('cancel'),
-            style: 'cancel',
-          },
-          {
-            text: t('confirm'),
-            onPress: async () => {
-              await handlePurchaseTheme(index + 1);
-            },
-          },
-        ],
-        { cancelable: false },
-      );
+      await handlePurchaseTheme(THEME_INDEX);
     }
   };
 
@@ -121,14 +116,14 @@ export const ThemeImage = ({ image, index, scrollX }: ThemeImageProps) => {
         {
           scale: interpolate(
             scrollX.value,
-            [index - 1, index, index + 1],
+            [index - 1, index, THEME_INDEX],
             [1.6, 1, 1.6],
           ),
         },
         {
           rotate: `${interpolate(
             scrollX.value,
-            [index - 1, index, index + 1],
+            [index - 1, index, THEME_INDEX],
             [15, 0, -15],
           )}deg`,
         },

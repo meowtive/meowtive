@@ -1,6 +1,7 @@
 apply plugin: "com.android.application"
 apply plugin: "org.jetbrains.kotlin.android"
 apply plugin: "com.facebook.react"
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 
 /**
  * This is the configuration block to customize your React Native Android app.
@@ -74,13 +75,13 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.meowtive"
+    namespace "filipirafael.com.meowtive"
     defaultConfig {
-        applicationId "com.meowtive"
+        applicationId "filipirafael.com.meowtive"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode 4
+        versionName "1.0.4"
     }
     signingConfigs {
         debug {

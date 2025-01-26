@@ -1,4 +1,4 @@
-package com.meowtive
+package filipirafael.com.meowtive
 
 import android.app.Application
 import com.facebook.react.PackageList
