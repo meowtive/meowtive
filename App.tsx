@@ -9,6 +9,7 @@ import { storage } from '@config/storage';
 import { OnboardingContext } from '@config/contexts';
 import Routes from '@routes/Routes';
 import { OnboardingScreen } from '@screens';
+import { ErrorBoundary } from '@components';
 import { configurePurchases } from '@services';
 
 const App = () => {
@@ -25,13 +26,15 @@ const App = () => {
   }, []);
 
   return (
-    <OnboardingContext.Provider
-      value={{ isOnboardingComplete, setIsOnboardingComplete }}>
-      <I18nextProvider i18n={i18next}>
-        <StatusBar barStyle="default" />
-        {isOnboardingComplete ? <Routes /> : <OnboardingScreen />}
-      </I18nextProvider>
-    </OnboardingContext.Provider>
+    <ErrorBoundary>
+      <OnboardingContext.Provider
+        value={{ isOnboardingComplete, setIsOnboardingComplete }}>
+        <I18nextProvider i18n={i18next}>
+          <StatusBar barStyle="default" />
+          {isOnboardingComplete ? <Routes /> : <OnboardingScreen />}
+        </I18nextProvider>
+      </OnboardingContext.Provider>
+    </ErrorBoundary>
   );
 };
 
