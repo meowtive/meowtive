@@ -14,6 +14,7 @@ import { useStyles } from 'react-native-unistyles';
 import { useTranslation } from 'react-i18next';
 import { useFocusEffect } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import FastImage from 'react-native-fast-image';
 
 import { QuoteShareImage, QuoteImageRef } from '@components';
 import { storage } from '@config/storage';
@@ -137,9 +138,9 @@ export const HomeScreen = () => {
   return (
     <>
       <View style={StyleSheet.absoluteFillObject}>
-        <ImageBackground
+        <FastImage
           source={THEME_IMAGES[theme as keyof typeof THEME_IMAGES]}
-          resizeMode="cover"
+          resizeMode={FastImage.resizeMode.cover}
           style={{
             width: SCREEN_DIMENSIONS.width,
             height: SCREEN_DIMENSIONS.height,
