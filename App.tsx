@@ -12,9 +12,9 @@ import { OnboardingScreen } from '@screens';
 import { configurePurchases } from '@services';
 
 const App = () => {
-  const [isOnboardingComplete, setIsOnboardingComplete] = useState(
-    storage.getBoolean('isOnboardingComplete') || false,
-  );
+  const [isOnboardingComplete, setIsOnboardingComplete] = useState(() => {
+    return storage.getBoolean('isOnboardingComplete') ?? false;
+  });
 
   useEffect(() => {
     setTimeout(() => {
