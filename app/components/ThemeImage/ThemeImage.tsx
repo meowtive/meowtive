@@ -19,9 +19,6 @@ type ThemeImageProps = {
   scrollX: SharedValue<number>;
 };
 
-/**
- * Array of free themes
- */
 const FREE_THEMES = [1];
 
 export const ThemeImage = ({ image, index, scrollX }: ThemeImageProps) => {
