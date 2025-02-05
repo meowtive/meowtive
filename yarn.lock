@@ -7025,7 +7025,7 @@ react-native-unistyles@^2.8.4:
   resolved "https://registry.yarnpkg.com/react-native-unistyles/-/react-native-unistyles-2.20.0.tgz#aba9980926d46654466327d55c3d59dcefab3d4d"
   integrity sha512-zyLzY/CGbvEgCHaMfUa50LEJ1xSPN8XOq+2BJEiTMwHquYFn36H5KmwRCHqVqGAdM4l8Z93shNrtbmmn5wpJAg==
 
-react-native-vector-icons@^10.1.0:
+react-native-vector-icons@^10.2.0:
   version "10.2.0"
   resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-10.2.0.tgz#f438f2ca16f7d6be658fd6ec8f0d2b7e2132b91c"
   integrity sha512-n5HGcxUuVaTf9QJPs/W22xQpC2Z9u0nb0KgLPnVltP8vdUvOp6+R26gF55kilP/fV4eL4vsAHUqUjewppJMBOQ==
