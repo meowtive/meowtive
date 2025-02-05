@@ -6,3 +6,4 @@ export * from './OnboardingImages/OnboardingImages';
 export * from './QuoteShareImage/QuoteShareImage';
 export * from './ThemeImage/ThemeImage';
 export * from './ThemeBackdrop/ThemeBackdrop';
+export * from './FavoritesOptionsMenu/FavoritesOptionsMenu';
