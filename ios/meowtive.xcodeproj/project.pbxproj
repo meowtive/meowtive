@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* meowtiveTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* meowtiveTests.m */; };
-		0C80B921A6F3F58F76C31292 /* libPods-meowtive.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-meowtive.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		187127012D3416E3005F22D7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 187127002D3416E3005F22D7 /* StoreKit.framework */; };
+		1EA12C717282C5F37470DC4E /* libPods-meowtive-meowtiveTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F29079EB1E14EC10A2EB3F3 /* libPods-meowtive-meowtiveTests.a */; };
 		41A449922C701EB9009ABAB7 /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 41A4497E2C701EB9009ABAB7 /* AntDesign.ttf */; };
 		41A449932C701EB9009ABAB7 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 41A4497F2C701EB9009ABAB7 /* Entypo.ttf */; };
 		41A449942C701EB9009ABAB7 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 41A449802C701EB9009ABAB7 /* EvilIcons.ttf */; };
@@ -33,8 +33,8 @@
 		41A449A32C701EB9009ABAB7 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 41A4498F2C701EB9009ABAB7 /* SimpleLineIcons.ttf */; };
 		41A449A42C701EB9009ABAB7 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 41A449902C701EB9009ABAB7 /* Zocial.ttf */; };
 		41D6D4FB278044D8978F05B0 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CEF7DD4A39341FF8B8413DB /* Colors.xcassets */; };
+		6C7731756453FA3381615BDA /* libPods-meowtive.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C54BF010911E2C4CFCA8B13D /* libPods-meowtive.a */; };
 		6D9E2A783BAF4BEFAE15E5AC /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8ABF49A1E474F549EFAE004 /* BootSplash.storyboard */; };
-		7699B88040F8A987B510C191 /* libPods-meowtive-meowtiveTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-meowtive-meowtiveTests.a */; };
 		F6001DB677591F2CE947980A /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = D57F8244FA5EA944648B467A /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +52,7 @@
 		00E356EE1AD99517003FC87E /* meowtiveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = meowtiveTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* meowtiveTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = meowtiveTests.m; sourceTree = "<group>"; };
+		0E8E7F640F313F18DA2863C6 /* Pods-meowtive-meowtiveTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meowtive-meowtiveTests.release.xcconfig"; path = "Target Support Files/Pods-meowtive-meowtiveTests/Pods-meowtive-meowtiveTests.release.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* meowtive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = meowtive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = meowtive/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = meowtive/AppDelegate.mm; sourceTree = "<group>"; };
@@ -60,8 +61,8 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = meowtive/main.m; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = meowtive/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		187127002D3416E3005F22D7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		19F6CBCC0A4E27FBF8BF4A61 /* libPods-meowtive-meowtiveTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-meowtive-meowtiveTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3B4392A12AC88292D35C810B /* Pods-meowtive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meowtive.debug.xcconfig"; path = "Target Support Files/Pods-meowtive/Pods-meowtive.debug.xcconfig"; sourceTree = "<group>"; };
+		29F7CF3502AD46B0D5D226F8 /* Pods-meowtive.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meowtive.debug.xcconfig"; path = "Target Support Files/Pods-meowtive/Pods-meowtive.debug.xcconfig"; sourceTree = "<group>"; };
+		3861F78CFD447DCB6898D454 /* Pods-meowtive-meowtiveTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meowtive-meowtiveTests.debug.xcconfig"; path = "Target Support Files/Pods-meowtive-meowtiveTests/Pods-meowtive-meowtiveTests.debug.xcconfig"; sourceTree = "<group>"; };
 		41A4497E2C701EB9009ABAB7 /* AntDesign.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AntDesign.ttf; sourceTree = "<group>"; };
 		41A4497F2C701EB9009ABAB7 /* Entypo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Entypo.ttf; sourceTree = "<group>"; };
 		41A449802C701EB9009ABAB7 /* EvilIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EvilIcons.ttf; sourceTree = "<group>"; };
@@ -81,13 +82,12 @@
 		41A4498E2C701EB9009ABAB7 /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Octicons.ttf; sourceTree = "<group>"; };
 		41A4498F2C701EB9009ABAB7 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SimpleLineIcons.ttf; sourceTree = "<group>"; };
 		41A449902C701EB9009ABAB7 /* Zocial.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Zocial.ttf; sourceTree = "<group>"; };
-		5709B34CF0A7D63546082F79 /* Pods-meowtive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meowtive.release.xcconfig"; path = "Target Support Files/Pods-meowtive/Pods-meowtive.release.xcconfig"; sourceTree = "<group>"; };
-		5B7EB9410499542E8C5724F5 /* Pods-meowtive-meowtiveTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meowtive-meowtiveTests.debug.xcconfig"; path = "Target Support Files/Pods-meowtive-meowtiveTests/Pods-meowtive-meowtiveTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4F29079EB1E14EC10A2EB3F3 /* libPods-meowtive-meowtiveTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-meowtive-meowtiveTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CEF7DD4A39341FF8B8413DB /* Colors.xcassets */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = folder.assetcatalog; name = Colors.xcassets; path = meowtive/Colors.xcassets; sourceTree = "<group>"; };
-		5DCACB8F33CDC322A6C60F78 /* libPods-meowtive.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-meowtive.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		89C6BE57DB24E9ADA2F236DE /* Pods-meowtive-meowtiveTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meowtive-meowtiveTests.release.xcconfig"; path = "Target Support Files/Pods-meowtive-meowtiveTests/Pods-meowtive-meowtiveTests.release.xcconfig"; sourceTree = "<group>"; };
+		C54BF010911E2C4CFCA8B13D /* libPods-meowtive.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-meowtive.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D57F8244FA5EA944648B467A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = meowtive/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		D8ABF49A1E474F549EFAE004 /* BootSplash.storyboard */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = BootSplash.storyboard; path = meowtive/BootSplash.storyboard; sourceTree = "<group>"; };
+		E4F21D3CD55B2359FB7E30F0 /* Pods-meowtive.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meowtive.release.xcconfig"; path = "Target Support Files/Pods-meowtive/Pods-meowtive.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -96,7 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7699B88040F8A987B510C191 /* libPods-meowtive-meowtiveTests.a in Frameworks */,
+				1EA12C717282C5F37470DC4E /* libPods-meowtive-meowtiveTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,8 +104,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C80B921A6F3F58F76C31292 /* libPods-meowtive.a in Frameworks */,
 				187127012D3416E3005F22D7 /* StoreKit.framework in Frameworks */,
+				6C7731756453FA3381615BDA /* libPods-meowtive.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,8 +151,8 @@
 			children = (
 				187127002D3416E3005F22D7 /* StoreKit.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				5DCACB8F33CDC322A6C60F78 /* libPods-meowtive.a */,
-				19F6CBCC0A4E27FBF8BF4A61 /* libPods-meowtive-meowtiveTests.a */,
+				C54BF010911E2C4CFCA8B13D /* libPods-meowtive.a */,
+				4F29079EB1E14EC10A2EB3F3 /* libPods-meowtive-meowtiveTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -218,10 +218,10 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3B4392A12AC88292D35C810B /* Pods-meowtive.debug.xcconfig */,
-				5709B34CF0A7D63546082F79 /* Pods-meowtive.release.xcconfig */,
-				5B7EB9410499542E8C5724F5 /* Pods-meowtive-meowtiveTests.debug.xcconfig */,
-				89C6BE57DB24E9ADA2F236DE /* Pods-meowtive-meowtiveTests.release.xcconfig */,
+				29F7CF3502AD46B0D5D226F8 /* Pods-meowtive.debug.xcconfig */,
+				E4F21D3CD55B2359FB7E30F0 /* Pods-meowtive.release.xcconfig */,
+				3861F78CFD447DCB6898D454 /* Pods-meowtive-meowtiveTests.debug.xcconfig */,
+				0E8E7F640F313F18DA2863C6 /* Pods-meowtive-meowtiveTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -233,12 +233,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "meowtiveTests" */;
 			buildPhases = (
-				A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */,
+				0265E3327128363E7838669B /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */,
-				F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */,
+				0FDFFF948DDC7FEAA4635390 /* [CP] Embed Pods Frameworks */,
+				678BB068F4A2AAB675207B78 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -254,13 +254,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "meowtive" */;
 			buildPhases = (
-				C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */,
+				2663EEA200C5BD5E88B4C2B4 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
-				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
+				433EF380D915A987CC54DE89 /* [CP] Embed Pods Frameworks */,
+				12F1AC72D64D6FC2653272BB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -365,24 +365,7 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"$REACT_NATIVE_PATH/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"$REACT_NATIVE_PATH/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-meowtive/Pods-meowtive-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-meowtive/Pods-meowtive-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-meowtive/Pods-meowtive-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */ = {
+		0265E3327128363E7838669B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -404,7 +387,41 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */ = {
+		0FDFFF948DDC7FEAA4635390 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-meowtive-meowtiveTests/Pods-meowtive-meowtiveTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-meowtive-meowtiveTests/Pods-meowtive-meowtiveTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-meowtive-meowtiveTests/Pods-meowtive-meowtiveTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		12F1AC72D64D6FC2653272BB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-meowtive/Pods-meowtive-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-meowtive/Pods-meowtive-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-meowtive/Pods-meowtive-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2663EEA200C5BD5E88B4C2B4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -426,41 +443,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */ = {
+		433EF380D915A987CC54DE89 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-meowtive-meowtiveTests/Pods-meowtive-meowtiveTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-meowtive/Pods-meowtive-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-meowtive-meowtiveTests/Pods-meowtive-meowtiveTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-meowtive/Pods-meowtive-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-meowtive-meowtiveTests/Pods-meowtive-meowtiveTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-meowtive/Pods-meowtive-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E235C05ADACE081382539298 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-meowtive/Pods-meowtive-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-meowtive/Pods-meowtive-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-meowtive/Pods-meowtive-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */ = {
+		678BB068F4A2AAB675207B78 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -510,7 +510,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-meowtive-meowtiveTests.debug.xcconfig */;
+			baseConfigurationReference = 3861F78CFD447DCB6898D454 /* Pods-meowtive-meowtiveTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -518,7 +518,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = meowtiveTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -537,12 +537,12 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-meowtive-meowtiveTests.release.xcconfig */;
+			baseConfigurationReference = 0E8E7F640F313F18DA2863C6 /* Pods-meowtive-meowtiveTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = meowtiveTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -561,7 +561,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-meowtive.debug.xcconfig */;
+			baseConfigurationReference = 29F7CF3502AD46B0D5D226F8 /* Pods-meowtive.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -570,6 +570,7 @@
 				ENABLE_BITCODE = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = meowtive/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -595,7 +596,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-meowtive.release.xcconfig */;
+			baseConfigurationReference = E4F21D3CD55B2359FB7E30F0 /* Pods-meowtive.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -603,6 +604,7 @@
 				DEVELOPMENT_TEAM = 5JQ7HGVFR8;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = meowtive/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -677,7 +679,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD = "";
 				LDPLUSPLUS = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -699,9 +701,13 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				USE_HERMES = true;
 			};
 			name = Debug;
@@ -751,7 +757,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD = "";
 				LDPLUSPLUS = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -772,7 +778,10 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;

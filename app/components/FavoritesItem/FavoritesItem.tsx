@@ -1,21 +1,15 @@
-import { useRef, MutableRefObject } from 'react';
-
+import { useRef } from 'react';
 import {
   View,
   Text,
   ViewToken,
   TouchableOpacity,
   Platform,
-  UIManager,
-  findNodeHandle,
   ActionSheetIOS,
 } from 'react-native';
-
 import { useStyles } from 'react-native-unistyles';
 import { useTranslation } from 'react-i18next';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
 import Animated, {
   useAnimatedStyle,
   withTiming,
@@ -23,11 +17,11 @@ import Animated, {
   FadeIn,
   FadeOut,
 } from 'react-native-reanimated';
-
 import { QuoteShareImage, QuoteImageRef } from '@components';
 import { handleShareQuote } from '@utils/socialShare';
 import { QuoteData } from '@config/constants';
 import { stylesheet } from './styles';
+import { FavoritesOptionsMenu } from '@components';
 
 type FavoritesItemProps = {
   item: QuoteData;
@@ -42,38 +36,20 @@ export const FavoritesItem = ({
   isScrolledToBottom,
   handleRemoveQuote,
 }: FavoritesItemProps) => {
-  const optionsRef = useRef(null);
   const quoteImageRef = useRef<QuoteImageRef>(null);
   const { styles } = useStyles(stylesheet);
   const { t } = useTranslation();
 
   const handleShare = async () => {
     const imageUri = await quoteImageRef.current?.getCapture();
-
-    if (imageUri) handleShareQuote(item.text, imageUri);
-    else handleShareQuote(item.text);
+    if (imageUri) {
+      handleShareQuote(item.text, imageUri);
+    } else {
+      handleShareQuote(item.text);
+    }
   };
 
-  const listItemStyle = useAnimatedStyle(() => {
-    if (!isScrolledToBottom) return {};
-
-    const isVisible = Boolean(
-      viewableItems.value
-        .filter(item => item.isViewable)
-        .find(viewableItem => viewableItem.item === item),
-    );
-
-    return {
-      opacity: withTiming(isVisible ? 1 : 0),
-      transform: [
-        {
-          scale: withTiming(isVisible ? 1 : 0.6),
-        },
-      ],
-    };
-  });
-
-  const showOptions = (ref: MutableRefObject<null>) => {
+  const showOptions = () => {
     if (Platform.OS === 'ios') {
       ActionSheetIOS.showActionSheetWithOptions(
         {
@@ -82,25 +58,28 @@ export const FavoritesItem = ({
           cancelButtonIndex: 1,
         },
         buttonIndex => {
-          if (buttonIndex === 0) handleRemoveQuote();
-        },
-      );
-    } else if (UIManager.showPopupMenu) {
-      const handle = findNodeHandle(ref.current);
-      if (!handle) return;
-
-      UIManager.setLayoutAnimationEnabledExperimental?.(true);
-
-      UIManager?.showPopupMenu(
-        handle,
-        [t('delete')],
-        () => {},
-        (_, buttonIndex) => {
-          if (buttonIndex === 0) handleRemoveQuote();
+          if (buttonIndex === 0) {
+            handleRemoveQuote();
+          }
         },
       );
     }
   };
+
+  const listItemStyle = useAnimatedStyle(() => {
+    if (!isScrolledToBottom) {
+      return {};
+    }
+    const isVisible = Boolean(
+      viewableItems.value
+        .filter(item => item.isViewable)
+        .find(viewableItem => viewableItem.item === item),
+    );
+    return {
+      opacity: withTiming(isVisible ? 1 : 0),
+      transform: [{ scale: withTiming(isVisible ? 1 : 0.6) }],
+    };
+  });
 
   return (
     <Animated.View
@@ -109,7 +88,6 @@ export const FavoritesItem = ({
       exiting={FadeOut.duration(300)}>
       <View style={styles.quote}>
         <Text style={styles.quoteText}>{t(item.text)}</Text>
-
         <View style={styles.wrapper}>
           <Text style={styles.quoteDate}>
             {new Date(item.savedAt).toLocaleDateString('en-US', {
@@ -118,24 +96,20 @@ export const FavoritesItem = ({
               year: 'numeric',
             })}
           </Text>
-
           <View style={styles.icons}>
             <TouchableOpacity onPress={handleShare}>
               <Ionicons name="share-outline" color="#000000" size={22} />
             </TouchableOpacity>
-            <TouchableOpacity
-              ref={optionsRef}
-              onPress={() => showOptions(optionsRef)}>
-              <MaterialCommunityIcons
-                name="dots-vertical"
-                color="#000000"
-                size={22}
-              />
-            </TouchableOpacity>
+            {Platform.OS === 'android' ? (
+              <FavoritesOptionsMenu onDelete={handleRemoveQuote} />
+            ) : (
+              <TouchableOpacity onPress={showOptions}>
+                <Ionicons name="ellipsis-vertical" color="#000000" size={22} />
+              </TouchableOpacity>
+            )}
           </View>
         </View>
       </View>
-
       <QuoteShareImage ref={quoteImageRef} quote={item.text} />
     </Animated.View>
   );
