@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback, Fragment } from 'react';
 
 import {
   View,
@@ -6,7 +6,6 @@ import {
   Text,
   Animated,
   TouchableOpacity,
-  ImageBackground,
   StyleSheet,
 } from 'react-native';
 
@@ -22,9 +21,6 @@ import { QuoteData, SCREEN_DIMENSIONS } from '@config/constants';
 import { handleShareQuote } from '@utils/socialShare';
 import { stylesheet } from './styles';
 
-/**
- * Array of theme images.
- */
 const THEME_IMAGES = {
   1: require('../../resources/assets/images/theme-1.png'),
   2: require('../../resources/assets/images/theme-2.png'),
@@ -41,71 +37,78 @@ export const HomeScreen = () => {
   const quoteImageRef = useRef<QuoteImageRef>(null);
   const { styles } = useStyles(stylesheet);
   const { t } = useTranslation();
-  const quotes: string[] = t('quotes', { returnObjects: true });
+  const quotes = t('quotes', { returnObjects: true }) as string[];
 
-  const [quoteIndex] = useState(() => {
-    const lastUpdate = storage.getNumber('dailyQuoteLastUpdate');
+  const updateDailyQuote = useCallback(() => {
+    const newIndex = Math.floor(Math.random() * 300);
+    storage.set('dailyQuoteLastUpdate', new Date().getDate());
+    storage.set('dailyQuoteLastIndex', newIndex);
+    return newIndex;
+  }, []);
+
+  const setInitialQuoteIndex = useCallback(() => {
+    const dailyQuoteLastIndex = storage.getNumber('dailyQuoteLastIndex');
+    const dailyQuoteLastUpdate = storage.getNumber('dailyQuoteLastUpdate');
     const today = new Date().getDate();
 
-    if (lastUpdate === today) {
-      return storage.getNumber('dailyQuoteLastIndex') || 0;
+    if (dailyQuoteLastUpdate === today) {
+      return dailyQuoteLastIndex || updateDailyQuote();
+    } else {
+      return updateDailyQuote();
     }
+  }, [updateDailyQuote]);
 
-    const newIndex = Math.floor(Math.random() * quotes.length);
-    storage.set('dailyQuoteLastIndex', newIndex);
-    storage.set('dailyQuoteLastUpdate', today);
-    return newIndex;
-  });
+  const index = setInitialQuoteIndex();
+  const quote = quotes[index];
 
   const handleGetTheme = () => setTheme(storage.getNumber('theme') || 1);
 
   const handleShare = async () => {
     const imageUri = await quoteImageRef.current?.getCapture();
 
-    if (imageUri) handleShareQuote(quotes[quoteIndex], imageUri);
-    else handleShareQuote(quotes[quoteIndex]);
+    if (imageUri) {
+      handleShareQuote(quote, imageUri);
+    } else {
+      handleShareQuote(quote);
+    }
+  };
+
+  const getDailyQuote = () => {
+    const dailyQuoteLastUpdate = storage.getNumber('dailyQuoteLastUpdate');
+    const today = new Date().getDate();
+
+    if (dailyQuoteLastUpdate === today) {
+      return false;
+    } else {
+      updateDailyQuote();
+    }
   };
 
   const setFavoriteState = () => {
-    const favorites = storage.getString('favorites');
-    const favoritesArray: QuoteData[] = favorites ? JSON.parse(favorites) : [];
+    const favorites = storage.getString('favorites') ?? '[]';
+    const favoritesArray: QuoteData[] = JSON.parse(favorites);
 
-    const isQuoteFavorited = favoritesArray.some(
-      favorite => favorite.text === quotes[quoteIndex],
-    );
-
-    if (isQuoteFavorited) setIsQuoteFavorited(true);
-    else setIsQuoteFavorited(false);
+    setIsQuoteFavorited(favoritesArray.some(fav => fav.text === quote));
   };
 
   const handleFavoriteQuote = () => {
-    const favorites = storage.getString('favorites');
-    let favoritesArray: QuoteData[] = favorites ? JSON.parse(favorites) : [];
+    try {
+      const favorites = storage.getString('favorites') ?? '[]';
+      let favoritesArray: QuoteData[] = JSON.parse(favorites);
 
-    if (isQuoteFavorited) {
-      setIsQuoteFavorited(false);
+      const isFavorited = favoritesArray.some(fav => fav.text === quote);
 
-      const updatedFavoritesArray = favoritesArray.filter(
-        item => item.text !== quotes[quoteIndex],
-      );
+      favoritesArray = isFavorited
+        ? favoritesArray.filter(item => item.text !== quote)
+        : [
+            ...favoritesArray,
+            { text: quote, savedAt: new Date().toISOString() },
+          ];
 
-      storage.set('favorites', JSON.stringify(updatedFavoritesArray));
-    } else {
-      setIsQuoteFavorited(true);
-
-      const quoteExists = favoritesArray.some(
-        favorite => favorite.text === quotes[quoteIndex],
-      );
-
-      if (!quoteExists) {
-        const newQuote: QuoteData = {
-          text: quotes[quoteIndex],
-          savedAt: new Date().toISOString(),
-        };
-
-        favoritesArray.push(newQuote);
-        storage.set('favorites', JSON.stringify(favoritesArray));
-      }
+      storage.set('favorites', JSON.stringify(favoritesArray));
+      setIsQuoteFavorited(!isFavorited);
+    } catch (error) {
+      console.error('Error handling favorites:', error);
     }
   };
 
@@ -117,16 +120,10 @@ export const HomeScreen = () => {
     }).start();
   }, [fadeAnim]);
 
+  /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
-    const lastUpdate = storage.getNumber('dailyQuoteLastUpdate');
-    const today = new Date().getDate();
-
-    if (lastUpdate !== today) {
-      const newIndex = Math.floor(Math.random() * quotes.length);
-      storage.set('dailyQuoteLastIndex', newIndex);
-      storage.set('dailyQuoteLastUpdate', today);
-    }
-  }, [quotes.length]);
+    getDailyQuote();
+  }, []);
 
   useFocusEffect(
     useCallback(() => {
@@ -136,7 +133,7 @@ export const HomeScreen = () => {
   );
 
   return (
-    <>
+    <Fragment>
       <View style={StyleSheet.absoluteFillObject}>
         <FastImage
           source={THEME_IMAGES[theme as keyof typeof THEME_IMAGES]}
@@ -156,7 +153,7 @@ export const HomeScreen = () => {
         </View>
 
         <Animated.View style={[{ opacity: fadeAnim }, styles.card]}>
-          <Text style={styles.quote}>{quotes[quoteIndex]}</Text>
+          <Text style={styles.quote}>{quote}</Text>
 
           <View style={styles.buttons}>
             <TouchableOpacity onPress={handleShare}>
@@ -173,8 +170,8 @@ export const HomeScreen = () => {
           </View>
         </Animated.View>
 
-        <QuoteShareImage ref={quoteImageRef} quote={quotes[quoteIndex]} />
+        <QuoteShareImage ref={quoteImageRef} quote={quote} />
       </SafeAreaView>
-    </>
+    </Fragment>
   );
 };
