@@ -7,3 +7,4 @@ export * from './QuoteShareImage/QuoteShareImage';
 export * from './ThemeImage/ThemeImage';
 export * from './ThemeBackdrop/ThemeBackdrop';
 export * from './ErrorBoundary/ErrorBoundary';
+export * from './FavoritesOptionsMenu/FavoritesOptionsMenu';

@@ -3,6 +3,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
+      "react": [ "./node_modules/@types/react" ],
       "@config": ["app/config"],
       "@config/*": ["app/config/*"],
       "@resources": ["app/resources"],

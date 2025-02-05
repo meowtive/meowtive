@@ -11,11 +11,12 @@ import Routes from '@routes/Routes';
 import { OnboardingScreen } from '@screens';
 import { ErrorBoundary } from '@components';
 import { configurePurchases } from '@services';
+import { PaperProvider } from 'react-native-paper';
 
 const App = () => {
-  const [isOnboardingComplete, setIsOnboardingComplete] = useState(
-    storage.getBoolean('isOnboardingComplete') || false,
-  );
+  const [isOnboardingComplete, setIsOnboardingComplete] = useState(() => {
+    return storage.getBoolean('isOnboardingComplete') ?? false;
+  });
 
   useEffect(() => {
     setTimeout(() => {
@@ -27,13 +28,15 @@ const App = () => {
 
   return (
     <ErrorBoundary>
-      <OnboardingContext.Provider
-        value={{ isOnboardingComplete, setIsOnboardingComplete }}>
-        <I18nextProvider i18n={i18next}>
-          <StatusBar barStyle="default" />
-          {isOnboardingComplete ? <Routes /> : <OnboardingScreen />}
-        </I18nextProvider>
-      </OnboardingContext.Provider>
+      <PaperProvider>
+        <OnboardingContext.Provider
+          value={{ isOnboardingComplete, setIsOnboardingComplete }}>
+          <I18nextProvider i18n={i18next}>
+            <StatusBar barStyle="default" />
+            {isOnboardingComplete ? <Routes /> : <OnboardingScreen />}
+          </I18nextProvider>
+        </OnboardingContext.Provider>
+      </PaperProvider>
     </ErrorBoundary>
   );
 };
