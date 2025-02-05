@@ -29,6 +29,7 @@ const THEMES: ThemeProps[] = [
 
 const IMAGE_WIDTH = SCREEN_DIMENSIONS.width * 0.7;
 const SPACING = 12;
+const SNAP_INTERVAL = IMAGE_WIDTH + SPACING;
 
 export const ThemeScreen = () => {
   const flatListRef = useRef<Animated.FlatList<ThemeProps>>(null);
@@ -36,7 +37,7 @@ export const ThemeScreen = () => {
   const scrollX = useSharedValue(0);
 
   const onScroll = useAnimatedScrollHandler(e => {
-    scrollX.value = e.contentOffset.x / (IMAGE_WIDTH + SPACING);
+    scrollX.value = e.contentOffset.x / SNAP_INTERVAL;
   });
 
   useFocusEffect(
@@ -70,7 +71,7 @@ export const ThemeScreen = () => {
         horizontal
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.contentContainer}
-        snapToInterval={IMAGE_WIDTH + SPACING}
+        snapToInterval={SNAP_INTERVAL}
         decelerationRate={'fast'}
         style={styles.flatList}
         onScroll={onScroll}
