@@ -41,6 +41,7 @@ export const en = {
     errorBoundaryTitle: 'Oops!',
     errorBoundaryDescription: 'Something went wrong.',
     errorBoundaryInstruction: 'Please reload the app.',
+    errorBoundaryButton: 'Restart',
     quotes: [
       '"Start each day with a purrpose, and end it with a purr of satisfaction."',
       '"The journey to your dreams is like a cat\'s nap—quiet, peaceful, and filled with unexpected leaps."',

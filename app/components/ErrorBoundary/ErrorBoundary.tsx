@@ -11,7 +11,7 @@ import { TFunction } from 'i18next'; // Importa o tipo TFunction
 
 interface Props {
   children: ReactNode;
-  translation: TFunction;
+  t: TFunction;
 }
 
 interface State {
@@ -31,7 +31,7 @@ export class ErrorBoundary extends React.Component<Props, State> {
   }
 
   render() {
-    const { translation } = this.props;
+    const { t } = this.props;
     if (this.state.hasError) {
       return (
         <SafeAreaView style={styles.container}>
@@ -54,7 +54,7 @@ export class ErrorBoundary extends React.Component<Props, State> {
             onPress={restartApp}
             activeOpacity={0.7}>
             <Text style={styles.restartButtonText}>
-              {translation('errorBoundaryButton')}
+              {t('errorBoundaryButton')}
             </Text>
           </TouchableOpacity>
         </SafeAreaView>
