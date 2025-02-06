@@ -18,7 +18,7 @@ import FastImage from 'react-native-fast-image';
 import { QuoteShareImage, QuoteImageRef } from '@components';
 import { storage } from '@config/storage';
 import { QuoteData, SCREEN_DIMENSIONS } from '@config/constants';
-import { handleShareQuote } from '@utils/socialShare';
+import { handleShareQuote } from '@libs/socialShare';
 import { stylesheet } from './styles';
 
 const THEME_IMAGES = {

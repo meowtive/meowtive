@@ -18,7 +18,7 @@ import Animated, {
   FadeOut,
 } from 'react-native-reanimated';
 import { QuoteShareImage, QuoteImageRef } from '@components';
-import { handleShareQuote } from '@utils/socialShare';
+import { handleShareQuote } from '@libs/socialShare';
 import { QuoteData } from '@config/constants';
 import { stylesheet } from './styles';
 import { FavoritesOptionsMenu } from '@components';
