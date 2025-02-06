@@ -5,7 +5,6 @@ import {
   TouchableOpacity,
   ScrollView,
   Linking,
-  Platform,
   Alert,
 } from 'react-native';
 
@@ -15,6 +14,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import { storage } from '@config/storage';
 import { stylesheet } from './styles';
+import { isAndroid } from '@config/platform';
 
 export const ProfileScreen = () => {
   const { styles } = useStyles(stylesheet);
@@ -22,7 +22,7 @@ export const ProfileScreen = () => {
 
   const openSystemLanguageSettings = async () => {
     try {
-      if (Platform.OS === 'android') {
+      if (isAndroid) {
         await Linking.openURL('android-settings://');
       } else {
         await Linking.openURL('App-prefs:root=General&path=INTERNATIONAL');
