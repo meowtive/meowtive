@@ -17,7 +17,7 @@ import { HAPTIC_FEEDBACK_OPTIONS, SCREEN_DIMENSIONS } from '@config/constants';
 
 import { ONBOARDING_TOTAL_STEPS } from '@screens';
 import { storage } from '@config/storage';
-import { OnboardingContext } from '@config/contexts';
+import { OnboardingContext } from '@contexts/onboardingContext';
 import { stylesheet } from './styles';
 
 type OnboardingButtonProps = {
@@ -37,13 +37,17 @@ export const OnboardingButton = ({
   const { t } = useTranslation();
 
   const handleSetOnboarding = async () => {
-    if (loading) return;
+    if (loading) {
+      return;
+    }
 
     if (step < ONBOARDING_TOTAL_STEPS) {
       setLoading(true);
       setStep(prevState => prevState + 1);
 
-      if (step === 2) mask.value = 0;
+      if (step === 2) {
+        mask.value = 0;
+      }
       mask.value = withTiming(SCREEN_DIMENSIONS.height, { duration: 1500 });
       setTimeout(() => setLoading(false), 1000);
     } else {
