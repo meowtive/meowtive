@@ -6,7 +6,7 @@ import RNBootSplash from 'react-native-bootsplash';
 
 import i18next from '@config/i18n';
 import { storage } from '@config/storage';
-import { OnboardingContext } from '@config/contexts';
+import { OnboardingContext } from '@contexts/onboardingContext';
 import Routes from '@routes/Routes';
 import { OnboardingScreen } from '@screens';
 import { ErrorBoundary } from '@components';
