@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { StatusBar } from 'react-native';
 
-import { I18nextProvider } from 'react-i18next';
+import { I18nextProvider, useTranslation } from 'react-i18next';
 import RNBootSplash from 'react-native-bootsplash';
 
 import i18next from '@config/i18n';
@@ -18,6 +18,7 @@ const App = () => {
     return storage.getBoolean('isOnboardingComplete') ?? false;
   });
 
+  const { t: translateText } = useTranslation();
   useEffect(() => {
     setTimeout(() => {
       RNBootSplash.hide({ fade: true });
@@ -27,7 +28,7 @@ const App = () => {
   }, []);
 
   return (
-    <ErrorBoundary>
+    <ErrorBoundary t={translateText}>
       <PaperProvider>
         <OnboardingContext.Provider
           value={{ isOnboardingComplete, setIsOnboardingComplete }}>

@@ -1,12 +1,15 @@
 import React, { ReactNode } from 'react';
-import { Text, SafeAreaView, StyleSheet } from 'react-native';
-
-import i18next from 'i18next';
+import { Text, SafeAreaView, StyleSheet, TouchableOpacity } from 'react-native';
 
 import { isAndroid } from '@config/platform';
+import FastImage from 'react-native-fast-image';
+import { SCREEN_DIMENSIONS } from '@config/constants';
+import { restartApp } from '@utils/restartApp';
+import { TFunction } from 'i18next';
 
 interface Props {
   children: ReactNode;
+  t: TFunction;
 }
 
 interface State {
@@ -26,18 +29,28 @@ export class ErrorBoundary extends React.Component<Props, State> {
   }
 
   render() {
+    const { t } = this.props;
     if (this.state.hasError) {
       return (
         <SafeAreaView style={styles.container}>
-          <Text style={styles.errorTitle}>
-            {i18next.t('errorBoundaryTitle')}
-          </Text>
-          <Text style={styles.errorText}>
-            {i18next.t('errorBoundaryDescription')}
-          </Text>
+          <FastImage
+            source={require('../../resources/assets/images/favorites-empty-list.png')}
+            style={styles.image}
+            resizeMode={FastImage.resizeMode.contain}
+          />
+          <Text style={styles.errorTitle}>{t('errorBoundaryTitle')}</Text>
+          <Text style={styles.errorText}>{t('errorBoundaryDescription')}</Text>
           <Text style={styles.errorInstruction}>
-            {i18next.t('errorBoundaryInstruction')}
+            {t('errorBoundaryInstruction')}
           </Text>
+          <TouchableOpacity
+            style={styles.restartButton}
+            onPress={restartApp}
+            activeOpacity={0.7}>
+            <Text style={styles.restartButtonText}>
+              {t('errorBoundaryButton')}
+            </Text>
+          </TouchableOpacity>
         </SafeAreaView>
       );
     }
@@ -53,6 +66,33 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingVertical: isAndroid ? 40 : 20,
     backgroundColor: '#FEB261',
+  },
+  image: {
+    width: '100%',
+    height: SCREEN_DIMENSIONS.height / 2.5,
+    marginTop: 5,
+  },
+  restartButton: {
+    marginTop: 50,
+    backgroundColor: '#EF7E06',
+    borderRadius: 100,
+    width: '70%',
+    height: 64,
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 3,
+  },
+  restartButtonText: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: 'bold',
   },
   errorTitle: {
     fontSize: 32,
