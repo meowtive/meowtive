@@ -6,9 +6,10 @@ import RNBootSplash from 'react-native-bootsplash';
 
 import i18next from '@config/i18n';
 import { storage } from '@config/storage';
-import { OnboardingContext } from '@config/contexts';
+import { OnboardingContext } from '@contexts/onboardingContext';
 import Routes from '@routes/Routes';
 import { OnboardingScreen } from '@screens';
+import { ErrorBoundary } from '@components';
 import { configurePurchases } from '@services';
 import { PaperProvider } from 'react-native-paper';
 
@@ -26,15 +27,17 @@ const App = () => {
   }, []);
 
   return (
-    <PaperProvider>
-      <OnboardingContext.Provider
-        value={{ isOnboardingComplete, setIsOnboardingComplete }}>
-        <I18nextProvider i18n={i18next}>
-          <StatusBar barStyle="default" />
-          {isOnboardingComplete ? <Routes /> : <OnboardingScreen />}
-        </I18nextProvider>
-      </OnboardingContext.Provider>
-    </PaperProvider>
+    <ErrorBoundary>
+      <PaperProvider>
+        <OnboardingContext.Provider
+          value={{ isOnboardingComplete, setIsOnboardingComplete }}>
+          <I18nextProvider i18n={i18next}>
+            <StatusBar barStyle="default" />
+            {isOnboardingComplete ? <Routes /> : <OnboardingScreen />}
+          </I18nextProvider>
+        </OnboardingContext.Provider>
+      </PaperProvider>
+    </ErrorBoundary>
   );
 };
 

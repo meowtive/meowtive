@@ -7045,11 +7045,6 @@ react-native-share@^12.0.3:
   resolved "https://registry.yarnpkg.com/react-native-share/-/react-native-share-12.0.3.tgz#1f2d6fc0c8f1e7ec9e75e0b4915bee78e06dce5b"
   integrity sha512-Bg96AjouSbcpdlI/AzWXMBwpjyWcm4NvGr49mSF1cz8aw8E1sMXwpsHa6I841SJML8Im6sRN3aXnK+/QManrtQ==
 
-react-native-sound-player@^0.14.3:
-  version "0.14.3"
-  resolved "https://registry.yarnpkg.com/react-native-sound-player/-/react-native-sound-player-0.14.3.tgz#cc45bc515531e06b3c4f931d5cb3a6afcc591c26"
-  integrity sha512-I5VeG8YuwTTMX6CPkZfNL6lWay6GmR3HzuxXjhhpUKHV5K2XWXKJ+YKJAz6dBnJoNshl4EQOo4ox8bQD6/+zPA==
-
 react-native-unistyles@^2.8.4:
   version "2.20.0"
   resolved "https://registry.yarnpkg.com/react-native-unistyles/-/react-native-unistyles-2.20.0.tgz#aba9980926d46654466327d55c3d59dcefab3d4d"

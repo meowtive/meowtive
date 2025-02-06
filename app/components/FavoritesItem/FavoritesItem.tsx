@@ -4,7 +4,6 @@ import {
   Text,
   ViewToken,
   TouchableOpacity,
-  Platform,
   ActionSheetIOS,
 } from 'react-native';
 import { useStyles } from 'react-native-unistyles';
@@ -18,10 +17,11 @@ import Animated, {
   FadeOut,
 } from 'react-native-reanimated';
 import { QuoteShareImage, QuoteImageRef } from '@components';
-import { handleShareQuote } from '@utils/socialShare';
+import { handleShareQuote } from '@libs/socialShare';
 import { QuoteData } from '@config/constants';
 import { stylesheet } from './styles';
 import { FavoritesOptionsMenu } from '@components';
+import { isAndroid, isIOS } from '@config/platform';
 
 type FavoritesItemProps = {
   item: QuoteData;
@@ -50,7 +50,7 @@ export const FavoritesItem = ({
   };
 
   const showOptions = () => {
-    if (Platform.OS === 'ios') {
+    if (isIOS) {
       ActionSheetIOS.showActionSheetWithOptions(
         {
           options: [t('delete'), t('cancel')],
@@ -100,7 +100,7 @@ export const FavoritesItem = ({
             <TouchableOpacity onPress={handleShare}>
               <Ionicons name="share-outline" color="#000000" size={22} />
             </TouchableOpacity>
-            {Platform.OS === 'android' ? (
+            {isAndroid ? (
               <FavoritesOptionsMenu onDelete={handleRemoveQuote} />
             ) : (
               <TouchableOpacity onPress={showOptions}>

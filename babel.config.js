@@ -16,6 +16,8 @@ module.exports = {
           '@routes': './app/routes',
           '@utils': './app/utils',
           '@services': './app/services',
+          '@libs': './app/libs',
+          '@contexts': './app/contexts',
         },
       },
     ],

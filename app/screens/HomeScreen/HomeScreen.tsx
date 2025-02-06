@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback, Fragment } from 'react';
 
 import {
   View,
@@ -6,7 +6,6 @@ import {
   Text,
   Animated,
   TouchableOpacity,
-  ImageBackground,
   StyleSheet,
 } from 'react-native';
 
@@ -14,16 +13,14 @@ import { useStyles } from 'react-native-unistyles';
 import { useTranslation } from 'react-i18next';
 import { useFocusEffect } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import FastImage from 'react-native-fast-image';
 
 import { QuoteShareImage, QuoteImageRef } from '@components';
 import { storage } from '@config/storage';
 import { QuoteData, SCREEN_DIMENSIONS } from '@config/constants';
-import { handleShareQuote } from '@utils/socialShare';
+import { handleShareQuote } from '@libs/socialShare';
 import { stylesheet } from './styles';
 
-/**
- * Array of theme images.
- */
 const THEME_IMAGES = {
   1: require('../../resources/assets/images/theme-1.png'),
   2: require('../../resources/assets/images/theme-2.png'),
@@ -42,18 +39,24 @@ export const HomeScreen = () => {
   const { t } = useTranslation();
   const quotes = t('quotes', { returnObjects: true }) as string[];
 
+  const updateDailyQuote = useCallback(() => {
+    const newIndex = Math.floor(Math.random() * 300);
+    storage.set('dailyQuoteLastUpdate', new Date().getDate());
+    storage.set('dailyQuoteLastIndex', newIndex);
+    return newIndex;
+  }, []);
+
   const setInitialQuoteIndex = useCallback(() => {
     const dailyQuoteLastIndex = storage.getNumber('dailyQuoteLastIndex');
     const dailyQuoteLastUpdate = storage.getNumber('dailyQuoteLastUpdate');
     const today = new Date().getDate();
 
     if (dailyQuoteLastUpdate === today) {
-      return dailyQuoteLastIndex || Math.floor(Math.random() * 300);
+      return dailyQuoteLastIndex || updateDailyQuote();
     } else {
-      updateDailyQuote();
-      return Math.floor(Math.random() * 300);
+      return updateDailyQuote();
     }
-  }, []);
+  }, [updateDailyQuote]);
 
   const index = setInitialQuoteIndex();
   const quote = quotes[index];
@@ -70,11 +73,6 @@ export const HomeScreen = () => {
     }
   };
 
-  const updateDailyQuote = () => {
-    storage.set('dailyQuoteLastUpdate', new Date().getDate());
-    storage.set('dailyQuoteLastIndex', Math.floor(Math.random() * 300));
-  };
-
   const getDailyQuote = () => {
     const dailyQuoteLastUpdate = storage.getNumber('dailyQuoteLastUpdate');
     const today = new Date().getDate();
@@ -87,48 +85,30 @@ export const HomeScreen = () => {
   };
 
   const setFavoriteState = () => {
-    const favorites = storage.getString('favorites');
-    const favoritesArray: QuoteData[] = favorites ? JSON.parse(favorites) : [];
+    const favorites = storage.getString('favorites') ?? '[]';
+    const favoritesArray: QuoteData[] = JSON.parse(favorites);
 
-    const isFavorited = favoritesArray.some(
-      favorite => favorite.text === quote,
-    );
-
-    if (isFavorited) {
-      setIsQuoteFavorited(true);
-    } else {
-      setIsQuoteFavorited(false);
-    }
+    setIsQuoteFavorited(favoritesArray.some(fav => fav.text === quote));
   };
 
   const handleFavoriteQuote = () => {
-    const favorites = storage.getString('favorites');
-    let favoritesArray: QuoteData[] = favorites ? JSON.parse(favorites) : [];
+    try {
+      const favorites = storage.getString('favorites') ?? '[]';
+      let favoritesArray: QuoteData[] = JSON.parse(favorites);
 
-    if (isQuoteFavorited) {
-      setIsQuoteFavorited(false);
+      const isFavorited = favoritesArray.some(fav => fav.text === quote);
 
-      const updatedFavoritesArray = favoritesArray.filter(
-        item => item.text !== quote,
-      );
+      favoritesArray = isFavorited
+        ? favoritesArray.filter(item => item.text !== quote)
+        : [
+            ...favoritesArray,
+            { text: quote, savedAt: new Date().toISOString() },
+          ];
 
-      storage.set('favorites', JSON.stringify(updatedFavoritesArray));
-    } else {
-      setIsQuoteFavorited(true);
-
-      const quoteExists = favoritesArray.some(
-        favorite => favorite.text === quote,
-      );
-
-      if (!quoteExists) {
-        const newQuote: QuoteData = {
-          text: quote,
-          savedAt: new Date().toISOString(),
-        };
-
-        favoritesArray.push(newQuote);
-        storage.set('favorites', JSON.stringify(favoritesArray));
-      }
+      storage.set('favorites', JSON.stringify(favoritesArray));
+      setIsQuoteFavorited(!isFavorited);
+    } catch (error) {
+      console.error('Error handling favorites:', error);
     }
   };
 
@@ -153,11 +133,11 @@ export const HomeScreen = () => {
   );
 
   return (
-    <>
+    <Fragment>
       <View style={StyleSheet.absoluteFillObject}>
-        <ImageBackground
+        <FastImage
           source={THEME_IMAGES[theme as keyof typeof THEME_IMAGES]}
-          resizeMode="cover"
+          resizeMode={FastImage.resizeMode.cover}
           style={{
             width: SCREEN_DIMENSIONS.width,
             height: SCREEN_DIMENSIONS.height,
@@ -192,6 +172,6 @@ export const HomeScreen = () => {
 
         <QuoteShareImage ref={quoteImageRef} quote={quote} />
       </SafeAreaView>
-    </>
+    </Fragment>
   );
 };

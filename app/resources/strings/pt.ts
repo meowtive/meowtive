@@ -38,6 +38,9 @@ export const pt = {
     favoritesBottomTab: 'Favoritos',
     themeBottomTab: 'Tema',
     profileBottomTab: 'Perfil',
+    errorBoundaryTitle: 'Ops!',
+    errorBoundaryDescription: 'Algo deu errado.',
+    errorBoundaryInstruction: 'Por favor, reinicie o app.',
     quotes: [
       '"Comece cada dia com um propósito e termine com um ronronar de satisfação."',
       '"A jornada para seus sonhos é como a soneca de um gato—tranquila, pacífica e cheia de saltos inesperados."',

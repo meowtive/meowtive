@@ -27,7 +27,9 @@ const fallbackShare = (quote: string) => {
 };
 
 const canShareToInstagram = async () => {
-  if (isIOS) return await Linking.canOpenURL(INSTAGRAM_URL);
+  if (isIOS) {
+    return await Linking.canOpenURL(INSTAGRAM_URL);
+  }
 
   const result = await Share.isPackageInstalled(INSTAGRAM_PACKAGE);
   return result.isInstalled;
@@ -43,6 +45,7 @@ export const handleShareQuote = async (quote: string, imageUri?: string) => {
       fallbackShare(quote);
     }
   } catch (error) {
+    console.error('Error sharing quote:', error);
     fallbackShare(quote);
   }
 };
