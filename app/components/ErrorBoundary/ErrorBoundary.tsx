@@ -1,8 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Text, SafeAreaView, StyleSheet, TouchableOpacity } from 'react-native';
 
-import i18next from 'i18next';
-
 import { isAndroid } from '@config/platform';
 import FastImage from 'react-native-fast-image';
 import { SCREEN_DIMENSIONS } from '@config/constants';
@@ -40,14 +38,10 @@ export class ErrorBoundary extends React.Component<Props, State> {
             style={styles.image}
             resizeMode={FastImage.resizeMode.contain}
           />
-          <Text style={styles.errorTitle}>
-            {i18next.t('errorBoundaryTitle')}
-          </Text>
-          <Text style={styles.errorText}>
-            {i18next.t('errorBoundaryDescription')}
-          </Text>
+          <Text style={styles.errorTitle}>{t('errorBoundaryTitle')}</Text>
+          <Text style={styles.errorText}>{t('errorBoundaryDescription')}</Text>
           <Text style={styles.errorInstruction}>
-            {i18next.t('errorBoundaryInstruction')}
+            {t('errorBoundaryInstruction')}
           </Text>
           <TouchableOpacity
             style={styles.restartButton}

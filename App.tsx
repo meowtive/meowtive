@@ -18,8 +18,7 @@ const App = () => {
     return storage.getBoolean('isOnboardingComplete') ?? false;
   });
 
-  const { t } = useTranslation();
-
+  const { t: translateText } = useTranslation();
   useEffect(() => {
     setTimeout(() => {
       RNBootSplash.hide({ fade: true });
@@ -29,7 +28,9 @@ const App = () => {
   }, []);
 
   return (
-    <ErrorBoundary translation={t}>
+    <ErrorBoundary t={translateText}>
+      {' '}
+      {/* Alteração aqui */}
       <PaperProvider>
         <OnboardingContext.Provider
           value={{ isOnboardingComplete, setIsOnboardingComplete }}>
