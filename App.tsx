@@ -29,8 +29,6 @@ const App = () => {
 
   return (
     <ErrorBoundary t={translateText}>
-      {' '}
-      {/* Alteração aqui */}
       <PaperProvider>
         <OnboardingContext.Provider
           value={{ isOnboardingComplete, setIsOnboardingComplete }}>
