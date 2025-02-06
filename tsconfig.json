@@ -19,7 +19,11 @@
       "@utils": ["app/utils"],
       "@utils/*": ["app/utils/*"],
       "@services": ["app/services"],
-      "@services/*": ["app/services/*"]
+      "@services/*": ["app/services/*"],
+      "@libs": ["app/libs"],
+      "@libs/*": ["app/libs/*"],
+      "@contexts": ["app/contexts"],
+      "@contexts/*": ["app/contexts/*"]
     }
   }
 }
