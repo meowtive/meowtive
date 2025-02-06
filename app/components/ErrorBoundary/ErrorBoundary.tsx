@@ -7,7 +7,7 @@ import { isAndroid } from '@config/platform';
 import FastImage from 'react-native-fast-image';
 import { SCREEN_DIMENSIONS } from '@config/constants';
 import { restartApp } from '@utils/restartApp';
-import { TFunction } from 'i18next'; // Importa o tipo TFunction
+import { TFunction } from 'i18next';
 
 interface Props {
   children: ReactNode;
