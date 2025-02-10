@@ -1281,6 +1281,8 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
+  - react-native-restart (0.0.27):
+    - React-Core
   - react-native-safe-area-context (4.14.1):
     - DoubleConversion
     - glog
@@ -1973,6 +1975,7 @@ DEPENDENCIES:
   - React-microtasksnativemodule (from `../node_modules/react-native/ReactCommon/react/nativemodule/microtasks`)
   - react-native-config (from `../node_modules/react-native-config`)
   - react-native-mmkv (from `../node_modules/react-native-mmkv`)
+  - react-native-restart (from `../node_modules/react-native-restart`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - "react-native-skia (from `../node_modules/@shopify/react-native-skia`)"
   - react-native-unistyles (from `../node_modules/react-native-unistyles`)
@@ -2100,6 +2103,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-config"
   react-native-mmkv:
     :path: "../node_modules/react-native-mmkv"
+  react-native-restart:
+    :path: "../node_modules/react-native-restart"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
   react-native-skia:
@@ -2223,6 +2228,7 @@ SPEC CHECKSUMS:
   React-microtasksnativemodule: 1364ae5354f51b3ecee8eb718b5b6d1686d2ff4d
   react-native-config: 8f7283449bbb048902f4e764affbbf24504454af
   react-native-mmkv: 2f549a706d68ec9f73c35de35aec4eb88f94386a
+  react-native-restart: 7595693413fe3ca15893702f2c8306c62a708162
   react-native-safe-area-context: 782fec0553f14a630a2bac87b116e512a9f35500
   react-native-skia: 5f9e3ac9cfa26d834a30b5857999f53887aa47a5
   react-native-unistyles: 0eb1afdd80a5c6a408e60fb58516d44eb7fea30c

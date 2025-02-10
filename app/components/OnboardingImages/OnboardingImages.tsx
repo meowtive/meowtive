@@ -23,12 +23,15 @@ export const OnboardingImages = ({ step }: OnboardingImagesProps) => {
   const { styles } = useStyles(stylesheet);
 
   useEffect(() => {
-    if (step === 1) return;
+    if (step === 1) {
+      return;
+    }
 
     opacity.value = withTiming(0, { duration: 500 }, () => {
       runOnJS(setCurrentStep)(step);
       opacity.value = withTiming(1, { duration: 500 });
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [step]);
 
   const animatedStyle = useAnimatedStyle(() => ({
