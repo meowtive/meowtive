@@ -72,7 +72,7 @@ export const FavoritesItem = ({
     }
     const isVisible = Boolean(
       viewableItems.value
-        .filter(item => item.isViewable)
+        .filter(viewableItem => viewableItem.isViewable)
         .find(viewableItem => viewableItem.item === item),
     );
     return {
