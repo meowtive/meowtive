@@ -42,6 +42,9 @@ export const es = {
     errorBoundaryDescription: 'Algo salió mal.',
     errorBoundaryInstruction: 'Por favor, reinicie la aplicación.',
     errorBoundaryButton: 'Reanudar',
+    filter: 'Filtrar',
+    recent: 'Ordenar por más reciente',
+    alphabetical: 'Ordenar alfabéticamente',
     quotes: [
       '"Comienza cada día con un propósito y termínalo con un ronroneo de satisfacción."',
       '"El camino hacia tus sueños es como la siesta de un gato—tranquilo, pacífico y lleno de saltos inesperados."',
