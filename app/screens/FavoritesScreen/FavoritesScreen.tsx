@@ -198,7 +198,7 @@ export const FavoritesScreen = () => {
                   name="access-time"
                   size={24}
                   color="#000000"
-                  style={{ marginRight: 12 }}
+                  style={styles.filterIcon}
                 />
                 <Text style={styles.filterOptionText}>{t('recent')}</Text>
                 {selectedFilter === 'recent' && (
@@ -215,7 +215,7 @@ export const FavoritesScreen = () => {
                   name="sort-by-alpha"
                   size={24}
                   color="#000000"
-                  style={{ marginRight: 12 }}
+                  style={styles.filterIcon}
                 />
                 <Text style={styles.filterOptionText}>{t('alphabetical')}</Text>
                 {selectedFilter === 'alphabetical' && (

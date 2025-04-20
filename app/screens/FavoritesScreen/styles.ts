@@ -57,6 +57,9 @@ export const stylesheet = createStyleSheet({
     shadowOpacity: 0.05,
     shadowRadius: 12,
   },
+  filterIcon: {
+    marginRight: 12,
+  },
   quotes: {
     overflow: 'visible',
   },
