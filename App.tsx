@@ -10,7 +10,6 @@ import { OnboardingContext } from '@contexts/onboardingContext';
 import Routes from '@routes/Routes';
 import { OnboardingScreen } from '@screens';
 import { ErrorBoundary } from '@components';
-import { configurePurchases } from '@services';
 import { PaperProvider } from 'react-native-paper';
 
 const App = () => {
@@ -23,8 +22,6 @@ const App = () => {
     setTimeout(() => {
       RNBootSplash.hide({ fade: true });
     }, 500);
-
-    configurePurchases();
   }, []);
 
   return (
